@@ -300,6 +300,7 @@ nav.scrolled .toggle-thumb { background: var(--accent); }
   max-width: 1400px;
   width: 100%;
   padding: 0 var(--wide-gutter);
+  margin-inline: auto;
 }
 
 @media (max-width: 960px) {
@@ -315,6 +316,7 @@ nav.scrolled .toggle-thumb { background: var(--accent); }
   z-index: 2;
   padding: 0;
   max-width: 640px;
+  justify-self: center;
 }
 
 .hero-eyebrow {
@@ -381,6 +383,7 @@ nav.scrolled .toggle-thumb { background: var(--accent); }
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-self: center;
   opacity: 0;
   animation: fadeUp 0.9s 1s var(--ease) forwards;
 }
