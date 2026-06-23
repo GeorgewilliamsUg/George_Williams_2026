@@ -99,7 +99,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem var(--page-gutter);
+  padding: 1.5rem var(--page-gutter);
   background: transparent;
   transition:
     background var(--dur) var(--ease),
@@ -121,7 +121,7 @@ nav {
 nav.scrolled {
   background: var(--bg);
   box-shadow: var(--shadow-sm);
-  padding: 0.95rem var(--page-gutter);
+  padding: 1.1rem var(--page-gutter);
   border-bottom: 1px solid var(--border);
 }
 .nav-logo {
@@ -292,7 +292,7 @@ nav.scrolled .toggle-thumb { background: var(--accent); }
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: 0 var(--wide-gutter);
+  padding: 4rem var(--wide-gutter) 2rem;
   max-width: 1120px;
 }
 
@@ -305,7 +305,7 @@ nav.scrolled .toggle-thumb { background: var(--accent); }
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--dust);
-  margin-bottom: 2rem;
+  margin-bottom: 2.8rem;
   opacity: 0;
   animation: fadeUp 0.8s 0.2s var(--ease) forwards;
 }
@@ -322,7 +322,7 @@ nav.scrolled .toggle-thumb { background: var(--accent); }
   color: var(--hero-text);
   line-height: 1.02;
   letter-spacing: -0.025em;
-  margin-bottom: 2rem;
+  margin-bottom: 2.8rem;
   opacity: 0;
   animation: fadeUp 0.9s 0.4s var(--ease) forwards;
 }
@@ -337,7 +337,7 @@ nav.scrolled .toggle-thumb { background: var(--accent); }
   color: var(--on-dark-soft);
   max-width: 500px;
   line-height: 1.8;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   opacity: 0;
   animation: fadeUp 0.9s 0.6s var(--ease) forwards;
 }
@@ -348,7 +348,7 @@ nav.scrolled .toggle-thumb { background: var(--accent); }
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
   flex-wrap: wrap;
   opacity: 0;
   animation: fadeUp 0.9s 0.8s var(--ease) forwards;
