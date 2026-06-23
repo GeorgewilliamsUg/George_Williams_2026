@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>George — Every Word Has Weight</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/home2.css">
+</head>
+<body>
+
+<!-- ════════════════════ NAV ════════════════════ -->
+<nav id="nav">
+  <a href="#" class="nav-logo" onclick="show('home')">George <span>& the Word</span></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#" onclick="show('home')">Home</a></li>
+      <li><a href="#" onclick="gotoArticles()">Articles</a></li>
+      <li><a href="#" onclick="show('about')">About</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light / dark">
+      <div class="toggle-thumb" id="toggleThumb">
+        <span id="toggleIcon">☀</span>
+      </div>
+    </button>
+  </div>
+  <div class="mobile-nav-row">
+    <a href="#" onclick="show('home'); return false;">Home</a>
+    <a href="#" onclick="gotoArticles(); return false;">Articles</a>
+    <a href="#" onclick="show('about'); return false;">About</a>
+  </div>
+</nav>
+
+<!-- ════════════════════ HOME ════════════════════ -->
+<div class="page active" id="home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-bg-word w1" id="pw1">WORD</div>
+    <div class="hero-bg-word w2" id="pw2">LIFE</div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">
+        <span class="eyebrow-line"></span>
+        Weekly Articles · Faith · Work · Church · Marriage
+      </p>
+      <h1 class="hero-title">
+        God has something<br>to say about<br><em>everything.</em>
+      </h1>
+      <p class="hero-desc">Short reads — around 300 words — on the things that matter most. Written simply. Meant to stick.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-solid" onclick="gotoArticles(); return false;">Read This Week</a>
+        <a href="#" class="btn-outline-hero" onclick="show('about'); return false;">Who is George?</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-track"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span>This week: <strong>Obedience Is Not Optional</strong></span>
+      <span class="ticker-dot">◆</span>
+      <span>New every Monday</span>
+      <span class="ticker-dot">◆</span>
+      <span>From Uganda, for the world</span>
+      <span class="ticker-dot">◆</span>
+      <span><strong>"Your word is a lamp to my feet"</strong></span>
+      <span class="ticker-dot">◆</span>
+      <span>Short reads, deep roots</span>
+      <span class="ticker-dot">◆</span>
+      <span>This week: <strong>Obedience Is Not Optional</strong></span>
+      <span class="ticker-dot">◆</span>
+      <span>New every Monday</span>
+      <span class="ticker-dot">◆</span>
+      <span>From Uganda, for the world</span>
+      <span class="ticker-dot">◆</span>
+      <span><strong>"Your word is a lamp to my feet"</strong></span>
+      <span class="ticker-dot">◆</span>
+      <span>Short reads, deep roots</span>
+      <span class="ticker-dot">◆</span>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="layout" id="articles-top">
+
+    <!-- ── MAIN COLUMN ── -->
+    <main>
+
+      <!-- FEATURED -->
+      <div class="featured-wrap">
+        <p class="sec-label reveal">Featured This Week</p>
+        <div class="featured-card reveal" onclick="show('article')">
+          <div class="feat-visual">
+            <div class="feat-letter">O</div>
+            <span class="feat-tag">Church Life</span>
+          </div>
+          <div class="feat-body">
+            <div>
+              <p class="feat-meta">June 9, 2025 &nbsp;·&nbsp; 3 min read</p>
+              <h2 class="feat-title">Obedience Is Not Optional — And God Did Not Mean It to Be Easy</h2>
+              <p class="feat-excerpt">We have made following Jesus feel like a suggestion. Like a lifestyle upgrade you opt into when it's convenient. But Jesus never asked for your opinion on His commands. He gave them — and He expects them to land somewhere real.</p>
+            </div>
+            <a href="#" class="read-more" onclick="show('article'); return false;">
+              Keep Reading
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PULLQUOTE -->
+      <div class="pullquote reveal">
+        <blockquote>"Theology must land somewhere. It should produce worship, humility, and fire in your bones."</blockquote>
+        <cite>— George</cite>
+      </div>
+
+      <!-- ARTICLE GRID -->
+      <div class="grid-section">
+        <p class="sec-label reveal">Recent Articles</p>
+        <div class="article-grid">
+
+          <div class="a-card reveal" style="transition-delay:.05s" onclick="show('article')">
+            <p class="a-tag">Marriage</p>
+            <h3 class="a-title">Your Spouse Is Not the Problem — You Are</h3>
+            <p class="a-excerpt">Every hard marriage has two people in it. And usually, the one most convinced the other person needs to change is the one who needs to change most.</p>
+            <div class="a-foot">
+              <span class="a-time">3 min · May 26</span>
+              <div class="a-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </div>
+
+          <div class="a-card reveal" style="transition-delay:.1s" onclick="show('article')">
+            <p class="a-tag">Faith & Work</p>
+            <h3 class="a-title">What God Thinks About Your Monday Morning</h3>
+            <p class="a-excerpt">Sunday worship and Monday work are not two different worlds. God did not create sacred time and secular time — He created time, and He owns all of it.</p>
+            <div class="a-foot">
+              <span class="a-time">2 min · May 19</span>
+              <div class="a-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </div>
+
+          <div class="a-card wide reveal" style="transition-delay:.15s" onclick="show('article')">
+            <div class="wide-num">03</div>
+            <div class="wide-content">
+              <p class="a-tag">Prayer</p>
+              <h3 class="a-title">You Are Not Informing God When You Pray</h3>
+              <p class="a-excerpt">He already knows. So why pray? Because prayer is not a news report — it is a relationship. And relationships require conversation, even when one person knows everything.</p>
+            </div>
+            <div class="a-foot">
+              <span class="a-time">2 min · May 12</span>
+              <div class="a-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </div>
+
+          <div class="a-card reveal" style="transition-delay:.05s" onclick="show('article')">
+            <p class="a-tag">Church Life</p>
+            <h3 class="a-title">The Pastor Who Preaches Hard Things Loves You More</h3>
+            <p class="a-excerpt">Comfort has become the goal. But a doctor who only tells you what you want to hear is not kind — he is dangerous. So is a pastor.</p>
+            <div class="a-foot">
+              <span class="a-time">3 min · May 5</span>
+              <div class="a-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </div>
+
+          <div class="a-card reveal" style="transition-delay:.1s" onclick="show('article')">
+            <p class="a-tag">Life</p>
+            <h3 class="a-title">Contentment Is Not Laziness in Disguise</h3>
+            <p class="a-excerpt">People confuse contentment with giving up. But Paul said he learned it — which means it took work. Real contentment is a battle, not a nap.</p>
+            <div class="a-foot">
+              <span class="a-time">3 min · April 28</span>
+              <div class="a-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar">
+
+      <div class="widget w-about reveal">
+        <div class="w-title">About George</div>
+        <div class="about-init">G</div>
+        <p>I study the Bible book by book because I am convinced every page tells one story — a holy God pursuing a people through Jesus Christ.</p>
+        <p>Based in Kampala, Uganda. Founder of Go&Train Ministries.</p>
+        <a href="#" class="link-arrow" onclick="show('about'); return false;">
+          Full story
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="widget w-scripture reveal">
+        <div class="scripture-mark">"</div>
+        <div class="w-title">This Week's Verse</div>
+        <p class="scripture-q" id="scr-text">"For the word of God is alive and active. Sharper than any double-edged sword."</p>
+        <p class="scripture-ref" id="scr-ref">Hebrews 4:12</p>
+        <div class="scripture-controls">
+          <button class="scr-btn" onclick="prevScr()">←</button>
+          <button class="scr-btn" onclick="nextScr()">→</button>
+        </div>
+      </div>
+
+      <div class="widget w-topics reveal">
+        <div class="w-title">Topics</div>
+        <ul class="topics-list">
+          <li><a href="#">Church Life <span class="t-count">14</span></a></li>
+          <li><a href="#">Marriage <span class="t-count">9</span></a></li>
+          <li><a href="#">Faith & Work <span class="t-count">11</span></a></li>
+          <li><a href="#">Prayer <span class="t-count">7</span></a></li>
+          <li><a href="#">Scripture <span class="t-count">12</span></a></li>
+          <li><a href="#">Life <span class="t-count">16</span></a></li>
+        </ul>
+      </div>
+
+      <div class="widget w-newsletter reveal">
+        <div class="w-title">One Email. Every Week.</div>
+        <p>A new article every Monday morning. Nothing else. No noise.</p>
+        <input type="email" class="email-input" placeholder="your@email.com">
+        <button class="sub-btn" onclick="subscribe()">Subscribe Free</button>
+      </div>
+
+    </aside>
+
+  </div><!-- /layout -->
+
+  <!-- QUOTE SECTION -->
+  <section class="quote-section">
+    <p class="q-text reveal">"I didn't come to the Bible looking for inspiration. I came looking for God — and what I found changed everything."</p>
+    <p class="q-source reveal" style="transition-delay:.15s">— George, Kampala</p>
+  </section>
+
+</div><!-- /home -->
+
+<!-- ════════════════════ ABOUT ════════════════════ -->
+<div class="page" id="about">
+
+  <section class="about-hero">
+    <div class="about-hero-glow"></div>
+    <p class="about-eyebrow">Who I Am</p>
+    <h1 class="about-h1">I came to the Bible<br>looking for <em>God.</em></h1>
+    <p class="about-lead">Not inspiration. Not comfort. Not a framework for better living. I came looking for God — and what I found changed everything.</p>
+  </section>
+
+  <div class="about-body">
+    <div class="about-text reveal">
+      <h2>Every page tells<br><em>one story.</em></h2>
+      <p>I study the Bible book by book, chapter by chapter. Not as a religious habit, but because I am convinced that every page of Scripture is telling one story — the story of a holy God who has been glorifying Himself from before the foundation of the world, pursuing a people for Himself, and doing it all through one man: Jesus Christ.</p>
+      <p>My convictions have been sharpened by men who took the Word seriously — John Stott, John MacArthur, John Piper, A.W. Pink, A.W. Tozer, C.S. Lewis. But I hold their work loosely. What I hold firmly is the text.</p>
+      <p>I believe theology must land somewhere. It should produce worship, humility, and fire in your bones. That conviction became Go&Train — an initiative I founded to equip rural pastors who have little access to formal theological training.</p>
+      <p>I am also a writer, a data analyst, and a web developer working in Python and Django. I carry a dream called HopeAbound — a vision for confronting poverty not just with programs but with presence and truth.</p>
+      <a href="#" class="btn-back" style="margin-top:1.5rem; display:inline-block;" onclick="show('home')">Read the Articles</a>
+    </div>
+    <div class="reveal" style="transition-delay:.2s">
+      <div class="min-cards">
+        <div class="min-card">
+          <span class="min-icon">⛪</span>
+          <h4>Go&Train Ministries</h4>
+          <p>Equipping rural and village pastors with sound biblical teaching across Uganda.</p>
+        </div>
+        <div class="min-card">
+          <span class="min-icon">✍️</span>
+          <h4>Writer</h4>
+          <p>Weekly articles — short, grounded — on faith, church, work, and marriage.</p>
+        </div>
+        <div class="min-card">
+          <span class="min-icon">💻</span>
+          <h4>Web Developer</h4>
+          <p>Building with Python and Django. Technology held under God's sovereignty.</p>
+        </div>
+        <div class="min-card">
+          <span class="min-icon">🌍</span>
+          <h4>HopeAbound</h4>
+          <p>Confronting poverty with presence and truth — not just programs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="quote-section">
+    <p class="q-text">"Theology must land somewhere. It should produce worship, humility, and fire in your bones."</p>
+    <p class="q-source">— George</p>
+  </section>
+
+</div><!-- /about -->
+
+<!-- ════════════════════ ARTICLE ════════════════════ -->
+<div class="page" id="article">
+
+  <section class="art-hero">
+    <a href="#" class="art-back" onclick="show('home'); return false;">← All Articles</a>
+    <span class="art-tag-pill">Church Life</span>
+    <h1 class="art-h1">Obedience Is Not Optional — And God Did Not Mean It to Be Easy</h1>
+    <p class="art-byline">George &nbsp;·&nbsp; June 9, 2025 &nbsp;·&nbsp; 3 min read</p>
+  </section>
+
+  <div class="art-body">
+    <p class="art-lede">We have made following Jesus feel like a suggestion. Like a lifestyle upgrade you opt into when it's convenient.</p>
+    <p>But Jesus never asked for your opinion on His commands. He gave them — and He expects them to land somewhere real. Not in your head. Not on your Instagram caption. In your life.</p>
+    <p>The problem is not that we disagree with obedience. Most Christians will nod when you mention it. The problem is that we have quietly separated belief from behavior. We say we trust God, but we trust our own instincts when it costs something to trust His word.</p>
+    <p>Jesus said it plainly: "Why do you call me 'Lord, Lord,' and do not do what I say?" (Luke 6:46). That question is not rhetorical. It is an indictment. And it lands on all of us who have learned to live very comfortably in the gap between what we say we believe and what we actually do.</p>
+    <p>Here is what I have come to understand: obedience is not the price you pay for grace. It is the evidence that grace has actually done something in you. A changed heart produces changed behavior. Not perfectly — but genuinely.</p>
+    <p>And no, it will not always be easy. Jesus never said it would be. He said take up your cross. That is not a metaphor for mild inconvenience. It is a call to die — to the self that insists on its own comfort, its own rights, its own version of how things should go.</p>
+    <p><strong>The question today is simple: where is obedience costing you something? That's probably exactly where God is working.</strong></p>
+
+    <div class="art-foot">
+      <div class="art-author">
+        <p class="art-meta-label">Written by</p>
+        <h4>George</h4>
+        <p>Kampala, Uganda · Go&Train Ministries</p>
+      </div>
+      <button class="btn-back" onclick="show('home')">← All Articles</button>
+    </div>
+  </div>
+
+</div><!-- /article -->
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-brand">George <span>& the Word</span></div>
+      <p class="f-desc">Weekly articles on the things God has His mind on — faith, work, church, marriage, and the whole of life lived under His word. From Kampala, Uganda.</p>
+    </div>
+    <div class="f-col">
+      <h5>Topics</h5>
+      <ul>
+        <li><a href="#">Church Life</a></li>
+        <li><a href="#">Marriage</a></li>
+        <li><a href="#">Faith & Work</a></li>
+        <li><a href="#">Prayer</a></li>
+        <li><a href="#">Scripture</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>More</h5>
+      <ul>
+        <li><a href="#" onclick="show('about')">About George</a></li>
+        <li><a href="#">Go&Train</a></li>
+        <li><a href="#">HopeAbound</a></li>
+        <li><a href="#">Archive</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Subscribe</h5>
+      <ul>
+        <li><a href="#">Weekly Email</a></li>
+        <li><a href="#">RSS Feed</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="f-copy">© 2025 George. All rights reserved.</p>
+    <p class="f-verse">"In the beginning was the Word…" — John 1:1</p>
+  </div>
+</footer>
+
+<script src="../js/home2.js" defer></script>
+</body>
+</html>
