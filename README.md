@@ -4,9 +4,9 @@ Personal website and short-form blog for publishing brief, heart-gripping reflec
 
 ## Structure
 
-- `html/home.html` - main site page
-- `css/home.css` - site styles
-- `js/home.js` - site interactions
+- `html/index.html` - main site page
+- `css/index.css` - site styles
+- `js/index.js` - site interactions
 - `assets/images/` - images and visual assets
 - `.instructions.md` - project-specific content and development instructions
 
@@ -19,7 +19,7 @@ Personal website and short-form blog for publishing brief, heart-gripping reflec
 
 ## Local Use
 
-Open `index.html` in a browser, or open `html/home.html` directly.
+Open `index.html` in a browser, or open `html/index.html` directly.
 
 ## GitHub
 

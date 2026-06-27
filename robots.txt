@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block internal/tooling paths from search indexes.
+Disallow: /.git/
+Disallow: /tools/
+Disallow: /_articles-src/
+
+Sitemap: https://jojjy.org/sitemap.xml
