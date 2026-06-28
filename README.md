@@ -4,7 +4,11 @@ Personal website and short-form blog for publishing brief, heart-gripping reflec
 
 ## Structure
 
-- `html/index.html` - main site page
+- `index.html` - main site page
+- `article.html` - article listing page
+- `archive.html` - archive listing page
+- `about.html` - about page
+- `articles/<slug>/index.html` - article detail routes
 - `css/index.css` - site styles
 - `js/index.js` - site interactions
 - `assets/images/` - images and visual assets
@@ -19,7 +23,7 @@ Personal website and short-form blog for publishing brief, heart-gripping reflec
 
 ## Local Use
 
-Open `index.html` in a browser, or open `html/index.html` directly.
+Open `index.html` in a browser.
 
 ## GitHub
 

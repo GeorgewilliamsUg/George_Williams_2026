@@ -1,8 +1,9 @@
 $ErrorActionPreference = 'Stop'
 
 $root        = (Get-Location).Path
-$articlesDir = Join-Path $root 'Articles'
-$outDir      = Join-Path $root 'html/articles'
+$articlesDir = Join-Path $root '_articles-src'
+$outDir      = Join-Path $root 'articles'
+$siteUrl     = 'https://jojjy.org'
 New-Item -ItemType Directory -Path $outDir -Force | Out-Null
 
 function Slug([string]$t) {
@@ -11,6 +12,11 @@ function Slug([string]$t) {
   $s = $s.Trim('-')
   if ([string]::IsNullOrWhiteSpace($s)) { $s = 'article' }
   return $s
+}
+
+# Keep JS and PowerShell slug behavior aligned for predictable URLs.
+function Slugify([string]$title) {
+  return (Slug $title)
 }
 
 function Esc([string]$t) { return [System.Net.WebUtility]::HtmlEncode($t) }
@@ -37,7 +43,7 @@ Get-ChildItem $articlesDir -File -Filter *.txt | Sort-Object Name | ForEach-Obje
   $subtitle = if ($clean.Count -gt 1) { $clean[1] } else { 'Read the full reflection.' }
   $bodyLines = if ($clean.Count -gt 2) { $clean[2..($clean.Count - 1)] } else { @('Read the full reflection.') }
 
-  $slugBase = Slug $title
+  $slugBase = Slugify $title
   if ($used.ContainsKey($slugBase)) {
     Write-Output ("Skipping duplicate: " + $title)
     return
@@ -63,7 +69,7 @@ Get-ChildItem $articlesDir -File -Filter *.txt | Sort-Object Name | ForEach-Obje
     Mins      = $mins
     Date      = $dateStr
     Topic     = $topic
-    Href      = ('articles/' + $slug + '.html')
+    Href      = ('articles/' + $slug + '/')
   })
 }
 
@@ -93,7 +99,6 @@ foreach ($item in $items) {
   }) -join "`n    "
 
   # ── Pull quotes for sidebar rotator ───────────────────────────────────────
-  # Gather candidates: subtitle first, then quoted lines, then short impactful lines
   $quoteCandidates = [System.Collections.Generic.List[string]]::new()
   $quoteCandidates.Add($item.Subtitle)
 
@@ -106,7 +111,6 @@ foreach ($item in $items) {
       $quoteCandidates.Add($line)
     }
   }
-  # Pad to 3 if needed
   while ($quoteCandidates.Count -lt 3) {
     $quoteCandidates.Add($item.Subtitle)
   }
@@ -124,7 +128,7 @@ foreach ($item in $items) {
   $relatedHtml = ($related | ForEach-Object {
     $rLabel = Esc $_.Topic
     $rTitle = Esc $_.Title
-    $rHref  = '../' + $_.Href
+    $rHref  = '/' + $_.Href
     "          <a href=`"$rHref`" class=`"related-card`">
             <div class=`"related-card-thumb`"></div>
             <span class=`"related-card-label`">$rLabel</span>
@@ -137,7 +141,7 @@ foreach ($item in $items) {
   $recentHtml  = ($recentItems | ForEach-Object {
     $rCat   = Esc $_.Topic
     $rTitle = Esc $_.Title
-    $rHref  = '../' + $_.Href
+    $rHref  = '/' + $_.Href
     "        <div class=`"recent-post`">
           <span class=`"recent-category`">$rCat</span>
           <a href=`"$rHref`" class=`"recent-title`">$rTitle</a>
@@ -167,12 +171,13 @@ foreach ($item in $items) {
     $archiveCounts[$key] = ($archiveCounts[$key] -as [int]) + 1
   }
   $archiveHtml = ($archiveCounts.GetEnumerator() | Sort-Object { [datetime]"01 $($_.Key)" } -Descending | Select-Object -First 6 | ForEach-Object {
-    "<li><a href=`"../archive.html`">$($_.Key)</a><span class=`"archive-count`">($($_.Value))</span></li>"
+    "<li><a href=`"/archive.html`">$($_.Key)</a><span class=`"archive-count`">($($_.Value))</span></li>"
   }) -join "`n          "
 
   $titleEsc    = Esc $item.Title
   $subtitleEsc = Esc $item.Subtitle
   $topicEsc    = Esc $item.Topic
+  $articleUrl  = "$siteUrl/$($item.Href)"
 
   $detail = @"
 <!DOCTYPE html>
@@ -181,33 +186,42 @@ foreach ($item in $items) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>$titleEsc — George</title>
+<meta name="description" content="$subtitleEsc">
+<link rel="canonical" href="$articleUrl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="$titleEsc — George">
+<meta property="og:description" content="$subtitleEsc">
+<meta property="og:url" content="$articleUrl">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="$titleEsc — George">
+<meta name="twitter:description" content="$subtitleEsc">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../css/index.css">
-<link rel="stylesheet" href="../../css/article.css">
-<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/article.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 <div id="progress-bar" aria-hidden="true"></div>
 
 <header class="art-nav">
   <button class="art-nav-menu" aria-label="Menu">&#9776;</button>
-  <a href="../index.html" class="art-nav-logo">george</a>
+  <a href="/index.html" class="art-nav-logo">george</a>
   <div class="art-nav-actions">
-    <a href="../article.html" class="art-nav-link">Articles</a>
-    <a href="../about.html" class="art-nav-link">About</a>
+    <a href="/article.html" class="art-nav-link">Articles</a>
+    <a href="/about.html" class="art-nav-link">About</a>
     <button class="art-theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light / dark" id="toggleThumb"><span id="toggleIcon">&#9728;</span></button>
   </div>
 </header>
 
 <!-- ARTICLE META -->
 <div class="article-meta-bar">
-  <a href="../article.html">$topicEsc</a>
+  <a href="/article.html">$topicEsc</a>
   <span>&middot;</span>
   <span>$($item.Date)</span>
   <span>&middot;</span>
-  <span>Posted by <a href="../about.html">George</a></span>
+  <span>Posted by <a href="/about.html">George</a></span>
   <span>&middot;</span>
   <span>$($item.Mins) min read</span>
 </div>
@@ -245,10 +259,10 @@ foreach ($item in $items) {
     </div>
 
     <nav class="sidebar-nav">
-      <a href="../article.html">Scripture &amp; Theology</a>
-      <a href="../article.html">Christian Life</a>
-      <a href="../article.html">Expository Writing</a>
-      <a href="../about.html">About George</a>
+      <a href="/article.html">Scripture &amp; Theology</a>
+      <a href="/article.html">Christian Life</a>
+      <a href="/article.html">Expository Writing</a>
+      <a href="/about.html">About George</a>
     </nav>
   </aside>
 
@@ -320,16 +334,21 @@ $recentHtml
   <p>&copy; 2026 George &middot; <a href="#">Go&amp;Train Ministries</a> &middot; <a href="#">HopeAbound</a> &middot; Kampala, Uganda</p>
 </footer>
 
-<script src="../../js/index.js" defer></script>
-<script src="../../js/article.js" defer></script>
+<script src="/js/index.js" defer></script>
+<script src="/js/article.js" defer></script>
 </body>
 </html>
 "@
 
-  Set-Content -Path (Join-Path $outDir ($item.Slug + '.html')) -Value $detail -Encoding UTF8
+  $articleFolder = Join-Path $outDir $item.Slug
+  New-Item -ItemType Directory -Path $articleFolder -Force | Out-Null
+  Set-Content -Path (Join-Path $articleFolder 'index.html') -Value $detail -Encoding UTF8
 }
 
-# ── PASS 3: rebuild article/archive listing pages (index.css + index.js) ────────
+# Remove legacy flat article pages if present.
+Get-ChildItem -Path $outDir -File -Filter '*.html' -ErrorAction SilentlyContinue | Remove-Item -Force
+
+# ── PASS 3: rebuild article/archive listing pages (index.css + index.js) ─────
 
 $cards = ($items | ForEach-Object {
 @"
@@ -342,26 +361,26 @@ $cards = ($items | ForEach-Object {
 "@
 }) -join "`n"
 
-# Build unique sorted topic list from actual articles for the filter chip bar
-# (Scripture is intentionally excluded from the filter UI)
 $uniqueTopics = @($items | Select-Object -ExpandProperty Topic | Where-Object { $_ -ne 'Scripture' } | Sort-Object -Unique)
 $filterChips  = '<button class="filter-chip active" data-filter="all">All</button>' + "`n      " + (($uniqueTopics | ForEach-Object {
   $te = [System.Net.WebUtility]::HtmlEncode($_)
   "<button class=`"filter-chip`" data-filter=`"$te`">$te</button>"
 }) -join "`n      ")
 
-function BuildPage([string]$title, [string]$pill, [string]$heading, [string]$sub, [string]$label) {
+function BuildPage([string]$title, [string]$pill, [string]$heading, [string]$sub, [string]$label, [string]$canonicalPath) {
 @"
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://jojjy.org data:; frame-ancestors 'none'; base-uri 'self';">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>$title</title>
+<link rel="canonical" href="$siteUrl/$canonicalPath">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/article.css">
-<link rel="stylesheet" href="../css/index.css">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/article.css">
+<link rel="stylesheet" href="css/index.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
 <nav id="nav"><a href="index.html" class="nav-logo">George <span>&amp; the Word</span></a><div class="nav-right"><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="article.html">Articles</a></li><li><a href="about.html">About</a></li><li><a href="archive.html">Archive</a></li></ul><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light / dark"><div class="toggle-thumb" id="toggleThumb"><span id="toggleIcon">&#9728;</span></div></button></div><div class="mobile-nav-row"><a href="index.html">Home</a><a href="article.html">Articles</a><a href="about.html">About</a><a href="archive.html">Archive</a></div></nav>
@@ -376,14 +395,14 @@ $cards
       <p class="no-filter-results" id="no-results">No articles in this topic yet &mdash; check back soon.</p>
 </div></main><aside class="sidebar"><div class="widget w-newsletter reveal"><div class="w-title">One Email. Every Week.</div><p>Read the newest article every Monday morning.</p><a href="index.html" class="btn-back" style="display:inline-block;">Back Home</a></div><div class="widget w-topics reveal"><div class="w-title">Topics</div><ul class="topics-list"><li><button class="topic-btn active" data-filter="all">All Articles <span class="t-count">&mdash;</span></button></li>$(($uniqueTopics | ForEach-Object { $te = [System.Net.WebUtility]::HtmlEncode($_); "<li><button class=`"topic-btn`" data-filter=`"$te`">$te <span class=`"t-count`">&mdash;</span></button></li>" }) -join '')</ul></div></aside></div>
 <footer><div class="footer-grid"><div><div class="f-brand">George <span>&amp; the Word</span></div><p class="f-desc">Weekly articles on the things God has His mind on — faith, work, church, marriage, and the whole of life lived under His word. From Kampala, Uganda.</p></div><div class="f-col"><h5>Topics</h5><ul>$(($uniqueTopics | ForEach-Object { $te = [System.Net.WebUtility]::HtmlEncode($_); "<li><a href=`"article.html`">$te</a></li>" }) -join '')</ul></div><div class="f-col"><h5>More</h5><ul><li><a href="about.html">About George</a></li><li><a href="archive.html">Archive</a></li><li><a href="#">HopeAbound</a></li><li><a href="#">Go&amp;Train</a></li></ul></div><div class="f-col"><h5>Subscribe</h5><ul><li><a href="#">Weekly Email</a></li><li><a href="#">RSS Feed</a></li><li><a href="#">WhatsApp</a></li></ul></div></div><div class="footer-bottom"><p class="f-copy">&copy; 2026 George. All rights reserved.</p><p class="f-verse">"In the beginning was the Word&hellip;" &mdash; John 1:1</p></div></footer>
-<script src="../js/index.js" defer></script>
+<script src="js/index.js" defer></script>
 </body>
 </html>
 "@
 }
 
-Set-Content -Path (Join-Path $root 'html/article.html')  -Value (BuildPage 'Articles — Every Word Has Weight' 'Articles' 'Latest writings and reflections.' 'All published articles from the Articles folder are listed here.' 'All Articles') -Encoding UTF8
-Set-Content -Path (Join-Path $root 'html/archive.html')  -Value (BuildPage 'Archive — Every Word Has Weight'  'Archive'  'Every article, in one place.'         'Browse the full collection published from the Articles folder.'              'Archive Collection') -Encoding UTF8
+Set-Content -Path (Join-Path $root 'article.html') -Value (BuildPage 'Articles — Every Word Has Weight' 'Articles' 'Latest writings and reflections.' 'All published articles from the Articles folder are listed here.' 'All Articles' 'article.html') -Encoding UTF8
+Set-Content -Path (Join-Path $root 'archive.html') -Value (BuildPage 'Archive — Every Word Has Weight' 'Archive' 'Every article, in one place.' 'Browse the full collection published from the Articles folder.' 'Archive Collection' 'archive.html') -Encoding UTF8
 
 & (Join-Path $root 'tools/refresh-seo.ps1')
 

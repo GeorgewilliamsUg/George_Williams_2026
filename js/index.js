@@ -1,6 +1,19 @@
 (function () {
   'use strict';
 
+  // Generate stable, SEO-friendly slugs for article URLs.
+  function slugify(title) {
+    return String(title || '')
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  }
+
+  // Expose for future dynamic card/link builders.
+  window.slugify = slugify;
+
   /* ── THEME ── */
   let dark = false;
 

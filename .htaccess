@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Permanent redirects from legacy flat article URLs to folder URLs.
+RewriteCond %{THE_REQUEST} \s/+articles/([^.\s?/]+)\.html[\s?] [NC]
+RewriteRule ^articles/([^.\s?/]+)\.html$ /articles/$1/ [R=301,L]
+
+# Enforce trailing slash for article directories.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} ^/articles/[^/]+$
+RewriteRule ^(articles/[^/]+)$ /$1/ [R=301,L]
