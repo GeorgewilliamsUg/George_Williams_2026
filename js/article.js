@@ -125,3 +125,36 @@ if (popup && vpRef && vpText && vpVersion) {
     });
   });
 }());
+
+// ── Mobile nav hamburger ─────────────────────
+(function () {
+  const menuBtn = document.querySelector('.art-nav-menu');
+  const overlay = document.querySelector('.mobile-nav-overlay');
+  const closeBtn = document.querySelector('.mobile-nav-close');
+  if (!menuBtn) return;
+
+  function openMenu() {
+    document.body.classList.add('nav-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu() {
+    document.body.classList.remove('nav-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  menuBtn.addEventListener('click', () => {
+    document.body.classList.contains('nav-open') ? closeMenu() : openMenu();
+  });
+
+  if (overlay) overlay.addEventListener('click', closeMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+  document.querySelectorAll('.mobile-nav-links a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+}());

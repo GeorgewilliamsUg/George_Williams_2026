@@ -1898,6 +1898,9 @@ footer {
     gap: 3rem;
     padding: 4rem var(--page-gutter) 6rem;
   }
+  .min-cards {
+    grid-template-columns: 1fr;
+  }
   .art-hero {
     padding: 9rem var(--page-gutter) 4.2rem;
   }
@@ -2082,9 +2085,7 @@ footer {
   }
   .about-body {
     padding: 3rem 1rem 5rem;
-  }
-  .min-cards {
-    grid-template-columns: 1fr;
+    gap: 2rem;
   }
   .art-hero {
     padding: 7.8rem 1rem 3rem;
