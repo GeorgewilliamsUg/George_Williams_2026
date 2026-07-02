@@ -35,15 +35,62 @@ $used  = @{}
 $items = [System.Collections.Generic.List[PSCustomObject]]::new()
 
 Get-ChildItem $articlesDir -File -Filter *.txt | Sort-Object Name | ForEach-Object {
-  $raw   = Get-Content $_.FullName
+  $raw = Get-Content $_.FullName
+
+  # Detect optional YAML front-matter at top of file (--- block)
+  $fm = @{}
+  if ($raw.Count -gt 0 -and $raw[0].Trim() -eq '---') {
+    $end = -1
+    for ($i = 1; $i -lt $raw.Count; $i++) {
+      if ($raw[$i].Trim() -eq '---') { $end = $i; break }
+    }
+    if ($end -gt -1) {
+      $yamlLines = $raw[1..($end - 1)]
+      foreach ($line in $yamlLines) {
+        if ($line -match '^\s*([A-Za-z0-9_-]+)\s*:\s*(.+)\s*$') {
+          $k = $Matches[1].ToLower()
+          $v = $Matches[2].Trim()
+          if ($v -match '^"(.+)"$' -or $v -match "^'(.+)'$") { $v = $Matches[1] }
+          $fm[$k] = $v
+        }
+      }
+      # remove front-matter block from raw content
+      if ($end -lt ($raw.Count - 1)) {
+        $raw = $raw[($end + 1) .. ($raw.Count - 1)]
+      } else {
+        $raw = @()
+      }
+    }
+  }
+
   $clean = @($raw | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne '' })
   if ($clean.Count -eq 0) { return }
 
-  $title    = $clean[0]
-  $subtitle = if ($clean.Count -gt 1) { $clean[1] } else { 'Read the full reflection.' }
-  $bodyLines = if ($clean.Count -gt 2) { $clean[2..($clean.Count - 1)] } else { @('Read the full reflection.') }
+  # Normalize content lines after possibly removing duplicated title/description
+  $contentLines = @($clean)
 
-  $slugBase = Slugify $title
+  # If front-matter provides title/description and the file also contains them as the first lines,
+  # drop those duplicates so body starts correctly.
+  if ($fm.ContainsKey('title') -and $contentLines.Count -ge 1 -and $contentLines[0] -eq $fm['title']) {
+    if ($contentLines.Count -gt 1) { $contentLines = $contentLines[1..($contentLines.Count - 1)] } else { $contentLines = @() }
+  }
+  if ($fm.ContainsKey('description') -and $contentLines.Count -ge 1 -and $contentLines[0] -eq $fm['description']) {
+    if ($contentLines.Count -gt 1) { $contentLines = $contentLines[1..($contentLines.Count - 1)] } else { $contentLines = @() }
+  }
+
+  # Title and subtitle: prefer front-matter, else use first lines of content
+  if ($fm.ContainsKey('title')) { $title = $fm['title'] }
+  elseif ($contentLines.Count -ge 1) { $title = $contentLines[0]; $contentLines = if ($contentLines.Count -gt 1) { $contentLines[1..($contentLines.Count - 1)] } else { @() } }
+  else { $title = 'Untitled' }
+
+  if ($fm.ContainsKey('description')) { $subtitle = $fm['description'] }
+  elseif ($contentLines.Count -ge 1) { $subtitle = $contentLines[0]; $contentLines = if ($contentLines.Count -gt 1) { $contentLines[1..($contentLines.Count - 1)] } else { @() } }
+  else { $subtitle = 'Read the full reflection.' }
+
+  $bodyLines = if ($contentLines.Count -gt 0) { $contentLines } else { @('Read the full reflection.') }
+
+  # Allow front-matter to specify a slug
+  if ($fm.ContainsKey('slug')) { $slugBase = Slugify $fm['slug'] } else { $slugBase = Slugify $title }
   if ($used.ContainsKey($slugBase)) {
     Write-Output ("Skipping duplicate: " + $title)
     return
@@ -51,10 +98,17 @@ Get-ChildItem $articlesDir -File -Filter *.txt | Sort-Object Name | ForEach-Obje
   $slug        = $slugBase
   $used[$slug] = $true
 
-  $wordCount = (($raw -join ' ') -split '\s+' | Where-Object { $_ -ne '' }).Count
+  $wordCount = (($bodyLines -join ' ') -split '\s+' | Where-Object { $_ -ne '' }).Count
   $mins      = [Math]::Max(2, [Math]::Ceiling($wordCount / 220.0))
-  $dateStr   = $_.LastWriteTime.ToString('MMM d, yyyy')
-  $topic     = Topic $title
+  # Date from front-matter (if provided) or file modified time
+  if ($fm.ContainsKey('date')) {
+    try { $dt = [datetime]::Parse($fm['date']); $dateStr = $dt.ToString('MMM d, yyyy') } catch { $dateStr = $_.LastWriteTime.ToString('MMM d, yyyy') }
+  } else {
+    $dateStr = $_.LastWriteTime.ToString('MMM d, yyyy')
+  }
+
+  # Topic from front-matter or inferred from title
+  if ($fm.ContainsKey('topic')) { $topic = $fm['topic'] } else { $topic = Topic $title }
 
   # Strip trailing AI meta-notes
   $bodyLines = @($bodyLines | Where-Object {
