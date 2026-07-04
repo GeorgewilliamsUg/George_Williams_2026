@@ -21,6 +21,16 @@ function Slugify([string]$title) {
 
 function Esc([string]$t) { return [System.Net.WebUtility]::HtmlEncode($t) }
 
+function ShortQuote([string]$t) {
+  $clean = ($t -replace '\s+', ' ').Trim()
+  if ([string]::IsNullOrWhiteSpace($clean)) { return $clean }
+
+  $words = @($clean -split '\s+')
+  if ($words.Count -le 24) { return $clean }
+
+  return (($words[0..23] -join ' ') + '…')
+}
+
 function Topic([string]$t) {
   $x = $t.ToLowerInvariant()
   if ($x -match 'work|resume')                          { return 'Faith & Work' }
@@ -168,9 +178,9 @@ foreach ($item in $items) {
   while ($quoteCandidates.Count -lt 3) {
     $quoteCandidates.Add($item.Subtitle)
   }
-  $q0 = Esc $quoteCandidates[0]
-  $q1 = Esc $quoteCandidates[1]
-  $q2 = Esc $quoteCandidates[2]
+  $q0 = Esc (ShortQuote $quoteCandidates[0])
+  $q1 = Esc (ShortQuote $quoteCandidates[1])
+  $q2 = Esc (ShortQuote $quoteCandidates[2])
 
   # ── Related posts (2 articles with same topic, else first 2 others) ────────
   $others  = @($items | Where-Object { $_.Slug -ne $item.Slug })

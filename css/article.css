@@ -354,6 +354,11 @@ body.nav-open .mobile-nav-panel   { transform: translateX(0); }
   line-height: 1.6;
   color: var(--ink);
   display: none;
+  max-height: 4.8em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   animation: fadeQ .5s ease;
 }
 .quote-text.active { display: block; }
