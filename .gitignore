@@ -1,3 +1,35 @@
-# Local files — not for remote
+# Environment and Configuration
+private/.env
+private/config/.env
+.env
+
+# Logs and generated files
+private/logs/*.log
+private/logs/rate_limit.json
+private/logs/mail_log.txt
+private/logs/subscribers_log.json
+public_html/error_log
+
+# Storage directory (must be protected at web server level)
+/storage
+/storage/
+
+# Composer and dependencies
+vendor/
+composer.lock
+
+# Local development files
 .instructions.md
 security.md
+
+# OS and IDE files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+
+# Node modules (if using npm)
+node_modules/
+package-lock.json

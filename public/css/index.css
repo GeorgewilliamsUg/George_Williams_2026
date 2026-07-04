@@ -515,7 +515,7 @@ nav.scrolled .toggle-thumb {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  border-radius: 2px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: opacity 0.25s, transform 0.25s;
@@ -1655,6 +1655,59 @@ nav.scrolled .toggle-thumb {
   align-items: start;
 }
 
+.about-body:has(.newsletter-section) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.newsletter-section,
+.contact-section {
+  width: 100%;
+  max-width: 560px;
+}
+
+.newsletter-section {
+  margin-bottom: 0;
+}
+
+.newsletter-section h2,
+.contact-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 0.8rem;
+}
+
+.newsletter-section>p,
+.contact-section>p {
+  font-size: 0.95rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.contact-section {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.contact-section p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.contact-section strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
 .about-text h2 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.8rem, 3.5vw, 3rem);
@@ -1682,43 +1735,47 @@ nav.scrolled .toggle-thumb {
 .min-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  border-radius: 6px;
-  overflow: hidden;
+  gap: 1.2rem;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
   transition: background var(--dur) var(--ease);
 }
 
 .min-card {
   background: var(--bg-card);
-  padding: 1.8rem;
-  transition: background 0.35s;
+  padding: 2rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
 }
 
 .min-card:hover {
   background: var(--bg-alt);
+  border-color: var(--accent-soft);
+  transform: translateY(-2px);
 }
 
 .min-icon {
-  font-size: 1.3rem;
-  margin-bottom: 0.9rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   display: block;
 }
 
 .min-card h4 {
   font-family: 'Playfair Display', serif;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   transition: color var(--dur) var(--ease);
 }
 
 .min-card p {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 300;
   color: var(--text-2);
-  line-height: 1.65;
+  line-height: 1.7;
   transition: color var(--dur) var(--ease);
 }
 
@@ -1728,35 +1785,43 @@ nav.scrolled .toggle-thumb {
 .subscription-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin: 2rem 0;
+  gap: 0.75rem;
+  margin: 1.8rem 0 0;
   max-width: 100%;
 }
 
 .form-group {
   display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.form-group label {
+  display: none;
 }
 
 .form-group input {
   width: 100%;
-  padding: 0.85rem 1.1rem;
-  font-size: 0.95rem;
+  padding: 0.95rem 1.2rem;
+  font-size: 1rem;
   font-family: 'Inter', sans-serif;
   border: 1px solid var(--border);
-  border-radius: 2px;
+  border-radius: 8px;
   background: var(--bg-card);
   color: var(--text);
-  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 
 .form-group input::placeholder {
   color: var(--text-3);
+  font-weight: 400;
 }
 
 .form-group input:focus {
   outline: none;
   border-color: var(--accent);
   background: var(--bg);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 [data-theme="dark"] .form-group input {
@@ -1766,20 +1831,62 @@ nav.scrolled .toggle-thumb {
 [data-theme="dark"] .form-group input:focus {
   border-color: var(--accent);
   background: var(--bg);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .subscription-form button {
   align-self: flex-start;
+  margin-top: 0.75rem;
+  border-radius: 8px;
 }
 
 .thank-you-message {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--accent-text);
-  margin-top: 1.5rem;
-  padding: 1rem 1.2rem;
+  margin-top: 1.2rem;
+  padding: 0.9rem 1.1rem;
   background: var(--accent-soft);
-  border-radius: 2px;
+  border-radius: 8px;
+}
+
+.connect-heading {
+  margin-top: 2.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-2);
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.connect-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0 0;
+}
+
+.connect-list li {
+  margin: 0.6rem 0;
+}
+
+.connect-list a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s var(--ease);
+}
+
+.connect-list a:hover {
+  color: var(--accent-text);
+  text-decoration: underline;
+}
+
+.connect-footer {
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
+  color: var(--text-3);
+  line-height: 1.6;
 }
 
 /* ═══════════════════════════════════════════
@@ -2460,6 +2567,11 @@ footer {
     padding: 4rem var(--page-gutter) 6rem;
   }
 
+  .contact-section {
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+  }
+
   .min-cards {
     grid-template-columns: 1fr;
   }
@@ -2697,6 +2809,25 @@ footer {
     gap: 2rem;
   }
 
+  .newsletter-section,
+  .contact-section {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .contact-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+  }
+
+  .subscription-form button {
+    width: 100%;
+  }
+
+  .form-group input {
+    font-size: 16px;
+  }
+
   .art-hero {
     padding: 7.8rem 1rem 3rem;
   }
@@ -2742,6 +2873,18 @@ footer {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .min-card {
+    padding: 1.5rem;
+  }
+
+  .min-card h4 {
+    font-size: 0.95rem;
+  }
+
+  .min-card p {
+    font-size: 0.8rem;
   }
 }
 

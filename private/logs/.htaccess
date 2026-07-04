@@ -1,0 +1,7 @@
+# Protect logs directory from web access
+<FilesMatch "\.json|\.log">
+    Deny from all
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes

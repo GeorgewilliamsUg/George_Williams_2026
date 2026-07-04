@@ -1,10 +1,9 @@
-RewriteEngine On
+# Deny access to .env file from web browser
+<Files ".env">
+    Deny from all
+</Files>
 
-# Permanent redirects from legacy flat article URLs to folder URLs.
-RewriteCond %{THE_REQUEST} \s/+articles/([^.\s?/]+)\.html[\s?] [NC]
-RewriteRule ^articles/([^.\s?/]+)\.html$ /articles/$1/ [R=301,L]
-
-# Enforce trailing slash for article directories.
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} ^/articles/[^/]+$
-RewriteRule ^(articles/[^/]+)$ /$1/ [R=301,L]
+# Deny access to configuration files
+<FilesMatch "\.env|\.env\.example">
+    Deny from all
+</FilesMatch>

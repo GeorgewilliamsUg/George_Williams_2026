@@ -1,0 +1,2 @@
+# Deny all access to private directory
+Deny from all

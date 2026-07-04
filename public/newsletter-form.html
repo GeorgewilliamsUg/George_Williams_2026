@@ -1,0 +1,113 @@
+<!-- Newsletter Signup Form -->
+<section id="newsletter-signup"
+  style="margin: 40px 0; padding: 30px; background-color: #f5f5f5; border-radius: 4px; max-width: 500px; margin-left: auto; margin-right: auto;">
+  <h2 style="margin-top: 0; font-size: 24px; color: #333;">Join the Newsletter</h2>
+  <p style="color: #666; margin-bottom: 20px;">Get articles delivered straight to your inbox.</p>
+
+  <form id="newsletter-form">
+    <div style="margin-bottom: 15px;">
+      <input type="email" id="newsletter-email" name="email" placeholder="your@email.com" required
+        style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; box-sizing: border-box;">
+      <small id="email-error" style="display: none; color: #d32f2f; margin-top: 5px; display: block;">
+        Please enter a valid email address
+      </small>
+    </div>
+
+    <button type="submit" id="newsletter-submit"
+      style="width: 100%; padding: 12px; background-color: #333; color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: 500; cursor: pointer; transition: background-color 0.2s;">
+      Subscribe
+    </button>
+
+    <div id="newsletter-message"
+      style="margin-top: 15px; padding: 12px; border-radius: 4px; display: none; font-size: 14px;">
+    </div>
+  </form>
+</section>
+
+<script>
+  (function () {
+    const form = document.getElementById('newsletter-form');
+    const emailInput = document.getElementById('newsletter-email');
+    const submitBtn = document.getElementById('newsletter-submit');
+    const errorMsg = document.getElementById('email-error');
+    const messageDiv = document.getElementById('newsletter-message');
+
+    // Simple email validation pattern (HTML5 like)
+    function isValidEmail(email) {
+      // Basic email pattern validation
+      const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return pattern.test(email.trim());
+    }
+
+    // Clear error message on input
+    emailInput.addEventListener('input', function () {
+      errorMsg.style.display = 'none';
+      messageDiv.style.display = 'none';
+    });
+
+    // Handle form submission
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const email = emailInput.value.trim();
+
+      // Validate email
+      if (!email || !isValidEmail(email)) {
+        errorMsg.style.display = 'block';
+        messageDiv.style.display = 'none';
+        return;
+      }
+
+      errorMsg.style.display = 'none';
+
+      // Disable button and show loading state
+      submitBtn.disabled = true;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Subscribing...';
+
+      // Clear previous message
+      messageDiv.style.display = 'none';
+      messageDiv.textContent = '';
+      messageDiv.style.color = '#333';
+      messageDiv.style.backgroundColor = '#e8f5e9';
+
+      try {
+        // Send POST request
+        const response = await fetch('subscribe.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: 'email=' + encodeURIComponent(email)
+        });
+
+        const data = await response.json();
+
+        // Display response message
+        messageDiv.textContent = data.message;
+        messageDiv.style.display = 'block';
+
+        if (data.success) {
+          // Success
+          messageDiv.style.backgroundColor = '#e8f5e9';
+          messageDiv.style.color = '#2e7d32';
+          emailInput.value = '';
+        } else {
+          // Error
+          messageDiv.style.backgroundColor = '#ffebee';
+          messageDiv.style.color = '#c62828';
+        }
+      } catch (error) {
+        console.error('Signup error:', error);
+        messageDiv.textContent = 'An error occurred. Please try again later.';
+        messageDiv.style.display = 'block';
+        messageDiv.style.backgroundColor = '#ffebee';
+        messageDiv.style.color = '#c62828';
+      } finally {
+        // Re-enable button
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  })();
+</script>

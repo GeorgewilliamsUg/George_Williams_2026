@@ -1,0 +1,3 @@
+# Logs directory - contains rate limiting data and error logs
+# This directory should not be web accessible
+# Update your .htaccess or web server config to deny access to this directory
