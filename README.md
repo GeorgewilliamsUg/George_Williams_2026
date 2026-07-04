@@ -5,8 +5,8 @@ Personal website and short-form blog for publishing brief, heart-gripping reflec
 ## Structure
 
 - `index.html` - main site page
-- `article.html` - article listing page
-- `archive.html` - archive listing page
+- `notes.html` - notes listing page
+- `contact.html` - contact page
 - `about.html` - about page
 - `articles/<slug>/index.html` - article detail routes
 - `css/index.css` - site styles

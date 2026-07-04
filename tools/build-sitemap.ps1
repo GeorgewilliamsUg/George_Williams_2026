@@ -6,8 +6,8 @@ $siteUrl = 'https://jojjy.org'
 $pages = @(
   'index.html',
   'about.html',
-  'article.html',
-  'archive.html'
+  'notes.html',
+  'contact.html'
 )
 
 $articleFiles = Get-ChildItem -Path (Join-Path $root 'articles') -Recurse -Filter 'index.html' -File |
@@ -36,10 +36,10 @@ foreach ($rel in $pages) {
   if ($rel -eq 'index.html') {
     $changefreq = 'weekly'
     $priority = '1.0'
-  } elseif ($rel -eq 'article.html') {
+  } elseif ($rel -eq 'notes.html') {
     $changefreq = 'weekly'
     $priority = '0.9'
-  } elseif ($rel -eq 'archive.html') {
+  } elseif ($rel -eq 'contact.html') {
     $changefreq = 'weekly'
     $priority = '0.8'
   } elseif ($rel -eq 'about.html') {

@@ -235,7 +235,7 @@ foreach ($item in $items) {
     $archiveCounts[$key] = ($archiveCounts[$key] -as [int]) + 1
   }
   $archiveHtml = ($archiveCounts.GetEnumerator() | Sort-Object { [datetime]"01 $($_.Key)" } -Descending | Select-Object -First 6 | ForEach-Object {
-    "<li><a href=`"/archive.html`">$($_.Key)</a><span class=`"archive-count`">($($_.Value))</span></li>"
+    "<li><a href=`"/notes.html`">$($_.Key)</a><span class=`"archive-count`">($($_.Value))</span></li>"
   }) -join "`n          "
 
   $titleEsc    = Esc $item.Title
@@ -273,7 +273,7 @@ foreach ($item in $items) {
   <button class="art-nav-menu" aria-label="Menu">&#9776;</button>
   <a href="/index.html" class="art-nav-logo">george</a>
   <div class="art-nav-actions">
-    <a href="/article.html" class="art-nav-link">Articles</a>
+    <a href="/notes.html" class="art-nav-link">Notes</a>
     <a href="/about.html" class="art-nav-link">About</a>
     <button class="art-theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light / dark" id="toggleThumb"><span id="toggleIcon">&#9728;</span></button>
   </div>
@@ -281,7 +281,7 @@ foreach ($item in $items) {
 
 <!-- ARTICLE META -->
 <div class="article-meta-bar">
-  <a href="/article.html">$topicEsc</a>
+  <a href="/notes.html">$topicEsc</a>
   <span>&middot;</span>
   <span>$($item.Date)</span>
   <span>&middot;</span>
@@ -323,9 +323,9 @@ foreach ($item in $items) {
     </div>
 
     <nav class="sidebar-nav">
-      <a href="/article.html">Scripture &amp; Theology</a>
-      <a href="/article.html">Christian Life</a>
-      <a href="/article.html">Expository Writing</a>
+      <a href="/notes.html">Scripture &amp; Theology</a>
+      <a href="/notes.html">Christian Life</a>
+      <a href="/notes.html">Expository Writing</a>
       <a href="/about.html">About George</a>
     </nav>
   </aside>
@@ -447,7 +447,7 @@ function BuildPage([string]$title, [string]$pill, [string]$heading, [string]$sub
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
-<nav id="nav"><a href="index.html" class="nav-logo">George <span>&amp; the Word</span></a><div class="nav-right"><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="article.html">Articles</a></li><li><a href="about.html">About</a></li><li><a href="archive.html">Archive</a></li></ul><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light / dark"><div class="toggle-thumb" id="toggleThumb"><span id="toggleIcon">&#9728;</span></div></button></div><div class="mobile-nav-row"><a href="index.html">Home</a><a href="article.html">Articles</a><a href="about.html">About</a><a href="archive.html">Archive</a></div></nav>
+<nav id="nav"><a href="index.html" class="nav-logo">George <span>&amp; the Word</span></a><div class="nav-right"><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="notes.html">Notes</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light / dark"><div class="toggle-thumb" id="toggleThumb"><span id="toggleIcon">&#9728;</span></div></button></div><div class="mobile-nav-row"><a href="index.html">Home</a><a href="notes.html">Notes</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></nav>
 <section class="art-hero archive-hero"><span class="art-tag-pill">$pill</span><h1 class="art-h1">$heading</h1><p class="art-byline">$sub</p></section>
 <div class="layout archive-layout"><main><div class="grid-section"><p class="sec-label reveal">$label</p>
 <div class="topic-filter-bar">
@@ -458,16 +458,15 @@ $cards
       </div>
       <p class="no-filter-results" id="no-results">No articles in this topic yet &mdash; check back soon.</p>
 </div></main><aside class="sidebar"><div class="widget w-newsletter reveal"><div class="w-title">One Email. Every Week.</div><p>Read the newest article every Monday morning.</p><a href="index.html" class="btn-back" style="display:inline-block;">Back Home</a></div><div class="widget w-topics reveal"><div class="w-title">Topics</div><ul class="topics-list"><li><button class="topic-btn active" data-filter="all">All Articles <span class="t-count">&mdash;</span></button></li>$(($uniqueTopics | ForEach-Object { $te = [System.Net.WebUtility]::HtmlEncode($_); "<li><button class=`"topic-btn`" data-filter=`"$te`">$te <span class=`"t-count`">&mdash;</span></button></li>" }) -join '')</ul></div></aside></div>
-<footer><div class="footer-grid"><div><div class="f-brand">George <span>&amp; the Word</span></div><p class="f-desc">Weekly articles on the things God has His mind on — faith, work, church, marriage, and the whole of life lived under His word. From Kampala, Uganda.</p></div><div class="f-col"><h5>Topics</h5><ul>$(($uniqueTopics | ForEach-Object { $te = [System.Net.WebUtility]::HtmlEncode($_); "<li><a href=`"article.html`">$te</a></li>" }) -join '')</ul></div><div class="f-col"><h5>More</h5><ul><li><a href="about.html">About George</a></li><li><a href="archive.html">Archive</a></li><li><a href="#">HopeAbound</a></li><li><a href="#">Go&amp;Train</a></li></ul></div><div class="f-col"><h5>Subscribe</h5><ul><li><a href="#">Weekly Email</a></li><li><a href="#">RSS Feed</a></li><li><a href="#">WhatsApp</a></li></ul></div></div><div class="footer-bottom"><p class="f-copy">&copy; 2026 George. All rights reserved.</p><p class="f-verse">"In the beginning was the Word&hellip;" &mdash; John 1:1</p></div></footer>
+<footer><div class="footer-grid"><div><div class="f-brand">George <span>&amp; the Word</span></div><p class="f-desc">Weekly articles on the things God has His mind on — faith, work, church, marriage, and the whole of life lived under His word. From Kampala, Uganda.</p></div><div class="f-col"><h5>Topics</h5><ul>$(($uniqueTopics | ForEach-Object { $te = [System.Net.WebUtility]::HtmlEncode($_); "<li><a href=`"notes.html`">$te</a></li>" }) -join '')</ul></div><div class="f-col"><h5>More</h5><ul><li><a href="about.html">About George</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">HopeAbound</a></li><li><a href="#">Go&amp;Train</a></li></ul></div><div class="f-col"><h5>Subscribe</h5><ul><li><a href="#">Weekly Email</a></li><li><a href="#">RSS Feed</a></li><li><a href="#">WhatsApp</a></li></ul></div></div><div class="footer-bottom"><p class="f-copy">&copy; 2026 George. All rights reserved.</p><p class="f-verse">"In the beginning was the Word&hellip;" &mdash; John 1:1</p></div></footer>
 <script src="js/index.js" defer></script>
 </body>
 </html>
 "@
 }
 
-Set-Content -Path (Join-Path $root 'article.html') -Value (BuildPage 'Articles — Every Word Has Weight' 'Articles' 'Latest writings and reflections.' 'All published articles from the Articles folder are listed here.' 'All Articles' 'article.html') -Encoding UTF8
-Set-Content -Path (Join-Path $root 'archive.html') -Value (BuildPage 'Archive — Every Word Has Weight' 'Archive' 'Every article, in one place.' 'Browse the full collection published from the Articles folder.' 'Archive Collection' 'archive.html') -Encoding UTF8
+Set-Content -Path (Join-Path $root 'notes.html') -Value (BuildPage 'Notes — Every Word Has Weight' 'Notes' 'Latest writings and reflections.' 'All published notes are listed here.' 'All Notes' 'notes.html') -Encoding UTF8
 
 & (Join-Path $root 'tools/refresh-seo.ps1')
 
-Write-Output ("Generated " + $items.Count + " article pages, rebuilt article/archive lists, and refreshed SEO files.")
+Write-Output ("Generated " + $items.Count + " article pages, rebuilt notes list, and refreshed SEO files.")
