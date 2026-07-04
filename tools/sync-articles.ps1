@@ -1,9 +1,9 @@
 $ErrorActionPreference = 'Stop'
 
-$root        = (Get-Location).Path
+$root = (Get-Location).Path
 $articlesDir = Join-Path $root '_articles-src'
-$outDir      = Join-Path $root 'articles'
-$siteUrl     = 'https://jojjy.org'
+$outDir = Join-Path $root 'articles'
+$siteUrl = 'https://jojjy.org'
 New-Item -ItemType Directory -Path $outDir -Force | Out-Null
 
 function Slug([string]$t) {
@@ -33,15 +33,15 @@ function ShortQuote([string]$t) {
 
 function Topic([string]$t) {
   $x = $t.ToLowerInvariant()
-  if ($x -match 'work|resume')                          { return 'Faith & Work' }
-  if ($x -match 'friend')                               { return 'Life' }
+  if ($x -match 'work|resume') { return 'Faith & Work' }
+  if ($x -match 'friend') { return 'Life' }
   if ($x -match 'bible|jesus|verse|scripture|old test') { return 'Scripture' }
-  if ($x -match 'sin|truth|mind|sadness')               { return 'Church Life' }
+  if ($x -match 'sin|truth|mind|sadness') { return 'Church Life' }
   return 'Christian Living'
 }
 
 # ── PASS 1: collect article metadata ──────────────────────────────────────────
-$used  = @{}
+$used = @{}
 $items = [System.Collections.Generic.List[PSCustomObject]]::new()
 
 Get-ChildItem $articlesDir -File -Filter *.txt | Sort-Object Name | ForEach-Object {
@@ -67,7 +67,8 @@ Get-ChildItem $articlesDir -File -Filter *.txt | Sort-Object Name | ForEach-Obje
       # remove front-matter block from raw content
       if ($end -lt ($raw.Count - 1)) {
         $raw = $raw[($end + 1) .. ($raw.Count - 1)]
-      } else {
+      }
+      else {
         $raw = @()
       }
     }
@@ -105,15 +106,16 @@ Get-ChildItem $articlesDir -File -Filter *.txt | Sort-Object Name | ForEach-Obje
     Write-Output ("Skipping duplicate: " + $title)
     return
   }
-  $slug        = $slugBase
+  $slug = $slugBase
   $used[$slug] = $true
 
   $wordCount = (($bodyLines -join ' ') -split '\s+' | Where-Object { $_ -ne '' }).Count
-  $mins      = [Math]::Max(2, [Math]::Ceiling($wordCount / 220.0))
+  $mins = [Math]::Max(2, [Math]::Ceiling($wordCount / 220.0))
   # Date from front-matter (if provided) or file modified time
   if ($fm.ContainsKey('date')) {
     try { $dt = [datetime]::Parse($fm['date']); $dateStr = $dt.ToString('MMM d, yyyy') } catch { $dateStr = $_.LastWriteTime.ToString('MMM d, yyyy') }
-  } else {
+  }
+  else {
     $dateStr = $_.LastWriteTime.ToString('MMM d, yyyy')
   }
 
@@ -122,19 +124,19 @@ Get-ChildItem $articlesDir -File -Filter *.txt | Sort-Object Name | ForEach-Obje
 
   # Strip trailing AI meta-notes
   $bodyLines = @($bodyLines | Where-Object {
-    $_ -notmatch '(?i)^\s*(Sitting at|At roughly|This (comes to|sits at)|Want it as a docx|I can (tighten|expand|cut|shorten)|word count)'
-  })
+      $_ -notmatch '(?i)^\s*(Sitting at|At roughly|This (comes to|sits at)|Want it as a docx|I can (tighten|expand|cut|shorten)|word count)'
+    })
 
   $items.Add([PSCustomObject]@{
-    Title     = $title
-    Subtitle  = $subtitle
-    BodyLines = $bodyLines
-    Slug      = $slug
-    Mins      = $mins
-    Date      = $dateStr
-    Topic     = $topic
-    Href      = ('articles/' + $slug + '/')
-  })
+      Title     = $title
+      Subtitle  = $subtitle
+      BodyLines = $bodyLines
+      Slug      = $slug
+      Mins      = $mins
+      Date      = $dateStr
+      Topic     = $topic
+      Href      = ('articles/' + $slug + '/')
+    })
 }
 
 $items = @($items | Sort-Object Title)
@@ -147,20 +149,25 @@ foreach ($item in $items) {
 
   # ── Body HTML ──────────────────────────────────────────────────────────────
   $bodyHtml = ($item.BodyLines | ForEach-Object {
-    if ($_ -match '^[-•]\s+') {
-      '<p><strong>•</strong> ' + (Esc ($_ -replace '^[-•]\s+', '')) + '</p>'
-    } elseif ($_ -match $biblePattern) {
-      '<div class="verse"><p>' + (Esc $_) + '</p></div>'
-    } elseif ($_ -match '^".*"$') {
-      '<div class="pull-quote"><p>' + (Esc $_) + '</p></div>'
-    } elseif ((($_ -split '\s+').Count -le 10) -and ($_ -notmatch '[\.!\?]$')) {
-      '<h3>' + (Esc $_) + '</h3>'
-    } elseif ((($_ -split '\s+').Count -le 15) -and ($_.Length -le 100) -and ($_ -match '\.$')) {
-      '<p class="important">' + (Esc $_) + '</p>'
-    } else {
-      '<p>' + (Esc $_) + '</p>'
-    }
-  }) -join "`n    "
+      if ($_ -match '^[-•]\s+') {
+        '<p><strong>•</strong> ' + (Esc ($_ -replace '^[-•]\s+', '')) + '</p>'
+      }
+      elseif ($_ -match $biblePattern) {
+        '<div class="verse"><p>' + (Esc $_) + '</p></div>'
+      }
+      elseif ($_ -match '^".*"$') {
+        '<div class="pull-quote"><p>' + (Esc $_) + '</p></div>'
+      }
+      elseif ((($_ -split '\s+').Count -le 10) -and ($_ -notmatch '[\.!\?]$')) {
+        '<h3>' + (Esc $_) + '</h3>'
+      }
+      elseif ((($_ -split '\s+').Count -le 15) -and ($_.Length -le 100) -and ($_ -match '\.$')) {
+        '<p class="important">' + (Esc $_) + '</p>'
+      }
+      else {
+        '<p>' + (Esc $_) + '</p>'
+      }
+    }) -join "`n    "
 
   # ── Pull quotes for sidebar rotator ───────────────────────────────────────
   $quoteCandidates = [System.Collections.Generic.List[string]]::new()
@@ -171,7 +178,8 @@ foreach ($item in $items) {
     $words = ($line -split '\s+').Count
     if ($line -match '^".*"$') {
       $quoteCandidates.Add($line.Trim('"'))
-    } elseif ($words -ge 8 -and $words -le 30 -and $line -match '[\.!\?]$') {
+    }
+    elseif ($words -ge 8 -and $words -le 30 -and $line -match '[\.!\?]$') {
       $quoteCandidates.Add($line)
     }
   }
@@ -183,44 +191,45 @@ foreach ($item in $items) {
   $q2 = Esc (ShortQuote $quoteCandidates[2])
 
   # ── Related posts (2 articles with same topic, else first 2 others) ────────
-  $others  = @($items | Where-Object { $_.Slug -ne $item.Slug })
+  $others = @($items | Where-Object { $_.Slug -ne $item.Slug })
   $related = @($others | Where-Object { $_.Topic -eq $item.Topic } | Select-Object -First 2)
   if ($related.Count -lt 2) {
     $related = @($others | Select-Object -First 2)
   }
 
   $relatedHtml = ($related | ForEach-Object {
-    $rLabel = Esc $_.Topic
-    $rTitle = Esc $_.Title
-    $rHref  = '/' + $_.Href
-    "          <a href=`"$rHref`" class=`"related-card`">
+      $rLabel = Esc $_.Topic
+      $rTitle = Esc $_.Title
+      $rHref = '/' + $_.Href
+      "          <a href=`"$rHref`" class=`"related-card`">
             <div class=`"related-card-thumb`"></div>
             <span class=`"related-card-label`">$rLabel</span>
             <span class=`"related-card-title`">$rTitle</span>
           </a>"
-  }) -join "`n"
+    }) -join "`n"
 
   # ── Recent posts for right sidebar (up to 4 other articles) ────────────────
   $recentItems = @($items | Where-Object { $_.Slug -ne $item.Slug } | Select-Object -Last 4)
-  $recentHtml  = ($recentItems | ForEach-Object {
-    $rCat   = Esc $_.Topic
-    $rTitle = Esc $_.Title
-    $rHref  = '/' + $_.Href
-    "        <div class=`"recent-post`">
+  $recentHtml = ($recentItems | ForEach-Object {
+      $rCat = Esc $_.Topic
+      $rTitle = Esc $_.Title
+      $rHref = '/' + $_.Href
+      "        <div class=`"recent-post`">
           <span class=`"recent-category`">$rCat</span>
           <a href=`"$rHref`" class=`"recent-title`">$rTitle</a>
         </div>"
-  }) -join "`n"
+    }) -join "`n"
 
   # ── Key verse: first Bible-pattern line, else default ─────────────────────
   $keyVerseLine = $item.BodyLines | Where-Object { $_ -match $biblePattern } | Select-Object -First 1
   if ($keyVerseLine) {
     $keyVerse = Esc $keyVerseLine
-    $keyRef   = ''
+    $keyRef = ''
     if ($keyVerseLine -match '([A-Za-z0-9 ]+\d+:\d+[\-\d]*)') { $keyRef = Esc $Matches[1] }
-  } else {
+  }
+  else {
     $keyVerse = '&#8220;Your word is a lamp to my feet and a light to my path.&#8221;'
-    $keyRef   = 'Psalm 119:105 (ESV)'
+    $keyRef = 'Psalm 119:105 (ESV)'
   }
 
   # ── Archive counts ─────────────────────────────────────────────────────────
@@ -229,19 +238,20 @@ foreach ($item in $items) {
     try {
       $dt = [datetime]::ParseExact($a.Date, 'MMM d, yyyy', [System.Globalization.CultureInfo]::InvariantCulture)
       $key = $dt.ToString('MMMM yyyy')
-    } catch {
+    }
+    catch {
       $key = 'Recent'
     }
     $archiveCounts[$key] = ($archiveCounts[$key] -as [int]) + 1
   }
   $archiveHtml = ($archiveCounts.GetEnumerator() | Sort-Object { [datetime]"01 $($_.Key)" } -Descending | Select-Object -First 6 | ForEach-Object {
-    "<li><a href=`"/notes.html`">$($_.Key)</a><span class=`"archive-count`">($($_.Value))</span></li>"
-  }) -join "`n          "
+      "<li><a href=`"/notes.html`">$($_.Key)</a><span class=`"archive-count`">($($_.Value))</span></li>"
+    }) -join "`n          "
 
-  $titleEsc    = Esc $item.Title
+  $titleEsc = Esc $item.Title
   $subtitleEsc = Esc $item.Subtitle
-  $topicEsc    = Esc $item.Topic
-  $articleUrl  = "$siteUrl/$($item.Href)"
+  $topicEsc = Esc $item.Topic
+  $articleUrl = "$siteUrl/$($item.Href)"
 
   $detail = @"
 <!DOCTYPE html>
@@ -252,6 +262,7 @@ foreach ($item in $items) {
 <title>$titleEsc — George</title>
 <meta name="description" content="$subtitleEsc">
 <link rel="canonical" href="$articleUrl">
+<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml">
 <meta property="og:type" content="article">
 <meta property="og:title" content="$titleEsc — George">
 <meta property="og:description" content="$subtitleEsc">
@@ -415,7 +426,7 @@ Get-ChildItem -Path $outDir -File -Filter '*.html' -ErrorAction SilentlyContinue
 # ── PASS 3: rebuild article/archive listing pages (index.css + index.js) ─────
 
 $cards = ($items | ForEach-Object {
-@"
+    @"
         <a class="a-card reveal" href="$($_.Href)">
           <p class="a-tag">$([System.Net.WebUtility]::HtmlEncode($_.Topic))</p>
           <h3 class="a-title">$([System.Net.WebUtility]::HtmlEncode($_.Title))</h3>
@@ -423,16 +434,16 @@ $cards = ($items | ForEach-Object {
           <div class="a-foot"><span class="a-time">$($_.Mins) min &middot; $($_.Date)</span><div class="a-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
         </a>
 "@
-}) -join "`n"
+  }) -join "`n"
 
 $uniqueTopics = @($items | Select-Object -ExpandProperty Topic | Where-Object { $_ -ne 'Scripture' } | Sort-Object -Unique)
-$filterChips  = '<button class="filter-chip active" data-filter="all">All</button>' + "`n      " + (($uniqueTopics | ForEach-Object {
-  $te = [System.Net.WebUtility]::HtmlEncode($_)
-  "<button class=`"filter-chip`" data-filter=`"$te`">$te</button>"
-}) -join "`n      ")
+$filterChips = '<button class="filter-chip active" data-filter="all">All</button>' + "`n      " + (($uniqueTopics | ForEach-Object {
+      $te = [System.Net.WebUtility]::HtmlEncode($_)
+      "<button class=`"filter-chip`" data-filter=`"$te`">$te</button>"
+    }) -join "`n      ")
 
 function BuildPage([string]$title, [string]$pill, [string]$heading, [string]$sub, [string]$label, [string]$canonicalPath) {
-@"
+  @"
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>

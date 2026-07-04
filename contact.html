@@ -8,12 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contact George for ministry, writing, and speaking inquiries.">
   <link rel="canonical" href="https://jojjy.org/contact.html">
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml">
   <title>Contact — George</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/index.css">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.png" type="image/png">
 </head>
 
 <body>
@@ -48,9 +49,18 @@
 
     <div class="about-body">
       <div class="about-text reveal">
-        <p><strong>Email:</strong> <a href="mailto:sgeorge.ug@gmail.com">sgeorge.ug@gmail.com</a></p>
-        <p>I read every message and reply as soon as I can.</p>
-        <a href="mailto:sgeorge.ug@gmail.com" class="btn-back">Send Email</a>
+        <h2>Subscribe to my weekly release</h2>
+        <p>Get new articles delivered straight to your inbox every week. Biblical reflections on faith, work, church, and life.</p>
+        <form class="subscription-form" id="subscriptionForm">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required>
+          </div>
+          <button type="submit" class="btn-back">Subscribe</button>
+        </form>
+        <p class="thank-you-message" id="thankYouMessage" style="display: none;">Thank you for subscribing! Check your email to confirm your subscription.</p>
       </div>
     </div>
   </div>
@@ -83,8 +93,8 @@
       <div class="f-col">
         <h5>Subscribe</h5>
         <ul>
+          <li><a href="/rss.xml">RSS Feed</a></li>
           <li><a href="#">Weekly Email</a></li>
-          <li><a href="#">RSS Feed</a></li>
           <li><a href="#">WhatsApp</a></li>
         </ul>
       </div>

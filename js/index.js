@@ -204,4 +204,31 @@
     });
   }());
 
+  /* ── SUBSCRIPTION FORM ── */
+  (function () {
+    const form = document.getElementById('subscriptionForm');
+    const thankYou = document.getElementById('thankYouMessage');
+
+    if (form && thankYou) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = form.querySelector('input[name="name"]').value;
+        const email = form.querySelector('input[name="email"]').value;
+
+        // Here you can integrate with your email service (Mailchimp, EmailJS, etc.)
+        console.log('Subscription:', { name, email });
+
+        // Show thank you message
+        form.style.display = 'none';
+        thankYou.style.display = 'block';
+
+        // Reset form after 3 seconds (in case user wants to go back)
+        setTimeout(() => {
+          form.reset();
+        }, 3000);
+      });
+    }
+  }());
+
 }());
