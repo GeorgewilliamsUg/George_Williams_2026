@@ -1,8 +1,8 @@
 $ErrorActionPreference = 'Stop'
 
 $root = (Get-Location).Path
-$articlesDir = Join-Path $root '_articles-src'
-$outDir = Join-Path $root 'articles'
+$articlesDir = Join-Path (Join-Path $root 'src') '_articles-src'
+$outDir = Join-Path (Join-Path $root 'public') 'articles'
 $siteUrl = 'https://jojjy.org'
 New-Item -ItemType Directory -Path $outDir -Force | Out-Null
 
@@ -207,6 +207,10 @@ foreach ($item in $items) {
             <span class=`"related-card-title`">$rTitle</span>
           </a>"
     }) -join "`n"
+  
+  # Fix navigation links to pages/ subdirectory
+  $notesLink = '/pages/notes.html'
+  $aboutLink = '/pages/about.html'
 
   # ── Recent posts for right sidebar (up to 4 other articles) ────────────────
   $recentItems = @($items | Where-Object { $_.Slug -ne $item.Slug } | Select-Object -Last 4)
@@ -245,7 +249,7 @@ foreach ($item in $items) {
     $archiveCounts[$key] = ($archiveCounts[$key] -as [int]) + 1
   }
   $archiveHtml = ($archiveCounts.GetEnumerator() | Sort-Object { [datetime]"01 $($_.Key)" } -Descending | Select-Object -First 6 | ForEach-Object {
-      "<li><a href=`"/notes.html`">$($_.Key)</a><span class=`"archive-count`">($($_.Value))</span></li>"
+      "<li><a href=`"/pages/notes.html`">$($_.Key)</a><span class=`"archive-count`">($($_.Value))</span></li>"
     }) -join "`n          "
 
   $titleEsc = Esc $item.Title
@@ -284,19 +288,19 @@ foreach ($item in $items) {
   <button class="art-nav-menu" aria-label="Menu">&#9776;</button>
   <a href="/index.html" class="art-nav-logo">george</a>
   <div class="art-nav-actions">
-    <a href="/notes.html" class="art-nav-link">Notes</a>
-    <a href="/about.html" class="art-nav-link">About</a>
+    <a href="/pages/notes.html" class="art-nav-link">Notes</a>
+    <a href="/pages/about.html" class="art-nav-link">About</a>
     <button class="art-theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light / dark" id="toggleThumb"><span id="toggleIcon">&#9728;</span></button>
   </div>
 </header>
 
 <!-- ARTICLE META -->
 <div class="article-meta-bar">
-  <a href="/notes.html">$topicEsc</a>
+  <a href="/pages/notes.html">$topicEsc</a>
   <span>&middot;</span>
   <span>$($item.Date)</span>
   <span>&middot;</span>
-  <span>Posted by <a href="/about.html">George</a></span>
+  <span>Posted by <a href="/pages/about.html">George</a></span>
   <span>&middot;</span>
   <span>$($item.Mins) min read</span>
 </div>
@@ -334,10 +338,10 @@ foreach ($item in $items) {
     </div>
 
     <nav class="sidebar-nav">
-      <a href="/notes.html">Scripture &amp; Theology</a>
-      <a href="/notes.html">Christian Life</a>
-      <a href="/notes.html">Expository Writing</a>
-      <a href="/about.html">About George</a>
+      <a href="/pages/notes.html">Scripture &amp; Theology</a>
+      <a href="/pages/notes.html">Christian Life</a>
+      <a href="/pages/notes.html">Expository Writing</a>
+      <a href="/pages/about.html">About George</a>
     </nav>
   </aside>
 
