@@ -8,7 +8,7 @@ const PUBLIC_DIR = path.join(__dirname, 'public');
 
 const server = http.createServer((req, res) => {
   let filePath = path.join(PUBLIC_DIR, url.parse(req.url).pathname);
-  
+
   // If requesting a directory, try to serve index.html
   try {
     const stats = fs.statSync(filePath);
