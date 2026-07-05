@@ -1,16 +1,17 @@
 $ErrorActionPreference = 'Stop'
 
 $root = Split-Path -Parent $PSScriptRoot
+$publicDir = Join-Path $root 'public'
 $siteUrl = 'https://jojjy.org'
 
 $pages = @(
   'index.html',
-  'about.html',
-  'notes.html',
-  'contact.html'
+  'pages/about.html',
+  'pages/notes.html',
+  'pages/contact.html'
 )
 
-$articleFiles = Get-ChildItem -Path (Join-Path $root 'articles') -Recurse -Filter 'index.html' -File |
+$articleFiles = Get-ChildItem -Path (Join-Path $publicDir 'articles') -Recurse -Filter 'index.html' -File |
   Sort-Object FullName |
   ForEach-Object {
     $slugDir = Split-Path -Leaf (Split-Path -Parent $_.FullName)
@@ -25,7 +26,7 @@ $xml = New-Object System.Text.StringBuilder
 [void]$xml.AppendLine('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
 
 foreach ($rel in $pages) {
-  $full = Join-Path $root $rel
+  $full = Join-Path $publicDir $rel
   if (-not (Test-Path $full)) { continue }
 
   $lastmod = (Get-Item $full).LastWriteTimeUtc.ToString('yyyy-MM-dd')
@@ -36,13 +37,13 @@ foreach ($rel in $pages) {
   if ($rel -eq 'index.html') {
     $changefreq = 'weekly'
     $priority = '1.0'
-  } elseif ($rel -eq 'notes.html') {
+  } elseif ($rel -eq 'pages/notes.html') {
     $changefreq = 'weekly'
     $priority = '0.9'
-  } elseif ($rel -eq 'contact.html') {
+  } elseif ($rel -eq 'pages/contact.html') {
     $changefreq = 'weekly'
     $priority = '0.8'
-  } elseif ($rel -eq 'about.html') {
+  } elseif ($rel -eq 'pages/about.html') {
     $changefreq = 'monthly'
     $priority = '0.7'
   }
@@ -68,5 +69,5 @@ foreach ($a in $articleFiles) {
 }
 
 [void]$xml.AppendLine('</urlset>')
-Set-Content -Path (Join-Path $root 'sitemap.xml') -Value $xml.ToString() -Encoding UTF8
+Set-Content -Path (Join-Path $publicDir 'sitemap.xml') -Value $xml.ToString() -Encoding UTF8
 Write-Output 'Sitemap rebuilt from file timestamps.'

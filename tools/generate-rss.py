@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 RSS 2.0 Feed Generator for Static Blog
-Reads articles from _articles-src/, parses metadata, and generates rss.xml
+Reads articles from src/_articles-src/, parses metadata, and generates public/rss.xml
 """
 
 import os
@@ -16,8 +16,8 @@ import html
 
 # Configuration
 SITE_BASE_URL = os.environ.get('SITE_BASE_URL', 'https://jojjy.org')
-ARTICLES_SRC_DIR = '_articles-src'
-OUTPUT_FILE = 'rss.xml'
+ARTICLES_SRC_DIR = 'src/_articles-src'
+OUTPUT_FILE = 'public/rss.xml'
 
 # Channel metadata
 CHANNEL_TITLE = 'George & the Word'

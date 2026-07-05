@@ -1,9 +1,32 @@
-# Deny access to .env file from web browser
+# Security: never expose environment files
 <Files ".env">
     Deny from all
 </Files>
 
-# Deny access to configuration files
 <FilesMatch "\.env|\.env\.example">
     Deny from all
 </FilesMatch>
+
+Options -Indexes
+RewriteEngine On
+
+# Security: block direct web access to non-public project directories when
+# repository root is accidentally deployed as public_html.
+RewriteRule ^(src|private|tools|docs|storage)(/|$) - [F,L,NC]
+
+# Canonical: if someone requests /public/... directly, send to site root path.
+RewriteRule ^public/(.*)$ /$1 [R=301,L]
+
+# If request is already a real file/dir at current root, serve it.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Bridge mode: if file/dir does not exist at current root but exists in public/,
+# rewrite there so CSS, JS, pages, articles, rss, and sitemap still load.
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -d
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Site root fallback
+RewriteRule ^$ public/index.html [L]

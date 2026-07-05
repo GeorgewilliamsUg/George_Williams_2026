@@ -1,11 +1,11 @@
 # RSS 2.0 Feed Generator for Static Blog
-# Reads articles from _articles-src/, generates rss.xml
+# Reads articles from src/_articles-src/, generates public/rss.xml
 
 param([string]$SiteBaseUrl = 'https://jojjy.org')
 
-$root = (Get-Location).Path
-$srcDir = Join-Path $root '_articles-src'
-$outFile = Join-Path $root 'rss.xml'
+$root = Split-Path -Parent $PSScriptRoot
+$srcDir = Join-Path $root 'src\_articles-src'
+$outFile = Join-Path $root 'public\rss.xml'
 
 Write-Host "Generating RSS feed from $srcDir"
 
