@@ -10,6 +10,9 @@
 Options -Indexes
 RewriteEngine On
 
+# Site root fallback must run before the real-directory short-circuit.
+RewriteRule ^$ public/index.html [L]
+
 # Security: block direct web access to non-public project directories when
 # repository root is accidentally deployed as public_html.
 RewriteRule ^(src|private|tools|docs|storage)(/|$) - [F,L,NC]
@@ -27,6 +30,3 @@ RewriteRule ^ - [L]
 RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f [OR]
 RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -d
 RewriteRule ^(.*)$ public/$1 [L]
-
-# Site root fallback
-RewriteRule ^$ public/index.html [L]
