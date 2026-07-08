@@ -284,7 +284,7 @@ foreach ($item in $items) {
 
 <header class="art-nav">
   <button class="art-nav-menu" aria-label="Menu">&#9776;</button>
-  <a href="/index.html" class="art-nav-logo">george</a>
+  <a href="/index.html" class="nav-logo">George <span>&amp; the Word</span></a>
   <div class="art-nav-actions">
     <a href="/pages/notes.html" class="art-nav-link">Notes</a>
     <a href="/pages/about.html" class="art-nav-link">About</a>
