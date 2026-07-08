@@ -25,14 +25,35 @@
 <div id="progress-bar" aria-hidden="true"></div>
 
 <header class="art-nav">
-  <button class="art-nav-menu" aria-label="Menu">&#9776;</button>
-  <a href="/index.html" class="art-nav-logo">george</a>
-  <div class="art-nav-actions">
+  <a href="/index.html" class="nav-logo">George <span>&amp; the Word</span></a>
+  <nav class="art-nav-links" aria-label="Site navigation">
+    <a href="/index.html" class="art-nav-link">Home</a>
     <a href="/pages/notes.html" class="art-nav-link">Notes</a>
     <a href="/pages/about.html" class="art-nav-link">About</a>
+    <a href="/pages/contact.html" class="art-nav-link">Contact</a>
+  </nav>
+  <div class="art-nav-actions">
     <button class="art-theme-btn" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light / dark" id="toggleThumb"><span id="toggleIcon">&#9728;</span></button>
+    <button class="art-nav-menu" aria-label="Open menu" aria-expanded="false">&#9776;</button>
   </div>
 </header>
+
+<div class="mobile-nav-drawer" id="mobileNavDrawer">
+  <div class="mobile-nav-overlay"></div>
+  <div class="mobile-nav-panel" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <div class="mobile-nav-header">
+      <a href="/index.html" class="mobile-nav-brand">George <span>&amp; the Word</span></a>
+      <button class="mobile-nav-close" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/pages/notes.html">Notes</a>
+      <a href="/pages/about.html">About</a>
+      <a href="/pages/contact.html">Contact</a>
+    </div>
+    <div class="mobile-nav-footer">George &amp; the Word &middot; Kampala, Uganda</div>
+  </div>
+</div>
 
 <!-- ARTICLE META -->
 <div class="article-meta-bar">
@@ -76,13 +97,6 @@
       <div class="role">Theologian &amp; Writer</div>
       <div class="ministry">Go&amp;Train Ministries &middot; Kampala, Uganda</div>
     </div>
-
-    <nav class="sidebar-nav">
-      <a href="/pages/notes.html">Scripture &amp; Theology</a>
-      <a href="/pages/notes.html">Christian Life</a>
-      <a href="/pages/notes.html">Expository Writing</a>
-      <a href="/pages/about.html">About George</a>
-    </nav>
   </aside>
 
   <!-- MAIN ARTICLE -->
