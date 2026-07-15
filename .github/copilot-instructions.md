@@ -18,3 +18,9 @@ Act as a senior PHP developer maintaining a production site for Hostinger shared
 ## Writing and tone rules
 - Do not use em dashes in any generated text, comments, or documentation.
 - Keep explanations direct and professional.
+
+---
+applyTo: "public/**/*.html"
+---
+
+All asset and internal links in these files must be root relative, starting with a forward slash. Do not use relative path patterns based on folder depth.
