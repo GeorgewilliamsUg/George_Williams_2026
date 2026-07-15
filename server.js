@@ -34,8 +34,10 @@ const server = http.createServer((req, res) => {
       '.png': 'image/png',
       '.jpg': 'image/jpeg',
       '.gif': 'image/gif',
+      '.ico': 'image/x-icon',
       '.svg': 'image/svg+xml',
       '.xml': 'application/xml',
+      '.webmanifest': 'application/manifest+json',
       '.json': 'application/json'
     };
 
