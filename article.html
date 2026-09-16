@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ARTICLE_META_DESC" />
+    <title>ARTICLE_TITLE | Christian Faith Essays | George</title>
+
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png" />
+    <link rel="manifest" href="images/favicon/manifest.json" />
+  </head>
+
+  <body>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+      <div id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+      <div id="mobile-nav-drawer">
+        <div class="mobile-nav-header">
+          <a href="index.html" class="brand-logo" aria-label="George home">
+            <img src="images/logo.png" alt="George — Christian Essays Publication" class="brand-logo-img" width="120" height="32" />
+          </a>
+          <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">
+            <iconify-icon icon="solar:close-linear" width="18" stroke-width="1.5"></iconify-icon>
+          </button>
+        </div>
+
+        <p class="mobile-nav-section-label">Navigation</p>
+        <nav aria-label="Mobile navigation" class="mobile-nav-links">
+          <a href="index.html" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:home-2-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Home</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+          <a href="articles.html" class="mobile-nav-item is-active" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:document-text-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Articles</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+          <a href="about.html" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:user-circle-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>About</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+          <a href="index.html#collections" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:bookmark-opened-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Collections</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+          <a href="index.html#newsletter" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:letter-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Sunday Letter</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+        </nav>
+
+        <div class="mobile-nav-footer">
+          <div class="mobile-nav-card">
+            <span class="mobile-nav-card-badge">Weekly Digest</span>
+            <p class="mobile-nav-card-title">The Sunday Letter</p>
+            <p class="mobile-nav-card-desc">Short, honest essays on following Jesus through the beautiful ordinary.</p>
+            <a href="index.html#newsletter" onclick="closeMobileNav()" class="btn-accent mobile-nav-card-btn">
+              <span>Subscribe Free</span>
+              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reading progress bar -->
+    <div style="position: fixed; inset-inline: 0; top: 0; z-index: 70; height: 2px;">
+      <div id="reading-progress"></div>
+    </div>
+
+    <!-- Floating Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top of article">
+      <iconify-icon icon="solar:arrow-up-linear" width="16" stroke-width="1.5"></iconify-icon>
+      <span>Top</span>
+    </button>
+
+    <!-- Masthead & Site Header -->
+    <header class="site-header">
+      <div class="site-container">
+        <div class="header-inner">
+          <a href="index.html" class="brand-logo" aria-label="George home">
+            <img src="images/logo.png" alt="George — Christian Essays Publication" class="brand-logo-img" width="120" height="32" />
+          </a>
+
+          <nav aria-label="Primary navigation" class="desktop-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="articles.html" class="nav-link is-active">Articles</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="index.html#collections" class="nav-link">Collections</a>
+            <a href="index.html#newsletter" class="nav-link">Newsletter</a>
+          </nav>
+
+          <div class="header-actions">
+            <a href="index.html#newsletter" class="btn-accent desktop-btn">
+              <span>Sunday Letter</span>
+              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
+            </a>
+            <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="openMobileNav()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+              <iconify-icon icon="solar:hamburger-menu-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Menu</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <main id="main-content" style="padding-top: var(--space-12); padding-bottom: var(--space-20);">
+      <article class="site-container" style="max-width: 720px;">
+        <!-- Breadcrumb -->
+        <nav style="display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); margin-bottom: var(--space-8); text-transform: uppercase; letter-spacing: 0.04em;" aria-label="Breadcrumb">
+          <a href="index.html" style="color: inherit; text-decoration: none;">Home</a>
+          <span>/</span>
+          <a href="articles.html" style="color: inherit; text-decoration: none;">Articles</a>
+          <span>/</span>
+          <span style="color: var(--color-ink-primary); font-weight: var(--weight-medium); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">ARTICLE_TITLE</span>
+        </nav>
+
+        <!-- Topic Tag -->
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4);">
+          <span class="topic-tag">ARTICLE_TOPIC</span>
+          ARTICLE_EXTRA_TAGS
+        </div>
+
+        <!-- Headline -->
+        <h1 style="font-size: clamp(2.25rem, 4vw + 0.5rem, 3.25rem); line-height: 1.1; margin-bottom: var(--space-6);">
+          ARTICLE_TITLE
+        </h1>
+
+        <!-- Metadata & Actions Bar -->
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-border-subtle); margin-bottom: var(--space-8); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted);">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3);">
+            <span style="color: var(--color-ink-primary); font-weight: var(--weight-semibold);">George</span>
+            <span class="meta-separator">·</span>
+            <time>ARTICLE_DATE</time>
+            <span class="meta-separator">·</span>
+            <span>ARTICLE_READTIME min read</span>
+            <span class="meta-separator">·</span>
+            <span>ARTICLE_WORDCOUNT words</span>
+          </div>
+
+          <button id="copy-link-btn" onclick="copyArticleLink()" class="btn-outline" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-3);">
+            <iconify-icon icon="solar:link-linear" width="14" stroke-width="1.5"></iconify-icon>
+            <span id="copy-link-text">Copy link</span>
+          </button>
+        </div>
+
+        <!-- Scripture Callout Block -->
+        ARTICLE_CALLOUT_BLOCK
+
+        <!-- Body Prose -->
+        <div class="article-prose">
+          ARTICLE_BODY_HTML
+        </div>
+
+        <!-- Author Note -->
+        <div style="margin-top: var(--space-16); padding: var(--space-6); background-color: var(--color-surface-subtle); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); display: flex; gap: var(--space-4); align-items: flex-start;">
+          <div style="width: 48px; height: 48px; border-radius: var(--radius-full); overflow: hidden; border: 1px solid var(--color-border-medium); shrink: 0; box-shadow: var(--shadow-sm); background: var(--color-canvas);">
+            <img src="images/Me.png" alt="George" class="author-avatar-img" />
+          </div>
+          <div>
+            <h3 style="font-size: var(--text-lg); line-height: var(--leading-lg); margin-bottom: var(--space-1);">Written by George</h3>
+            <p style="font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--color-ink-secondary); margin: 0 0 var(--space-3) 0;">
+              After more than twenty years as a pastor, George writes about following Jesus in the quiet, everyday places where most of us actually live.
+            </p>
+            <a href="about.html" style="font-size: var(--text-xs); font-family: var(--font-mono); font-weight: var(--weight-medium); color: var(--color-ink-primary); text-transform: uppercase; text-decoration: none; letter-spacing: 0.04em;">
+              Read George’s story →
+            </a>
+          </div>
+        </div>
+
+        <!-- Inline Newsletter Card -->
+        <div style="margin-top: var(--space-8); padding: var(--space-8); background-color: var(--color-surface-subtle); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg);">
+          <p style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-muted); margin: 0 0 var(--space-2) 0;">
+            The Sunday Letter
+          </p>
+          <h3 style="font-size: var(--text-2xl); line-height: var(--leading-2xl); margin-bottom: var(--space-2);">One article. Every Sunday morning.</h3>
+          <p style="font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--color-ink-secondary); margin: 0 0 var(--space-4) 0;">
+            A quiet space for Scripture and reflection before the week begins. No noise. Just one thoughtful read.
+          </p>
+          <form class="newsletter-form" aria-label="Newsletter signup">
+            <div style="display: flex; gap: var(--space-2); max-width: 480px;">
+              <input id="article-email" type="email" required autocomplete="email" placeholder="your@email.com" style="width: 100%; border: 1px solid var(--color-border-medium); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); font-size: var(--text-sm); color: var(--color-ink-primary); outline: none; background: var(--color-canvas);" />
+              <button type="submit" class="btn-accent" style="white-space: nowrap;">Subscribe</button>
+            </div>
+            <p class="form-message" style="font-size: var(--text-xs); color: var(--color-ink-muted); margin-top: var(--space-2);" role="status" aria-live="polite">Calm inbox. Unsubscribe whenever you need.</p>
+          </form>
+        </div>
+
+        <!-- Footer Tag Bar -->
+        <div style="margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid var(--color-border-subtle); display: flex; justify-content: space-between; align-items: center; font-size: var(--text-xs);">
+          <div style="display: flex; gap: var(--space-2); align-items: center;">
+            <span style="color: var(--color-ink-muted);">Topic:</span>
+            <span class="topic-tag">ARTICLE_TOPIC</span>
+          </div>
+          <a href="articles.html" style="color: var(--color-ink-primary); font-weight: var(--weight-medium); text-decoration: none;">
+            All articles →
+          </a>
+        </div>
+      </article>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div class="site-container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-10); margin-bottom: var(--space-12);">
+          <div style="grid-column: span 1 / -1; max-width: 320px;">
+            <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-3);" aria-label="George home">
+              <img src="images/logo.png" alt="George — Christian Essays Publication" class="brand-logo-img" width="120" height="32" />
+            </a>
+            <p style="font-size: var(--text-sm); color: var(--color-ink-secondary); margin: 0; line-height: var(--leading-sm);">
+              Thoughts worth a minute.<br />
+              Truth worth a lifetime.
+            </p>
+          </div>
+
+          <div>
+            <p class="footer-nav-title">Explore</p>
+            <a href="articles.html" class="footer-link">All articles</a>
+            <a href="index.html#collections" class="footer-link">Collections</a>
+            <a href="about.html" class="footer-link">About George</a>
+          </div>
+
+          <div>
+            <p class="footer-nav-title">Elsewhere</p>
+            <a href="index.html#newsletter" class="footer-link">Sunday letter</a>
+            <a href="mailto:hello@georgewrites.com" class="footer-link">Write a note</a>
+            <a href="#" class="footer-link">Instagram</a>
+          </div>
+        </div>
+
+        <div style="padding-top: var(--space-8); border-top: 1px solid var(--color-border-subtle); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); font-size: var(--text-xs); color: var(--color-ink-muted);">
+          <p style="margin: 0;">© 2025 George. Written slowly in the countryside.</p>
+          <div style="display: flex; gap: var(--space-4);">
+            <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Privacy</a>
+            <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Accessibility</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+      if (window.innerWidth >= 768) {
+        document.querySelectorAll('.desktop-nav').forEach(el => el.style.display = 'flex');
+        document.querySelectorAll('.desktop-btn').forEach(el => el.style.display = 'inline-flex');
+      }
+      window.addEventListener('resize', () => {
+        const isDesktop = window.innerWidth >= 768;
+        document.querySelectorAll('.desktop-nav').forEach(el => el.style.display = isDesktop ? 'flex' : 'none');
+        document.querySelectorAll('.desktop-btn').forEach(el => el.style.display = isDesktop ? 'inline-flex' : 'none');
+      });
+    </script>
+  </body>
+</html>

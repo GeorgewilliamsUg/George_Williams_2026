@@ -1,0 +1,22 @@
+# ==============================================================================
+# ROBOTS.TXT FOR HTTPS://GEORGEWRITES.COM
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Allow: /articles/
+Allow: /images/
+Allow: /styles.css
+Allow: /main.js
+
+# Disallow Internal Utility, Source Drafts & Config Files
+Disallow: /src/
+Disallow: /scripts/
+Disallow: /*.json$
+Disallow: /*.ps1$
+Disallow: /*.md$
+Disallow: /*.docx$
+Disallow: /.*
+
+# XML Sitemap Location
+Sitemap: https://georgewrites.com/sitemap.xml

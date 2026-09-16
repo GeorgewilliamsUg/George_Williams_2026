@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A quiet publication of short, honest Christian essays on following Jesus through work, family, doubt, and ordinary life. Read slowly or subscribe free." />
+    <title>George | Short Christian Essays on Faith, Work & Truth</title>
+
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png" />
+    <link rel="manifest" href="images/favicon/manifest.json" />
+
+    <style>
+      .home-hero {
+        padding-top: var(--space-20);
+        padding-bottom: var(--space-20);
+      }
+      .section-space {
+        padding-top: var(--space-20);
+        padding-bottom: var(--space-20);
+      }
+      .section-space-lg {
+        padding-top: var(--space-24);
+        padding-bottom: var(--space-24);
+      }
+      .bento-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+      }
+      @media (min-width: 640px) {
+        .bento-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1024px) {
+        .bento-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: var(--space-8);
+        }
+      }
+      .bento-item {
+        background-color: var(--color-canvas);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: border-color var(--duration-normal) var(--ease-editorial),
+                    box-shadow var(--duration-normal) var(--ease-editorial),
+                    transform var(--duration-normal) var(--ease-editorial);
+      }
+      .bento-item:hover {
+        border-color: var(--color-border-medium);
+        box-shadow: var(--shadow-card);
+        transform: translateY(-2px);
+      }
+      .bento-item h3 {
+        font-size: var(--text-2xl);
+        line-height: var(--leading-2xl);
+        color: var(--color-ink-primary);
+        margin: var(--space-3) 0 var(--space-2) 0;
+      }
+      .bento-item p {
+        font-size: var(--text-sm);
+        line-height: var(--leading-sm);
+        color: var(--color-ink-secondary);
+        margin: 0;
+      }
+    </style>
+  
+    <link rel="canonical" href="https://georgewrites.com/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="George" />
+    <meta property="og:url" content="https://georgewrites.com/" />
+    <meta property="og:title" content="George | Short Christian Essays on Faith, Work & Truth" />
+    <meta property="og:description" content="A quiet publication of short, honest Christian essays on following Jesus through work, family, doubt, and ordinary life. Read slowly or subscribe free." />
+    <meta property="og:image" content="https://georgewrites.com/images/hero-countryside.png" />
+    <meta property="og:image:alt" content="George | Short Christian Essays on Faith, Work & Truth" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://georgewrites.com/" />
+    <meta name="twitter:title" content="George | Short Christian Essays on Faith, Work & Truth" />
+    <meta name="twitter:description" content="A quiet publication of short, honest Christian essays on following Jesus through work, family, doubt, and ordinary life. Read slowly or subscribe free." />
+    <meta name="twitter:image" content="https://georgewrites.com/images/hero-countryside.png" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://georgewrites.com/#website",
+      "url": "https://georgewrites.com/",
+      "name": "George",
+      "description": "A quiet publication of short, honest Christian essays on following Jesus through work, family, doubt, and ordinary life. Read slowly or subscribe free.",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://georgewrites.com/#organization",
+        "name": "George",
+        "url": "https://georgewrites.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://georgewrites.com/images/logo.png",
+          "width": 120,
+          "height": 40
+        }
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://georgewrites.com/#author",
+      "name": "George",
+      "url": "https://georgewrites.com/about.html",
+      "image": "https://georgewrites.com/images/Me.png",
+      "description": "Pastor turned writer sharing short, honest reflections on ordinary Christian faith.",
+      "email": "hello@georgewrites.com"
+    }
+  ]
+}
+    </script>
+  </head>
+
+  <body>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+      <div id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+      <div id="mobile-nav-drawer">
+        <div class="mobile-nav-header">
+          <a href="index.html" class="brand-logo" aria-label="George home">
+            <img src="images/logo.png" alt="George — Christian Essays Publication" class="brand-logo-img" width="120" height="32" />
+          </a>
+          <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">
+            <iconify-icon icon="solar:close-linear" width="18" stroke-width="1.5"></iconify-icon>
+          </button>
+        </div>
+
+        <p class="mobile-nav-section-label">Navigation</p>
+        <nav aria-label="Mobile navigation" class="mobile-nav-links">
+          <a href="index.html" class="mobile-nav-item is-active" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:home-2-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Home</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+          <a href="articles.html" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:document-text-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Articles</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+          <a href="about.html" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:user-circle-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>About</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+          <a href="#collections" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:bookmark-opened-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Collections</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+          <a href="#newsletter" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:letter-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Sunday Letter</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+        </nav>
+
+        <div class="mobile-nav-footer">
+          <div class="mobile-nav-card">
+            <span class="mobile-nav-card-badge">Weekly Digest</span>
+            <p class="mobile-nav-card-title">The Sunday Letter</p>
+            <p class="mobile-nav-card-desc">Short, honest essays on following Jesus through the beautiful ordinary.</p>
+            <a href="#newsletter" onclick="closeMobileNav()" class="btn-accent mobile-nav-card-btn">
+              <span>Subscribe Free</span>
+              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reading Progress Bar -->
+    <div style="position: fixed; inset-inline: 0; top: 0; z-index: 70; height: 2px;">
+      <div id="reading-progress"></div>
+    </div>
+
+    <!-- Skip Link -->
+    <a href="#main-content" style="position: absolute; left: -9999px; top: var(--space-4); z-index: 100; background: var(--color-ink-primary); color: #fff; padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm); text-decoration: none;" onfocus="this.style.left='var(--space-4)'" onblur="this.style.left='-9999px'">Skip to main content</a>
+
+    <!-- Masthead & Header -->
+    <header class="site-header">
+      <div class="site-container">
+        <div class="header-inner">
+          <a href="index.html" class="brand-logo" aria-label="George home">
+            <img src="images/logo.png" alt="George — Christian Essays Publication" class="brand-logo-img" width="120" height="32" />
+          </a>
+
+          <nav aria-label="Primary navigation" class="desktop-nav">
+            <a href="index.html" class="nav-link is-active">Home</a>
+            <a href="articles.html" class="nav-link">Articles</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="#collections" class="nav-link">Collections</a>
+            <a href="#newsletter" class="nav-link">Newsletter</a>
+          </nav>
+
+          <div class="header-actions">
+            <a href="#newsletter" class="btn-accent desktop-btn">
+              <span>Sunday Letter</span>
+              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
+            </a>
+            <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="openMobileNav()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+              <iconify-icon icon="solar:hamburger-menu-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Menu</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="home-hero">
+        <div class="site-container">
+          <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-12); align-items: center;" class="hero-split-grid">
+            <div style="max-width: 640px;">
+              <div style="display: inline-flex; align-items: center; gap: var(--space-3); padding: var(--space-1) var(--space-3); background: var(--color-surface-subtle); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-full); margin-bottom: var(--space-4);">
+                <div style="width: 24px; height: 24px; border-radius: var(--radius-full); overflow: hidden; border: 1px solid var(--color-border-medium); flex-shrink: 0;">
+                  <img src="images/Me.png" alt="George — Author photo" class="author-avatar-img" width="24" height="24" />
+                </div>
+                <p style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-muted); margin: 0;">
+                  A quiet corner for ordinary faith
+                </p>
+              </div>
+
+              <h1 style="font-size: var(--text-display); line-height: var(--leading-display); margin: 0 0 var(--space-6) 0;">
+                Thoughts worth a minute.<br />
+                <span style="font-style: italic;">Truth worth a lifetime.</span>
+              </h1>
+
+              <div style="display: flex; flex-direction: column; gap: var(--space-6); max-width: 580px;">
+                <p class="prose-measure" style="font-size: var(--text-lg); line-height: var(--leading-lg); color: var(--color-ink-secondary); margin: 0;">
+                  Short, honest essays on following Jesus through work, family, doubt, joy, and the beautiful ordinary.
+                </p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center;">
+                  <a href="articles.html" class="btn-primary">
+                    Browse the archive
+                    <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="2"></iconify-icon>
+                  </a>
+                  <a href="#newsletter" class="btn-outline">
+                    Sunday Letter
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hero Featured Visual -->
+            <div class="hero-media-wrap">
+              <img
+                src="images/hero-countryside.png"
+                alt="Misty morning country road winding through green hills"
+                class="hero-media-img"
+                loading="eager"
+              />
+              <div class="hero-badge-overlay">
+                <div style="display: flex; align-items: center; gap: var(--space-2);">
+                  <iconify-icon icon="solar:map-point-linear" width="16" stroke-width="1.5" style="color: var(--color-ink-primary);"></iconify-icon>
+                  <span style="font-family: var(--font-mono); font-size: var(--text-xs); font-weight: var(--weight-medium); color: var(--color-ink-primary);">Written in the countryside</span>
+                </div>
+                <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted);">By George</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Latest Essays Section -->
+      <section id="essays" class="section-space" style="background-color: var(--color-surface-subtle); border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
+        <div class="site-container">
+          <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-10);">
+            <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--space-4);">
+              <div>
+                <p style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-muted); margin: 0 0 var(--space-2) 0;">
+                  The Latest
+                </p>
+                <h2 style="font-size: var(--text-4xl); line-height: var(--leading-4xl); margin: 0;">
+                  A little room to breathe.
+                </h2>
+              </div>
+              <a href="articles.html" class="btn-outline">
+                View all 18 articles
+                <iconify-icon icon="solar:arrow-right-linear" width="15" stroke-width="1.5"></iconify-icon>
+              </a>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8);">
+            <!-- Essay 01 -->
+            <article class="archive-card" data-topic="work" style="padding: 0; overflow: hidden;">
+              <div class="card-thumb-wrap">
+                <img src="images/business.jpg" alt="Busy Isn't Faithful" class="card-thumb-img" loading="lazy" />
+              </div>
+              <div style="padding: var(--space-6); display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
+                <div>
+                  <div class="card-header-meta">
+                    <span class="topic-tag">Work</span>
+                    <span class="card-index">№ 01</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="articles/article-busy-isnt-faithful.html" style="color: inherit; text-decoration: none;">Busy Isn't Faithful</a>
+                  </h3>
+                  <div class="card-meta-line">
+                    <time datetime="2025-08-03">Aug 3, 2025</time>
+                    <span class="meta-separator">·</span>
+                    <span>1 min read</span>
+                  </div>
+                  <p class="card-excerpt">
+                    Martha wasn't wrong to serve. Jesus named the anxiety underneath it. We were both just moving too fast to ask why.
+                  </p>
+                </div>
+                <div class="card-footer-action" style="margin-top: var(--space-6);">
+                  <a href="articles/article-busy-isnt-faithful.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <span>Read essay</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="card-arrow-icon" width="16" stroke-width="1.5"></iconify-icon>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Essay 02 -->
+            <article class="archive-card" data-topic="work" style="padding: 0; overflow: hidden;">
+              <div class="card-thumb-wrap">
+                <img src="images/writing-desk.png" alt="Nobody Is Self-Made" class="card-thumb-img" loading="lazy" />
+              </div>
+              <div style="padding: var(--space-6); display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
+                <div>
+                  <div class="card-header-meta">
+                    <span class="topic-tag">Work</span>
+                    <span class="card-index">№ 02</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="articles/article-nobody-is-self-made.html" style="color: inherit; text-decoration: none;">Nobody Is Self-Made</a>
+                  </h3>
+                  <div class="card-meta-line">
+                    <time datetime="2025-07-20">Jul 20, 2025</time>
+                    <span class="meta-separator">·</span>
+                    <span>2 min read</span>
+                  </div>
+                  <p class="card-excerpt">
+                    Hands can bleed with real work and still stand on borrowed ground. Effort and grace were never rivals.
+                  </p>
+                </div>
+                <div class="card-footer-action" style="margin-top: var(--space-6);">
+                  <a href="articles/article-nobody-is-self-made.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <span>Read essay</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="card-arrow-icon" width="16" stroke-width="1.5"></iconify-icon>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Essay 03 -->
+            <article class="archive-card" data-topic="discipleship" style="padding: 0; overflow: hidden;">
+              <div class="card-thumb-wrap">
+                <img src="images/open-bible.png" alt="God Doesn't Need Your Resume" class="card-thumb-img" loading="lazy" />
+              </div>
+              <div style="padding: var(--space-6); display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
+                <div>
+                  <div class="card-header-meta">
+                    <span class="topic-tag">Discipleship</span>
+                    <span class="card-index">№ 03</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="articles/article-god-doesnt-need-your-resume.html" style="color: inherit; text-decoration: none;">God Doesn't Need Your Resume</a>
+                  </h3>
+                  <div class="card-meta-line">
+                    <time datetime="2025-06-29">Jun 29, 2025</time>
+                    <span class="meta-separator">·</span>
+                    <span>5 min read</span>
+                  </div>
+                  <p class="card-excerpt">
+                    Moses had a stutter, Gideon was hiding, Peter denied Christ. He called the unqualified. He still does.
+                  </p>
+                </div>
+                <div class="card-footer-action" style="margin-top: var(--space-6);">
+                  <a href="articles/article-god-doesnt-need-your-resume.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <span>Read essay</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="card-arrow-icon" width="16" stroke-width="1.5"></iconify-icon>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Longform Article -->
+      <section id="featured-article" class="section-space">
+        <div class="site-container">
+          <div class="featured-split-card">
+            <div class="featured-split-content">
+              <div>
+                <div class="card-header-meta">
+                  <span class="topic-tag">Featured Essay · Holiness</span>
+                  <span class="card-index">7 min read</span>
+                </div>
+                <h2 class="card-title" style="font-size: var(--text-3xl); line-height: var(--leading-3xl); margin: var(--space-3) 0 var(--space-4) 0;">
+                  The Respectable Sin Nobody Talks About
+                </h2>
+                <div class="card-meta-line">
+                  <time datetime="2025-05-25">May 25, 2025</time>
+                  <span class="meta-separator">·</span>
+                  <span>Scripture: Romans 8:26 · Matthew 6:25</span>
+                </div>
+                <p class="card-excerpt" style="font-size: var(--text-base); line-height: var(--leading-base); margin-bottom: var(--space-6);">
+                  Worry is not a personality trait. It is a theological statement that God is not actually in control of the thing keeping you awake at night. We have built a hierarchy of respectable and unrespectable sins—and worry has quietly been given a pass.
+                </p>
+                <div class="scripture-card" style="margin: var(--space-4) 0 var(--space-6) 0;">
+                  <blockquote style="font-family: var(--font-serif); font-size: var(--text-lg); line-height: var(--leading-lg); font-style: italic; color: var(--color-ink-primary); margin: 0 0 var(--space-2) 0;">
+                    “The Spirit himself intercedes for us through wordless groans.”
+                  </blockquote>
+                  <cite style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); font-style: normal; text-transform: uppercase; letter-spacing: 0.05em;">Romans 8:26</cite>
+                </div>
+              </div>
+              <div class="card-footer-action" style="margin-top: var(--space-4);">
+                <a href="articles/article-the-respectable-sin-nobody-talks-about.html" class="btn-primary">
+                  Read full essay
+                  <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="2"></iconify-icon>
+                </a>
+              </div>
+            </div>
+
+            <div class="featured-split-img-wrap">
+              <img
+                src="images/anxious.jpg"
+                alt="Quiet sea horizon reflecting on peace and worry"
+                class="featured-split-img"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Collections / Bento Section -->
+      <section id="collections" class="section-space" style="background-color: var(--color-surface-subtle); border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
+        <div class="site-container">
+          <div style="margin-bottom: var(--space-10);">
+            <p style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-muted); margin: 0 0 var(--space-2) 0;">
+              Collections
+            </p>
+            <h2 style="font-size: var(--text-4xl); line-height: var(--leading-4xl); margin: 0;">
+              Read for the season you are in.
+            </h2>
+          </div>
+
+          <div class="bento-grid">
+            <a href="articles.html" class="bento-item">
+              <div>
+                <img src="images/business.jpg" alt="Work & Vocation" class="bento-item-header-img" loading="lazy" />
+                <span class="topic-tag">Work</span>
+                <h3>Work & Vocation</h3>
+                <p>Ordinary faithfulness at your desk, commute, and daily grind.</p>
+              </div>
+              <div style="margin-top: var(--space-6); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted);">
+                6 essays
+              </div>
+            </a>
+
+            <a href="articles.html" class="bento-item">
+              <div>
+                <img src="images/anxious.jpg" alt="Quiet Holiness" class="bento-item-header-img" loading="lazy" />
+                <span class="topic-tag">Holiness</span>
+                <h3>Quiet Holiness</h3>
+                <p>Guarding the mind, confronting hurry, and unlearning worry.</p>
+              </div>
+              <div style="margin-top: var(--space-6); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted);">
+                4 essays
+              </div>
+            </a>
+
+            <a href="articles.html" class="bento-item">
+              <div>
+                <img src="images/open-bible.png" alt="Reading Scripture" class="bento-item-header-img" loading="lazy" />
+                <span class="topic-tag">Scripture</span>
+                <h3>Reading Scripture</h3>
+                <p>Approaching ancient words with patient, open posture.</p>
+              </div>
+              <div style="margin-top: var(--space-6); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted);">
+                4 essays
+              </div>
+            </a>
+
+            <a href="articles.html" class="bento-item">
+              <div>
+                <img src="images/prayer.jpg" alt="Suffering & Joy" class="bento-item-header-img" loading="lazy" />
+                <span class="topic-tag">Suffering & Joy</span>
+                <h3>Suffering & Joy</h3>
+                <p>Waiting in the dark without pretending the dark isn't real.</p>
+              </div>
+              <div style="margin-top: var(--space-6); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted);">
+                4 essays
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sunday Newsletter Section -->
+      <section id="newsletter" class="section-space">
+        <div class="site-container">
+          <div style="background-color: var(--color-surface-subtle); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); padding: var(--space-10);">
+            <div style="max-width: 600px;">
+              <p style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-muted); margin: 0 0 var(--space-2) 0;">
+                The Sunday Letter
+              </p>
+              <h2 style="font-size: var(--text-3xl); line-height: var(--leading-3xl); margin-bottom: var(--space-4);">
+                One article. Every Sunday morning.
+              </h2>
+              <p style="font-size: var(--text-base); line-height: var(--leading-base); color: var(--color-ink-secondary); margin: 0 0 var(--space-6) 0;">
+                A quiet space for Scripture and reflection before the week begins. No noise, no ads, just one honest essay in your inbox.
+              </p>
+              <form aria-label="Newsletter signup">
+                <label for="email" style="display: block; font-family: var(--font-sans); font-size: var(--text-xs); font-weight: var(--weight-medium); color: var(--color-ink-secondary); margin-bottom: var(--space-2);">Email address</label>
+                <div style="display: flex; gap: var(--space-2); max-width: 480px;">
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    autocomplete="email"
+                    placeholder="your@email.com"
+                    style="width: 100%; border: 1px solid var(--color-border-medium); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); font-size: var(--text-sm); color: var(--color-ink-primary); outline: none; background: var(--color-canvas);"
+                  />
+                  <button type="submit" class="btn-accent" style="white-space: nowrap;">
+                    Subscribe
+                    <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="2"></iconify-icon>
+                  </button>
+                </div>
+                <p id="form-message" style="font-size: var(--text-xs); color: var(--color-ink-muted); margin: var(--space-2) 0 0 0;" role="status" aria-live="polite">
+                  A calm inbox, always. Unsubscribe whenever you need.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div class="site-container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-10); margin-bottom: var(--space-12);">
+          <div style="grid-column: span 1 / -1; max-width: 320px;">
+            <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-3);" aria-label="George home">
+              <img src="images/logo.png" alt="George — Christian Essays Publication" class="brand-logo-img" width="120" height="32" />
+            </a>
+            <p style="font-size: var(--text-sm); color: var(--color-ink-secondary); margin: 0; line-height: var(--leading-sm);">
+              Thoughts worth a minute.<br />
+              Truth worth a lifetime.
+            </p>
+          </div>
+
+          <div>
+            <p class="footer-nav-title">Explore</p>
+            <a href="articles.html" class="footer-link">All articles</a>
+            <a href="#collections" class="footer-link">Collections</a>
+            <a href="about.html" class="footer-link">About George</a>
+          </div>
+
+          <div>
+            <p class="footer-nav-title">Elsewhere</p>
+            <a href="#newsletter" class="footer-link">Sunday letter</a>
+            <a href="mailto:hello@georgewrites.com" class="footer-link">Write a note</a>
+            <a href="#" class="footer-link">Instagram</a>
+          </div>
+        </div>
+
+        <div style="padding-top: var(--space-8); border-top: 1px solid var(--color-border-subtle); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); font-size: var(--text-xs); color: var(--color-ink-muted);">
+          <p style="margin: 0;">© 2025 George. Written slowly in the countryside.</p>
+          <div style="display: flex; gap: var(--space-4);">
+            <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Privacy</a>
+            <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Accessibility</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script>
+      // Responsive desktop nav visibility helper
+      if (window.innerWidth >= 768) {
+        document.querySelectorAll('.desktop-nav').forEach(el => el.style.display = 'flex');
+        document.querySelectorAll('.desktop-btn').forEach(el => el.style.display = 'inline-flex');
+      }
+      window.addEventListener('resize', () => {
+        const isDesktop = window.innerWidth >= 768;
+        document.querySelectorAll('.desktop-nav').forEach(el => el.style.display = isDesktop ? 'flex' : 'none');
+        document.querySelectorAll('.desktop-btn').forEach(el => el.style.display = isDesktop ? 'inline-flex' : 'none');
+      });
+    </script>
+  </body>
+</html>

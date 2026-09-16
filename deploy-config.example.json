@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "_comment": "Rename or copy this file to 'deploy-config.json' and fill in your Namecheap SFTP credentials. DO NOT commit deploy-config.json with real credentials.",
+  "host": "premiumXXX.web-hosting.com",
+  "port": 21098,
+  "username": "your_cpanel_username",
+  "authMethod": "password",
+  "_authMethodComment": "Use 'password' to prompt for cPanel password interactively, or 'key' to use an SSH private key",
+  "privateKeyPath": "~/.ssh/id_ed25519",
+  "remoteDirectory": "public_html",
+  "localDirectory": ".",
+  "excludePatterns": [
+    ".git*",
+    ".github*",
+    ".agents*",
+    ".skills.json",
+    "deploy.ps1",
+    "publish.ps1",
+    "deploy-config.json",
+    "deploy-config.example.json",
+    ".deploy-manifest.json",
+    ".deploy-state.json",
+    "DEPLOYMENT.md",
+    ".env*",
+    "*.log",
+    "*.tmp",
+    "*.bak",
+    "node_modules*",
+    ".venv*",
+    "venv*"
+  ]
+}

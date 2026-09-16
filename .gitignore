@@ -1,0 +1,32 @@
+# Deployment configurations & secrets (NEVER COMMIT)
+deploy-config.json
+.deploy-config.json
+deploy-config.local.json
+.env
+.env.*
+*.key
+*.pem
+*.ppk
+
+# Deployment manifest & state cache
+.deploy-manifest.json
+.deploy-state.json
+.deploy-temp/
+
+# Antigravity agent & IDE metadata
+.agents/
+.skills.json
+.vscode/
+.idea/
+
+# OS & temporary files
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.log
+
+# Dependencies / virtual environments (if any)
+node_modules/
+.venv/
+venv/
