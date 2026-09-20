@@ -1632,7 +1632,329 @@ header.site-header.is-scrolled {
   transform: scale(1.05);
 }
 
-/* Hero Media Frame */
+/* ============================================================
+   7. HERO BLACK & WHITE EDITORIAL (JONNY CZAR MINIMALIST STYLE)
+   ============================================================ */
+.hero-bw-section {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-canvas);
+  border-bottom: 1px solid var(--color-border-subtle);
+  overflow: hidden;
+  padding-top: var(--space-4);
+  padding-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+  .hero-bw-section {
+    padding-top: var(--space-6);
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+  }
+}
+
+.hero-bw-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-bw-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: var(--space-10);
+    min-height: 560px;
+  }
+}
+
+/* Left Column Content */
+.hero-bw-content {
+  max-width: 600px;
+  padding-top: 0;
+  padding-bottom: var(--space-6);
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .hero-bw-content {
+    padding-bottom: var(--space-8);
+  }
+}
+
+/* Kicker */
+.hero-bw-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-secondary);
+}
+
+.hero-bw-kicker-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: var(--color-ink-primary);
+  display: inline-block;
+}
+
+/* Jonny Czar Style Headline */
+.hero-bw-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.35rem, 4.2vw + 0.4rem, 4.1rem);
+  line-height: 1.08;
+  font-weight: 400;
+  color: var(--color-ink-primary);
+  letter-spacing: -0.025em;
+  margin: 0 0 var(--space-6) 0;
+}
+
+/* Editorial Deck */
+.hero-bw-deck {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  line-height: 1.62;
+  color: var(--color-ink-secondary);
+  margin: 0 0 var(--space-8) 0;
+  max-width: 550px;
+}
+
+@media (max-width: 640px) {
+  .hero-bw-deck {
+    font-size: var(--text-base);
+    line-height: 1.55;
+  }
+}
+
+/* Call to Action Buttons */
+.hero-bw-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.hero-bw-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background-color: var(--color-ink-primary);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.01em;
+  border-radius: 9999px;
+  padding: 13px 26px;
+  text-decoration: none;
+  border: 1px solid var(--color-ink-primary);
+  box-shadow: 0 4px 14px rgba(18, 20, 23, 0.12);
+  transition: all var(--duration-fast) var(--ease-editorial);
+  min-height: 48px;
+}
+
+.hero-bw-btn-primary:hover {
+  background-color: #000000;
+  border-color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(18, 20, 23, 0.2);
+  color: #ffffff;
+}
+
+.hero-bw-btn-primary:active {
+  transform: translateY(0);
+}
+
+.hero-bw-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background-color: transparent;
+  color: var(--color-ink-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.01em;
+  border-radius: 9999px;
+  padding: 13px 24px;
+  text-decoration: none;
+  border: 1px solid var(--color-border-medium);
+  transition: all var(--duration-fast) var(--ease-editorial);
+  min-height: 48px;
+}
+
+.hero-bw-btn-outline:hover {
+  border-color: var(--color-ink-primary);
+  background-color: var(--color-surface-subtle);
+  transform: translateY(-2px);
+  color: var(--color-ink-primary);
+}
+
+.hero-bw-btn-outline:active {
+  transform: translateY(0);
+}
+
+/* Minimalist Editorial Link Row (Jonny Czar Style) */
+.hero-bw-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-ink-secondary);
+}
+
+.hero-bw-link {
+  color: var(--color-ink-primary);
+  text-decoration: none;
+  font-weight: var(--weight-medium);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--duration-fast) var(--ease-editorial),
+              color var(--duration-fast) var(--ease-editorial);
+}
+
+.hero-bw-link:hover {
+  color: #000000;
+  border-bottom-color: var(--color-ink-primary);
+}
+
+.hero-bw-sep {
+  color: var(--color-border-medium);
+  user-select: none;
+}
+
+.hero-bw-badge {
+  color: var(--color-ink-muted);
+  font-size: 11px;
+}
+
+/* ============================================================
+   RIGHT COLUMN: GEORGE FLOATING IN FULL
+   ============================================================ */
+.hero-bw-visual-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  overflow: visible;
+  padding-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+  .hero-bw-visual-wrap {
+    justify-content: center;
+    height: 100%;
+    min-height: 640px;
+  }
+}
+
+.hero-george-floating-container {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  will-change: transform;
+}
+
+.hero-george-canvas {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Full Figure Image of George */
+.hero-george-img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: clamp(480px, 75vh, 740px);
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+  filter: grayscale(100%) contrast(1.06) brightness(1.02);
+  user-select: none;
+  pointer-events: auto;
+  z-index: 2;
+  will-change: transform;
+  animation: georgeFloat 5.5s ease-in-out infinite;
+  transition: filter 0.4s ease;
+}
+
+.hero-george-img:hover {
+  filter: grayscale(85%) contrast(1.08) brightness(1.04);
+}
+
+/* Organic Grounding Ambient Shadow */
+.hero-george-ground-shadow {
+  position: relative;
+  width: 75%;
+  height: 28px;
+  margin-top: -14px;
+  background: radial-gradient(ellipse at center, rgba(18, 20, 23, 0.22) 0%, rgba(18, 20, 23, 0.08) 45%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(8px);
+  z-index: 1;
+  pointer-events: none;
+  animation: shadowPulse 5.5s ease-in-out infinite;
+}
+
+/* Continuous Organic Floating Keyframes */
+@keyframes georgeFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(0.4deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes shadowPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(0.86);
+    opacity: 0.18;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  .hero-george-img {
+    animation: none !important;
+  }
+  .hero-george-ground-shadow {
+    animation: none !important;
+  }
+}
+
+/* Legacy Hero Media Support */
 .hero-media-wrap {
   position: relative;
   border-radius: var(--radius-lg);

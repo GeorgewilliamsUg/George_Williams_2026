@@ -181,15 +181,82 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ---- Restrained Motion: Single Hero Entrance Only ---- */
-  if (!prefersReducedMotion && window.gsap) {
-    const heroTitle = document.querySelector('h1');
-    if (heroTitle) {
-      gsap.from(heroTitle, {
-        opacity: 0,
-        y: 16,
-        duration: 0.65,
-        ease: 'power2.out'
+  /* ---- Hero Section: Floating Motion & Interactive Parallax for George.png ---- */
+  const heroSection = document.getElementById('hero-section');
+  const georgeImg = document.getElementById('hero-george-img');
+  const georgeContainer = document.getElementById('hero-george-container');
+
+  if (!prefersReducedMotion) {
+    // GSAP Entrance Reveal for Hero Section
+    if (window.gsap) {
+      const heroElements = document.querySelectorAll('.hero-bw-content > *');
+      if (heroElements.length) {
+        gsap.from(heroElements, {
+          opacity: 0,
+          y: 24,
+          duration: 0.85,
+          stagger: 0.12,
+          ease: 'power3.out',
+          clearProps: 'all'
+        });
+      }
+
+      if (georgeImg) {
+        gsap.from(georgeImg, {
+          opacity: 0,
+          scale: 0.94,
+          y: 45,
+          duration: 1.2,
+          ease: 'power3.out',
+          delay: 0.1
+        });
+      }
+    }
+
+    // Interactive Floating Parallax Follower on Hero
+    if (heroSection && georgeContainer) {
+      let targetX = 0;
+      let targetY = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let isHovered = false;
+      let rafId = null;
+
+      const render = () => {
+        currentX += (targetX - currentX) * 0.08;
+        currentY += (targetY - currentY) * 0.08;
+
+        georgeContainer.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
+
+        if (isHovered || Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
+          rafId = requestAnimationFrame(render);
+        } else {
+          rafId = null;
+        }
+      };
+
+      heroSection.addEventListener('mousemove', (e) => {
+        const rect = heroSection.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        targetX = x * 26; // subtle parallax float range
+        targetY = y * 20;
+
+        if (!rafId) {
+          rafId = requestAnimationFrame(render);
+        }
+      }, { passive: true });
+
+      heroSection.addEventListener('mouseenter', () => {
+        isHovered = true;
+        if (!rafId) rafId = requestAnimationFrame(render);
+      });
+
+      heroSection.addEventListener('mouseleave', () => {
+        isHovered = false;
+        targetX = 0;
+        targetY = 0;
+        if (!rafId) rafId = requestAnimationFrame(render);
       });
     }
   }
