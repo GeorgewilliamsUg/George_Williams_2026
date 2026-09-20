@@ -1,5 +1,5 @@
 # ==============================================================================
-# ROBOTS.TXT FOR HTTPS://GEORGEWRITES.COM
+# ROBOTS.TXT FOR HTTPS://JOJJY.ORG
 # ==============================================================================
 
 User-agent: *
@@ -19,4 +19,4 @@ Disallow: /*.docx$
 Disallow: /.*
 
 # XML Sitemap Location
-Sitemap: https://georgewrites.com/sitemap.xml
+Sitemap: https://jojjy.org/sitemap.xml

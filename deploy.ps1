@@ -127,13 +127,17 @@ Write-DeployInfo "Remote Target: $RemoteDir/"
 Write-DeployInfo "Local Source:  $LocalDir"
 
 # Exclusions
-$Excludes = [System.Collections.Generic.List[string]]::new(@(
-    "^\.git($|/|\\)", "^\.github($|/|\\)", "^\.agents($|/|\\)", "^\.skills\.json$",
-    "^\.gitignore$", "^deploy\.ps1$", "^publish\.ps1$", "^deploy-config.*\.json$",
-    "^\.deploy-manifest\.json$", "^\.deploy-state\.json$", "^DEPLOYMENT\.md$",
+$DefaultExcludes = @(
+    "^\.git($|/|\\)", "^\.github($|/|\\)", "^\.agents($|/|\\)", "^\.vscode($|/|\\)",
+    "^\.skills\.json$", "^\.gitignore$", "^deploy\.ps1$", "^publish\.ps1$",
+    "^deploy-config.*\.json$", "^\.deploy-manifest\.json$", "^\.deploy-state\.json$",
+    "^DEPLOYMENT\.md$", "^src($|/|\\)", "^scripts($|/|\\)",
+    "\.docx$", "\.md$", "\.eps$",
     "^\.env.*$", "^\.venv($|/|\\)", "^venv($|/|\\)", "^node_modules($|/|\\)",
     "Thumbs\.db$", "\.DS_Store$", "\.tmp$", "\.bak$", "\.log$"
-))
+)
+$Excludes = [System.Collections.Generic.List[string]]::new()
+foreach ($item in $DefaultExcludes) { $Excludes.Add($item) }
 
 $ConfigExcludes = Get-ConfigProperty $Config "excludePatterns" $null
 if ($null -ne $ConfigExcludes) {
