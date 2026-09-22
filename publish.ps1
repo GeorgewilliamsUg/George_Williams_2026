@@ -43,8 +43,8 @@ $GitInstalled = Get-Command git.exe -ErrorAction SilentlyContinue
 $IsGitRepo = Test-Path -LiteralPath (Join-Path $ScriptDir ".git")
 
 if ($GitInstalled -and $IsGitRepo) {
-    $GitStatus = git status --porcelain
-    if ($null -ne $GitStatus -and $GitStatus.Count -gt 0) {
+    $GitStatus = @(git status --porcelain)
+    if ($GitStatus.Count -gt 0) {
         Write-Host "Pending changes:" -ForegroundColor Yellow
         git status -s
         Write-Host ""

@@ -7,13 +7,13 @@
   RewriteEngine On
   RewriteBase /
 
-  # Redirect HTTP to HTTPS
-  RewriteCond %{HTTPS} off
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-  # Enforce canonical non-www (adjust if www is preferred)
+  # 1. Enforce canonical non-www over HTTPS in a single step (handles both http://www.* and https://www.*)
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+  # 2. Redirect remaining HTTP non-www to HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 # 2. Security Headers

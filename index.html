@@ -24,62 +24,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png" />
     <link rel="manifest" href="images/favicon/manifest.json" />
 
-    <style>
-      .section-space {
-        padding-top: var(--space-20);
-        padding-bottom: var(--space-20);
-      }
-      .section-space-lg {
-        padding-top: var(--space-24);
-        padding-bottom: var(--space-24);
-      }
-      .bento-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
-      }
-      @media (min-width: 640px) {
-        .bento-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (min-width: 1024px) {
-        .bento-grid {
-          grid-template-columns: repeat(4, 1fr);
-          gap: var(--space-8);
-        }
-      }
-      .bento-item {
-        background-color: var(--color-canvas);
-        border: 1px solid var(--color-border-subtle);
-        border-radius: var(--radius-lg);
-        padding: var(--space-6);
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        transition: border-color var(--duration-normal) var(--ease-editorial),
-                    box-shadow var(--duration-normal) var(--ease-editorial),
-                    transform var(--duration-normal) var(--ease-editorial);
-      }
-      .bento-item:hover {
-        border-color: var(--color-border-medium);
-        box-shadow: var(--shadow-card);
-        transform: translateY(-2px);
-      }
-      .bento-item h3 {
-        font-size: var(--text-2xl);
-        line-height: var(--leading-2xl);
-        color: var(--color-ink-primary);
-        margin: var(--space-3) 0 var(--space-2) 0;
-      }
-      .bento-item p {
-        font-size: var(--text-sm);
-        line-height: var(--leading-sm);
-        color: var(--color-ink-secondary);
-        margin: 0;
-      }
-    </style>
+
 
     <!-- Open Graph / Facebook -->
 
@@ -337,7 +282,7 @@
             </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8);">
+          <div class="latest-essays-grid">
             <!-- Essay 01 -->
             <article class="archive-card" data-topic="work" style="padding: 0; overflow: hidden;">
               <div class="card-thumb-wrap">
@@ -552,7 +497,7 @@
       <!-- Sunday Newsletter Section -->
       <section id="newsletter" class="section-space">
         <div class="site-container">
-          <div style="background-color: var(--color-surface-subtle); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); padding: var(--space-10);">
+          <div class="newsletter-box">
             <div style="max-width: 600px;">
               <p style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-muted); margin: 0 0 var(--space-2) 0;">
                 The Sunday Letter
@@ -565,17 +510,17 @@
               </p>
               <form aria-label="Newsletter signup">
                 <label for="email" style="display: block; font-family: var(--font-sans); font-size: var(--text-xs); font-weight: var(--weight-medium); color: var(--color-ink-secondary); margin-bottom: var(--space-2);">Email address</label>
-                <div style="display: flex; gap: var(--space-2); max-width: 480px;">
+                <div class="newsletter-form-row">
                   <input
                     id="email"
                     type="email"
                     required
                     autocomplete="email"
                     placeholder="your@email.com"
-                    style="width: 100%; border: 1px solid var(--color-border-medium); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); font-size: var(--text-sm); color: var(--color-ink-primary); outline: none; background: var(--color-canvas);"
+                    class="newsletter-input"
                   />
-                  <button type="submit" class="btn-accent" style="white-space: nowrap;">
-                    Subscribe
+                  <button type="submit" class="btn-accent newsletter-btn">
+                    <span>Subscribe</span>
                     <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="2"></iconify-icon>
                   </button>
                 </div>
@@ -592,12 +537,12 @@
     <!-- Site Footer -->
     <footer class="site-footer">
       <div class="site-container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-10); margin-bottom: var(--space-12);">
-          <div style="grid-column: span 1 / -1; max-width: 320px;">
+        <div class="footer-grid">
+          <div>
             <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-3);" aria-label="George home">
               <img src="images/logo.png" alt="George — Christian Essays Publication" class="brand-logo-img" width="120" height="32" />
             </a>
-            <p style="font-size: var(--text-sm); color: var(--color-ink-secondary); margin: 0; line-height: var(--leading-sm);">
+            <p style="font-size: var(--text-sm); color: var(--color-ink-secondary); margin: 0; line-height: var(--leading-sm); max-width: 320px;">
               Thoughts worth a minute.<br />
               Truth worth a lifetime.
             </p>
@@ -618,7 +563,7 @@
           </div>
         </div>
 
-        <div style="padding-top: var(--space-8); border-top: 1px solid var(--color-border-subtle); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); font-size: var(--text-xs); color: var(--color-ink-muted);">
+        <div class="footer-bottom-row">
           <p style="margin: 0;">© 2025 George. Written slowly in the countryside.</p>
           <div style="display: flex; gap: var(--space-4);">
             <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Privacy</a>
@@ -630,17 +575,5 @@
 
     <!-- Scripts -->
     <script src="main.js"></script>
-    <script>
-      // Responsive desktop nav visibility helper
-      if (window.innerWidth >= 768) {
-        document.querySelectorAll('.desktop-nav').forEach(el => el.style.display = 'flex');
-        document.querySelectorAll('.desktop-btn').forEach(el => el.style.display = 'inline-flex');
-      }
-      window.addEventListener('resize', () => {
-        const isDesktop = window.innerWidth >= 768;
-        document.querySelectorAll('.desktop-nav').forEach(el => el.style.display = isDesktop ? 'flex' : 'none');
-        document.querySelectorAll('.desktop-btn').forEach(el => el.style.display = isDesktop ? 'inline-flex' : 'none');
-      });
-    </script>
   </body>
 </html>

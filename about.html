@@ -403,12 +403,12 @@
     <!-- Site Footer -->
     <footer class="site-footer">
       <div class="site-container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-10); margin-bottom: var(--space-12);">
-          <div style="grid-column: span 1 / -1; max-width: 320px;">
+        <div class="footer-grid">
+          <div>
             <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-3);" aria-label="George home">
               <img src="images/logo.png" alt="George — Christian Essays Publication" class="brand-logo-img" width="120" height="32" />
             </a>
-            <p style="font-size: var(--text-sm); color: var(--color-ink-secondary); margin: 0; line-height: var(--leading-sm);">
+            <p style="font-size: var(--text-sm); color: var(--color-ink-secondary); margin: 0; line-height: var(--leading-sm); max-width: 320px;">
               Thoughts worth a minute.<br />
               Truth worth a lifetime.
             </p>
@@ -429,7 +429,7 @@
           </div>
         </div>
 
-        <div style="padding-top: var(--space-8); border-top: 1px solid var(--color-border-subtle); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); font-size: var(--text-xs); color: var(--color-ink-muted);">
+        <div class="footer-bottom-row">
           <p style="margin: 0;">© 2025 George. Written slowly in the countryside.</p>
           <div style="display: flex; gap: var(--space-4);">
             <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Privacy</a>
@@ -440,16 +440,5 @@
     </footer>
 
     <script src="main.js"></script>
-    <script>
-      if (window.innerWidth >= 768) {
-        document.querySelectorAll('.desktop-nav').forEach(el => el.style.display = 'flex');
-        document.querySelectorAll('.desktop-btn').forEach(el => el.style.display = 'inline-flex');
-      }
-      window.addEventListener('resize', () => {
-        const isDesktop = window.innerWidth >= 768;
-        document.querySelectorAll('.desktop-nav').forEach(el => el.style.display = isDesktop ? 'flex' : 'none');
-        document.querySelectorAll('.desktop-btn').forEach(el => el.style.display = isDesktop ? 'inline-flex' : 'none');
-      });
-    </script>
   </body>
 </html>

@@ -204,9 +204,12 @@
             A quiet space for Scripture and reflection before the week begins. No noise. Just one thoughtful read.
           </p>
           <form class="newsletter-form" aria-label="Newsletter signup">
-            <div style="display: flex; gap: var(--space-2); max-width: 480px;">
-              <input id="article-email" type="email" required autocomplete="email" placeholder="your@email.com" style="width: 100%; border: 1px solid var(--color-border-medium); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); font-size: var(--text-sm); color: var(--color-ink-primary); outline: none; background: var(--color-canvas);" />
-              <button type="submit" class="btn-accent" style="white-space: nowrap;">Subscribe</button>
+            <div class="newsletter-form-row">
+              <input id="article-email" type="email" required autocomplete="email" placeholder="your@email.com" class="newsletter-input" />
+              <button type="submit" class="btn-accent newsletter-btn">
+                <span>Subscribe</span>
+                <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="2"></iconify-icon>
+              </button>
             </div>
             <p class="form-message" style="font-size: var(--text-xs); color: var(--color-ink-muted); margin-top: var(--space-2);" role="status" aria-live="polite">Calm inbox. Unsubscribe whenever you need.</p>
           </form>
@@ -228,12 +231,12 @@
     <!-- Site Footer -->
     <footer class="site-footer">
       <div class="site-container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-10); margin-bottom: var(--space-12);">
-          <div style="grid-column: span 1 / -1; max-width: 320px;">
+        <div class="footer-grid">
+          <div>
             <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-3);" aria-label="George home">
               <img src="images/logo.png" alt="George — Christian Essays Publication" class="brand-logo-img" width="120" height="32" />
             </a>
-            <p style="font-size: var(--text-sm); color: var(--color-ink-secondary); margin: 0; line-height: var(--leading-sm);">
+            <p style="font-size: var(--text-sm); color: var(--color-ink-secondary); margin: 0; line-height: var(--leading-sm); max-width: 320px;">
               Thoughts worth a minute.<br />
               Truth worth a lifetime.
             </p>
@@ -254,7 +257,7 @@
           </div>
         </div>
 
-        <div style="padding-top: var(--space-8); border-top: 1px solid var(--color-border-subtle); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4); font-size: var(--text-xs); color: var(--color-ink-muted);">
+        <div class="footer-bottom-row">
           <p style="margin: 0;">© 2025 George. Written slowly in the countryside.</p>
           <div style="display: flex; gap: var(--space-4);">
             <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Privacy</a>
@@ -265,16 +268,5 @@
     </footer>
 
     <script src="main.js"></script>
-    <script>
-      if (window.innerWidth >= 768) {
-        document.querySelectorAll('.desktop-nav').forEach(el => el.style.display = 'flex');
-        document.querySelectorAll('.desktop-btn').forEach(el => el.style.display = 'inline-flex');
-      }
-      window.addEventListener('resize', () => {
-        const isDesktop = window.innerWidth >= 768;
-        document.querySelectorAll('.desktop-nav').forEach(el => el.style.display = isDesktop ? 'flex' : 'none');
-        document.querySelectorAll('.desktop-btn').forEach(el => el.style.display = isDesktop ? 'inline-flex' : 'none');
-      });
-    </script>
   </body>
 </html>
