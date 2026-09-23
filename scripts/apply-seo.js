@@ -347,7 +347,7 @@ const today = new Date().toISOString().split('T')[0];
         "url": authorUrl,
         "image": `${domain}/images/Me.png`,
         "jobTitle": "Writer & Creator of Jojjy",
-        "description": "Pastor turned writer sharing short, honest Christian reflections on ordinary faith, work, and following Jesus in the everyday.",
+        "description": "Writer sharing short, honest Christian reflections on ordinary faith, work, and following Jesus in the everyday.",
         "sameAs": [
           authorUrl
         ]
@@ -487,7 +487,7 @@ const today = new Date().toISOString().split('T')[0];
       "url": canonicalUrl,
       "image": `${domain}/images/Me.png`,
       "jobTitle": "Writer & Creator of Jojjy",
-      "description": "Pastor turned writer sharing short, honest reflections on ordinary Christian faith, Scripture, and grace on Jojjy.",
+      "description": "Writer sharing short, honest reflections on ordinary Christian faith, Scripture, and grace on Jojjy.",
       "worksFor": {
         "@type": "Organization",
         "@id": `${domain}/#publication`,
