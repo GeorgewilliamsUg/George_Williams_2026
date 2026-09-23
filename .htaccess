@@ -1,22 +1,79 @@
 # ==============================================================================
-# PRODUCTION SERVER CONFIGURATION (.htaccess)
+# PRODUCTION SERVER CONFIGURATION (.htaccess) — JOJJY.ORG
 # ==============================================================================
 
-# 1. Enforce HTTPS & Canonical Domain (301 Permanent Redirect)
+# ------------------------------------------------------------------------------
+# 1. Custom Error Documents (Editorial Branded 404 Experience)
+# ------------------------------------------------------------------------------
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+
+# ------------------------------------------------------------------------------
+# 2. Prevent Directory Browsing (No Auto-Generated Folder Listings)
+# ------------------------------------------------------------------------------
+Options -Indexes
+
+# ------------------------------------------------------------------------------
+# 3. Enforce HTTPS & Canonical Domain (301 Permanent Redirect)
+# ------------------------------------------------------------------------------
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # 1. Enforce canonical non-www over HTTPS in a single step (handles both http://www.* and https://www.*)
+  # Enforce canonical non-www over HTTPS in a single step (handles both http://www.* and https://www.*)
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
-  # 2. Redirect remaining HTTP non-www to HTTPS
+  # Redirect remaining HTTP non-www to HTTPS
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # Redirect direct requests for unpopulated template to essay archive
+  RewriteRule ^article\.html$ /articles.html [R=301,L]
 </IfModule>
 
-# 2. Security Headers
+# ------------------------------------------------------------------------------
+# 4. Sensitive Files, Drafts & Directory Protection
+# ------------------------------------------------------------------------------
+# Block direct web access to private documents, shell scripts, logs, and markdown
+<FilesMatch "\.(docx|doc|odt|ps1|md|log|bak|tmp)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Block deployment configuration and manifest JSON files (manifest.json remains public)
+<FilesMatch "(deploy-config.*|deploy-manifest|deploy-state|\.skills)\.json$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Block hidden files and directories (.git, .env, .htaccess, etc.)
+<FilesMatch "^\.">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Block direct access to internal directories (source notes & maintenance scripts)
+RedirectMatch 404 ^/(src|scripts)(/.*)?$
+
+# ------------------------------------------------------------------------------
+# 5. Security Headers
+# ------------------------------------------------------------------------------
 <IfModule mod_headers.c>
   # HTTP Strict Transport Security (HSTS)
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
@@ -34,7 +91,9 @@
   Header always set Permissions-Policy "geolocation=(self), microphone=(), camera=()"
 </IfModule>
 
-# 3. Enable GZIP / Deflate Compression (Speed & Core Web Vitals)
+# ------------------------------------------------------------------------------
+# 6. Enable GZIP / Deflate Compression (Speed & Core Web Vitals)
+# ------------------------------------------------------------------------------
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
   AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
@@ -43,7 +102,9 @@
   AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 
-# 4. Leverage Browser Caching
+# ------------------------------------------------------------------------------
+# 7. Leverage Browser Caching
+# ------------------------------------------------------------------------------
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresDefault "access plus 1 month"

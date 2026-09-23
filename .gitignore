@@ -19,12 +19,40 @@ deploy-config.local.json
 .vscode/
 .idea/
 
-# OS & temporary files
+# Private editorial drafts, topic outlines & working notes
+Articles to write about.docx
+*.docx
+*.doc
+*.odt
+drafts/
+_drafts/
+articles/draft-*
+*.draft.html
+scratch/
+notes/
+
+# Test, scratch & preview pages
+test-*.html
+preview-*.html
+temp-*.html
+
+# Performance, accessibility & audit reports
+*.report.html
+lighthouse-report/
+
+# OS, shell & temporary files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+desktop.ini
 *.tmp
 *.bak
 *.log
+
+# Local backup archives
+*.zip
+*.tar.gz
+*.7z
 
 # Dependencies / virtual environments (if any)
 node_modules/

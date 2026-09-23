@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found (404) — Jojjy</title>
+    <meta name="description" content="The requested page could not be found on Jojjy. Explore short, honest Christian reflections by George on faith, life, and work." />
+    <meta name="robots" content="noindex, follow" />
+
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png" />
+    <link rel="manifest" href="images/favicon/manifest.json" />
+  </head>
+
+  <body>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+      <div id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+      <div id="mobile-nav-drawer">
+        <div class="mobile-nav-header">
+          <a href="index.html" class="brand-logo" aria-label="Jojjy home">
+            <img src="images/logo.png" alt="Jojjy — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
+          </a>
+          <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">
+            <iconify-icon icon="solar:close-linear" width="18" stroke-width="1.5"></iconify-icon>
+          </button>
+        </div>
+
+        <p class="mobile-nav-section-label">Navigation</p>
+        <nav aria-label="Mobile navigation" class="mobile-nav-links">
+          <a href="index.html" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:home-2-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Home</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+          <a href="articles.html" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:document-text-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Articles</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+          <a href="about.html" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:user-circle-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>About</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+          <a href="index.html#collections" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:bookmark-opened-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Collections</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+          <a href="index.html#newsletter" class="mobile-nav-item" onclick="closeMobileNav()">
+            <span class="mobile-nav-item-left">
+              <iconify-icon icon="solar:letter-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Sunday Letter</span>
+            </span>
+            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
+          </a>
+        </nav>
+
+        <div class="mobile-nav-footer">
+          <div class="mobile-nav-card">
+            <span class="mobile-nav-card-badge">Weekly Digest</span>
+            <p class="mobile-nav-card-title">The Sunday Letter</p>
+            <p class="mobile-nav-card-desc">Short, honest essays on following Jesus through the beautiful ordinary.</p>
+            <a href="index.html#newsletter" onclick="closeMobileNav()" class="btn-accent mobile-nav-card-btn">
+              <span>Subscribe Free</span>
+              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reading Progress Bar -->
+    <div style="position: fixed; inset-inline: 0; top: 0; z-index: 70; height: 2px;">
+      <div id="reading-progress"></div>
+    </div>
+
+    <!-- Skip Link for Keyboard Accessibility -->
+    <a href="#main-content" style="position: absolute; left: -9999px; top: var(--space-4); z-index: 100; background: var(--color-ink-primary); color: #fff; padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm); text-decoration: none;" onfocus="this.style.left='var(--space-4)'" onblur="this.style.left='-9999px'">Skip to main content</a>
+
+    <!-- Masthead & Site Header -->
+    <header class="site-header">
+      <div class="site-container">
+        <div class="header-inner">
+          <a href="index.html" class="brand-logo" aria-label="Jojjy home">
+            <img src="images/logo.png" alt="Jojjy — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
+          </a>
+
+          <nav aria-label="Primary navigation" class="desktop-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="articles.html" class="nav-link">Articles</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="index.html#collections" class="nav-link">Collections</a>
+            <a href="index.html#newsletter" class="nav-link">Newsletter</a>
+          </nav>
+
+          <div class="header-actions">
+            <a href="index.html#newsletter" class="btn-accent desktop-btn">
+              <span>Sunday Letter</span>
+              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
+            </a>
+            <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="openMobileNav()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+              <iconify-icon icon="solar:hamburger-menu-linear" width="18" stroke-width="1.5"></iconify-icon>
+              <span>Menu</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <!-- 404 Hero Section -->
+      <section class="error-hero-section">
+        <div class="site-container">
+          <div class="error-hero-inner">
+            <div class="error-kicker-badge">
+              <iconify-icon icon="solar:compass-bold-duotone" width="15"></iconify-icon>
+              <span>404 — PAGE NOT FOUND</span>
+            </div>
+            <h1 class="error-title" data-hero-motion>The <span class="hero-highlight-word">quiet path</span> ended here.</h1>
+            <p class="error-desc">
+              The page, essay, or link you were seeking has moved, been retitled, or quietly rested.
+              In the ordinary rhythm of life, a wrong turn is simply an invitation to pause and discover something else.
+            </p>
+            <div class="error-actions">
+              <a href="articles.html" class="btn-accent">
+                <span>Browse all essays</span>
+                <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="2"></iconify-icon>
+              </a>
+              <a href="index.html" class="btn-outline">
+                <iconify-icon icon="solar:home-2-linear" width="16" stroke-width="1.5"></iconify-icon>
+                <span>Return home</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommended Essays Section -->
+      <section class="error-rec-section">
+        <div class="site-container">
+          <div class="error-rec-header">
+            <p class="error-rec-kicker">RECOMMENDED ESSAYS</p>
+            <h2 class="error-rec-title">A few places to begin again</h2>
+            <p class="error-rec-sub">Short, honest reflections on work, silence, and walking faithfully through the everyday.</p>
+          </div>
+
+          <div class="articles-grid">
+            <!-- Curated Essay 01 -->
+            <article class="archive-card has-thumb" data-topic="work">
+              <div class="card-thumb-wrap">
+                <img src="images/business.jpg" alt="Busy Isn't Faithful" class="card-thumb-img" loading="lazy" />
+              </div>
+              <div class="card-content-wrap">
+                <div>
+                  <div class="card-header-meta">
+                    <span class="topic-tag">Work</span>
+                    <span class="card-index">№ 01</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="articles/article-busy-isnt-faithful.html" style="color: inherit; text-decoration: none;">Busy Isn't Faithful</a>
+                  </h3>
+                  <div class="card-meta-line">
+                    <time datetime="2025-08-03">Aug 3, 2025</time>
+                    <span class="meta-separator">·</span>
+                    <span>1 min read</span>
+                  </div>
+                  <p class="card-excerpt">
+                    Martha wasn't wrong to serve. Jesus named the anxiety underneath it. We were both just moving too fast to ask why.
+                  </p>
+                </div>
+                <div class="card-footer-action" style="margin-top: var(--space-6);">
+                  <a href="articles/article-busy-isnt-faithful.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <span>Read essay</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="card-arrow-icon" width="16" stroke-width="1.5"></iconify-icon>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Curated Essay 02 -->
+            <article class="archive-card has-thumb" data-topic="prayer">
+              <div class="card-thumb-wrap">
+                <img src="images/prayer_01.jpg" alt="Terrified of Silence" class="card-thumb-img" loading="lazy" />
+              </div>
+              <div class="card-content-wrap">
+                <div>
+                  <div class="card-header-meta">
+                    <span class="topic-tag">Prayer</span>
+                    <span class="card-index">№ 07</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="articles/article-terrified-of-silence.html" style="color: inherit; text-decoration: none;">Terrified of Silence</a>
+                  </h3>
+                  <div class="card-meta-line">
+                    <time datetime="2025-08-25">Aug 25, 2025</time>
+                    <span class="meta-separator">·</span>
+                    <span>2 min read</span>
+                  </div>
+                  <p class="card-excerpt">
+                    We fill every quiet corner of our day with noise because in the silence, we have to meet ourselves—and God.
+                  </p>
+                </div>
+                <div class="card-footer-action" style="margin-top: var(--space-6);">
+                  <a href="articles/article-terrified-of-silence.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <span>Read essay</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="card-arrow-icon" width="16" stroke-width="1.5"></iconify-icon>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Curated Essay 03 -->
+            <article class="archive-card has-thumb" data-topic="work">
+              <div class="card-thumb-wrap">
+                <img src="images/writing-desk.png" alt="Nobody Is Self-Made" class="card-thumb-img" loading="lazy" />
+              </div>
+              <div class="card-content-wrap">
+                <div>
+                  <div class="card-header-meta">
+                    <span class="topic-tag">Work</span>
+                    <span class="card-index">№ 02</span>
+                  </div>
+                  <h3 class="card-title">
+                    <a href="articles/article-nobody-is-self-made.html" style="color: inherit; text-decoration: none;">Nobody Is Self-Made</a>
+                  </h3>
+                  <div class="card-meta-line">
+                    <time datetime="2025-08-06">Aug 6, 2025</time>
+                    <span class="meta-separator">·</span>
+                    <span>2 min read</span>
+                  </div>
+                  <p class="card-excerpt">
+                    The myth of self-reliance makes grace seem like charity rather than oxygen. Everything we have is borrowed breath.
+                  </p>
+                </div>
+                <div class="card-footer-action" style="margin-top: var(--space-6);">
+                  <a href="articles/article-nobody-is-self-made.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <span>Read essay</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="card-arrow-icon" width="16" stroke-width="1.5"></iconify-icon>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div class="site-container">
+        <div class="footer-grid">
+          <div>
+            <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-3);" aria-label="Jojjy home">
+              <img src="images/logo.png" alt="Jojjy — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
+            </a>
+            <p style="font-size: var(--text-sm); color: var(--color-ink-secondary); margin: 0; line-height: var(--leading-sm); max-width: 320px;">
+              Thoughts worth a minute.<br />
+              Truth worth a lifetime.
+            </p>
+          </div>
+
+          <div>
+            <p class="footer-nav-title">Explore</p>
+            <a href="articles.html" class="footer-link">All articles</a>
+            <a href="index.html#collections" class="footer-link">Collections</a>
+            <a href="about.html" class="footer-link">About George</a>
+          </div>
+
+          <div>
+            <p class="footer-nav-title">Elsewhere</p>
+            <a href="index.html#newsletter" class="footer-link">Sunday letter</a>
+            <a href="mailto:hello@georgewrites.com" class="footer-link">Write a note</a>
+            <a href="about.html" class="footer-link">Meet George</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom-row">
+          <p style="margin: 0;">© 2025 Jojjy. Essays by George, written slowly in the countryside.</p>
+          <div style="display: flex; gap: var(--space-4);">
+            <a href="index.html" style="color: var(--color-ink-muted); text-decoration: none;">Home</a>
+            <a href="articles.html" style="color: var(--color-ink-muted); text-decoration: none;">Archive</a>
+            <a href="about.html" style="color: var(--color-ink-muted); text-decoration: none;">About</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script src="motion.js" defer></script>
+  </body>
+</html>

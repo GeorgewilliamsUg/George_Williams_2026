@@ -130,7 +130,7 @@ Write-DeployInfo "Local Source:  $LocalDir"
 $DefaultExcludes = @(
     "^\.git($|/|\\)", "^\.github($|/|\\)", "^\.agents($|/|\\)", "^\.vscode($|/|\\)",
     "^\.skills\.json$", "^\.gitignore$", "^deploy\.ps1$", "^publish\.ps1$",
-    "^deploy-config.*\.json$", "^\.deploy-manifest\.json$", "^\.deploy-state\.json$",
+    "^article\.html$", "^deploy-config.*\.json$", "^\.deploy-manifest\.json$", "^\.deploy-state\.json$",
     "^DEPLOYMENT\.md$", "^src($|/|\\)", "^scripts($|/|\\)",
     "\.docx$", "\.md$", "\.eps$",
     "^\.env.*$", "^\.venv($|/|\\)", "^venv($|/|\\)", "^node_modules($|/|\\)",

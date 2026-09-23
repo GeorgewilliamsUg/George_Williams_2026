@@ -140,6 +140,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (countEl) countEl.textContent = visibleCount;
+      const interlude = document.querySelector('.archive-quote-interlude');
+      if (interlude) {
+        interlude.style.display = (currentTopic === 'all' && !currentQuery) ? '' : 'none';
+      }
       if (emptyState) {
         emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
       }
