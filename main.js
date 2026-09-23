@@ -145,6 +145,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
+    // Initialize topic filter from URL query parameter (?topic=work) or hash (#work)
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlTopic = (urlParams.get('topic') || window.location.hash.replace('#', '') || '').toLowerCase();
+      if (urlTopic) {
+        const matchingChip = Array.from(filterChips).find((c) => (c.dataset.filter || '').toLowerCase() === urlTopic);
+        if (matchingChip) {
+          filterChips.forEach((c) => {
+            c.classList.remove('active');
+            c.setAttribute('aria-selected', 'false');
+          });
+          matchingChip.classList.add('active');
+          matchingChip.setAttribute('aria-selected', 'true');
+          currentTopic = matchingChip.dataset.filter;
+        }
+      }
+    } catch (_) {}
+
+    // Initial filter pass
+    applyFilters();
+
     // Filter chip click handler
     filterChips.forEach((chip) => {
       chip.addEventListener('click', () => {

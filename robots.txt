@@ -9,7 +9,8 @@ Allow: /images/
 Allow: /styles.css
 Allow: /main.js
 
-# Disallow Internal Utility, Source Drafts & Config Files
+# Disallow Unpopulated Template, Internal Utilities, Source Drafts & Config Files
+Disallow: /article.html
 Disallow: /src/
 Disallow: /scripts/
 Disallow: /*.json$
