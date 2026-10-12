@@ -19,7 +19,7 @@ function getFiles(dir) {
 }
 
 const files = getFiles(rootDir);
-console.log(`Auditing ${files.length} HTML files for Jojjy.org Technical SEO, Semantic Clarity & Schema Integrity...\n`);
+console.log(`Auditing ${files.length} HTML files for George.org Technical SEO, Semantic Clarity & Schema Integrity...\n`);
 
 let passedChecks = 0;
 let failedChecks = 0;
@@ -67,8 +67,8 @@ files.forEach(f => {
       'Error page 404.html has noindex, follow', rel);
     const titleMatch = content.match(/<title>([\s\S]*?)<\/title>/i);
     const title = titleMatch ? titleMatch[1].trim() : '';
-    check(title.includes('404') && title.includes('Jojjy'),
-      `Error page title contains 404 and Jojjy (found "${title}")`, rel);
+    check(title.includes('404') && title.includes('George'),
+      `Error page title contains 404 and George (found "${title}")`, rel);
     const descMatch = content.match(/<meta\s+name=["']description["']\s+content=(["'])([\s\S]*?)\1/i);
     const desc = descMatch ? descMatch[2].trim() : '';
     check(desc.length >= 50 && desc.length <= 165,
@@ -81,17 +81,17 @@ files.forEach(f => {
     const titleMatch = content.match(/<title>([\s\S]*?)<\/title>/i);
     const title = titleMatch ? titleMatch[1].trim() : '';
     check(title.length >= 5 && title.length <= 75, `Title length is valid (${title.length} chars: "${title}")`, rel);
-    check(title.includes('Jojjy'), `Title includes publication name "Jojjy"`, rel);
+    check(title.includes('George'), `Title includes publication name "George"`, rel);
 
     // Title formula verification
     if (rel === 'index.html') {
-      check(title.startsWith('Jojjy'), `Homepage title follows "Jojjy..." (found "${title}")`, rel);
+      check(title.startsWith('George'), `Homepage title follows "George..." (found "${title}")`, rel);
     } else if (rel === 'about.html') {
-      check(title.includes('About') && title.includes('Jojjy'), `About page title contains About and Jojjy (found "${title}")`, rel);
+      check(title.includes('About') && title.includes('George'), `About page title contains About and George (found "${title}")`, rel);
     } else if (rel === 'articles.html') {
-      check(title.includes('Articles') && title.includes('Jojjy'), `Articles archive title contains Articles and Jojjy (found "${title}")`, rel);
+      check(title.includes('Articles') && title.includes('George'), `Articles archive title contains Articles and George (found "${title}")`, rel);
     } else if (rel.startsWith('articles/')) {
-      check(title.endsWith(' — George | Jojjy'), `Article title ends with " — George | Jojjy" (found "${title}")`, rel);
+      check(title.endsWith(' — George'), `Article title ends with " — George" (found "${title}")`, rel);
     }
 
     // Title Uniqueness
@@ -133,7 +133,7 @@ files.forEach(f => {
 
     // Open Graph
     const ogSiteName = content.match(/<meta\s+property=["']og:site_name["']\s+content=(["'])([\s\S]*?)\1/i);
-    check(ogSiteName && ogSiteName[2] === 'Jojjy', `og:site_name is "Jojjy"`, rel);
+    check(ogSiteName && ogSiteName[2] === 'George', `og:site_name is "George"`, rel);
 
     const ogUrl = content.match(/<meta\s+property=["']og:url["']\s+content=(["'])([\s\S]*?)\1/i);
     check(ogUrl && ogUrl[2] === expectedCanonical, `og:url matches canonical`, rel);
@@ -174,9 +174,9 @@ files.forEach(f => {
           const person = graph.find(e => e['@type'] === 'Person');
 
           check(!!website, 'Homepage schema has WebSite entity', rel);
-          check(website && website.name === 'Jojjy', 'Homepage WebSite name is "Jojjy"', rel);
-          check(website && website.publisher && website.publisher['@type'] === 'Organization', 'WebSite publisher is Organization (Jojjy)', rel);
-          check(website && website.publisher.name === 'Jojjy', 'WebSite publisher name is "Jojjy"', rel);
+          check(website && website.name === 'George', 'Homepage WebSite name is "George"', rel);
+          check(website && website.publisher && website.publisher['@type'] === 'Organization', 'WebSite publisher is Organization (George)', rel);
+          check(website && website.publisher.name === 'George', 'WebSite publisher name is "George"', rel);
           check(website && website.creator && website.creator['@type'] === 'Person', 'WebSite creator is Person (George)', rel);
 
           check(!!person, 'Homepage schema has Person entity (George)', rel);
@@ -184,21 +184,21 @@ files.forEach(f => {
           check(person && person.url === 'https://jojjy.org/about.html', 'Person entity url is https://jojjy.org/about.html', rel);
         } else if (rel === 'articles.html') {
           check(parsed['@type'] === 'CollectionPage', 'Archive schema type is CollectionPage', rel);
-          check(parsed.isPartOf && parsed.isPartOf.name === 'Jojjy', 'Archive isPartOf is Jojjy', rel);
+          check(parsed.isPartOf && parsed.isPartOf.name === 'George', 'Archive isPartOf is George', rel);
           check(parsed.author && parsed.author['@type'] === 'Person', 'Archive author is Person (George)', rel);
-          check(parsed.publisher && parsed.publisher['@type'] === 'Organization', 'Archive publisher is Organization (Jojjy)', rel);
+          check(parsed.publisher && parsed.publisher['@type'] === 'Organization', 'Archive publisher is Organization (George)', rel);
           check(parsed.mainEntity && parsed.mainEntity['@type'] === 'ItemList', 'Archive has ItemList mainEntity', rel);
           check(parsed.mainEntity && parsed.mainEntity.numberOfItems === 18, 'ItemList contains 18 items', rel);
         } else if (rel === 'about.html') {
           check(parsed['@type'] === 'ProfilePage', 'About page schema type is ProfilePage', rel);
-          check(parsed.isPartOf && parsed.isPartOf.name === 'Jojjy', 'About isPartOf is Jojjy', rel);
+          check(parsed.isPartOf && parsed.isPartOf.name === 'George', 'About isPartOf is George', rel);
           check(parsed.mainEntity && parsed.mainEntity['@type'] === 'Person', 'About mainEntity is Person (George)', rel);
-          check(parsed.mainEntity && parsed.mainEntity.worksFor && parsed.mainEntity.worksFor.name === 'Jojjy', 'George worksFor Jojjy publication', rel);
+          check(parsed.mainEntity && parsed.mainEntity.worksFor && parsed.mainEntity.worksFor.name === 'George', 'George worksFor George publication', rel);
         } else if (rel.startsWith('articles/')) {
           check(parsed['@type'] === 'BlogPosting', 'Article schema type is BlogPosting', rel);
-          check(parsed.isPartOf && parsed.isPartOf.name === 'Jojjy', 'Article isPartOf is Jojjy', rel);
+          check(parsed.isPartOf && parsed.isPartOf.name === 'George', 'Article isPartOf is George', rel);
           check(parsed.author && parsed.author['@type'] === 'Person' && parsed.author.name === 'George', 'Article author is Person (George)', rel);
-          check(parsed.publisher && parsed.publisher['@type'] === 'Organization' && parsed.publisher.name === 'Jojjy', 'Article publisher is Organization (Jojjy)', rel);
+          check(parsed.publisher && parsed.publisher['@type'] === 'Organization' && parsed.publisher.name === 'George', 'Article publisher is Organization (George)', rel);
           check(!!parsed.datePublished, 'Article has datePublished', rel);
           check(!!parsed.headline, 'Article has headline', rel);
           check(!!parsed.breadcrumb, 'Article has breadcrumb BreadcrumbList', rel);
@@ -282,8 +282,8 @@ check(robots.includes('Allow: /articles/'), 'robots.txt allows /articles/', 'rob
 const manifestPath = path.join(rootDir, 'images/favicon/manifest.json');
 if (fs.existsSync(manifestPath)) {
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-  check(manifest.name === 'Jojjy', 'manifest.json name is "Jojjy"', 'manifest.json');
-  check(manifest.short_name === 'Jojjy', 'manifest.json short_name is "Jojjy"', 'manifest.json');
+  check(manifest.name === 'George', 'manifest.json name is "George"', 'manifest.json');
+  check(manifest.short_name === 'George', 'manifest.json short_name is "George"', 'manifest.json');
 }
 
 // 5. .htaccess verification

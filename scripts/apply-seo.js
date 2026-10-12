@@ -10,17 +10,17 @@ for (let i = 0; i < args.length; i++) {
   }
 }
 
-const siteName = 'Jojjy';
+const siteName = 'George';
 const authorName = 'George';
 const authorEmail = 'hello@georgewrites.com';
 const authorUrl = `${domain}/about.html`;
 const defaultOgImage = `${domain}/images/hero-countryside.png`;
 
-// 18 Articles metadata lookup with Title formula: [Article Title] — George | Jojjy
+// 18 Articles metadata lookup with Title formula: [Article Title] — George | George
 const articlesMetadata = {
   'article-busy-isnt-faithful.html': {
     headline: "Busy Isn't Faithful",
-    title: "Busy Isn't Faithful — George | Jojjy",
+    title: "Busy Isn't Faithful — George | George",
     desc: "Martha was serving, but Jesus named the anxiety beneath her motion. Discover why frantic Christian busyness is not devotion and how to embrace true rest.",
     topic: "Work & Vocation",
     date: "2025-08-03",
@@ -31,7 +31,7 @@ const articlesMetadata = {
   },
   'article-nobody-is-self-made.html': {
     headline: "Nobody Is Self-Made",
-    title: "Nobody Is Self-Made — George | Jojjy",
+    title: "Nobody Is Self-Made — George | George",
     desc: "Hands can bleed with honest effort and still stand on borrowed ground. An honest Christian reflection on Deuteronomy, humility, and the quiet gift of grace.",
     topic: "Work & Vocation",
     date: "2025-07-20",
@@ -42,7 +42,7 @@ const articlesMetadata = {
   },
   'article-churches-dont-drift-toward-truth.html': {
     headline: "Churches Don't Drift Toward Truth",
-    title: "Churches Don't Drift Toward Truth — George | Jojjy",
+    title: "Churches Don't Drift Toward Truth — George | George",
     desc: "Theological drift is quiet, gradual, and always away from Christ. Explore how congregations lose their anchor and why guarding biblical truth demands resolve.",
     topic: "Discipleship",
     date: "2025-07-13",
@@ -53,7 +53,7 @@ const articlesMetadata = {
   },
   'article-faithfulness-can-feel-lonely.html': {
     headline: "Faithfulness Can Feel Lonely",
-    title: "Faithfulness Can Feel Lonely — George | Jojjy",
+    title: "Faithfulness Can Feel Lonely — George | George",
     desc: "There is a quiet ache in staying true when culture walks away. Discover biblical encouragement for the isolation that often accompanies Christian integrity.",
     topic: "Suffering & Joy",
     date: "2025-07-06",
@@ -64,7 +64,7 @@ const articlesMetadata = {
   },
   'article-god-doesnt-need-your-resume.html': {
     headline: "God Doesn't Need Your Resume",
-    title: "God Doesn't Need Your Resume — George | Jojjy",
+    title: "God Doesn't Need Your Resume — George | George",
     desc: "Moses had a stutter, Gideon was hiding, and Peter denied Christ. A 5-minute essay on how God qualifies the called instead of demanding impressive credentials.",
     topic: "Discipleship",
     date: "2025-06-29",
@@ -75,7 +75,7 @@ const articlesMetadata = {
   },
   'article-your-mind-is-under-attack-and-you-dont-even-see-it.html': {
     headline: "Your Mind Is Under Attack",
-    title: "Your Mind Is Under Attack — George | Jojjy",
+    title: "Your Mind Is Under Attack — George | George",
     desc: "The modern siege on faith is waged through constant digital distraction. Learn how the attention economy fragments the soul and how to guard your mind today.",
     topic: "Quiet Holiness",
     date: "2025-03-23",
@@ -86,7 +86,7 @@ const articlesMetadata = {
   },
   'article-terrified-of-silence.html': {
     headline: "Terrified of Silence",
-    title: "Terrified of Silence — George | Jojjy",
+    title: "Terrified of Silence — George | George",
     desc: "We fill our days with ambient noise because stillness forces us to confront who we are. An honest reflection on recovering quiet solitude and intimacy with God.",
     topic: "Quiet Holiness",
     date: "2025-06-15",
@@ -97,7 +97,7 @@ const articlesMetadata = {
   },
   'article-the-bible-was-never-about-you.html': {
     headline: "The Bible Was Never About You",
-    title: "The Bible Was Never About You — George | Jojjy",
+    title: "The Bible Was Never About You — George | George",
     desc: "We often read Scripture like a self-help manual rather than the story of redemption. Discover how shifting the focus back to Jesus transforms how you read.",
     topic: "Reading Scripture",
     date: "2025-06-08",
@@ -108,7 +108,7 @@ const articlesMetadata = {
   },
   'article-the-jesus-you-missed-in-the-old-testament.html': {
     headline: "The Jesus You Missed in the Old Testament",
-    title: "The Jesus You Missed in the Old Testament — George | Jojjy",
+    title: "The Jesus You Missed in the Old Testament — George | George",
     desc: "The Old Testament is rich with shadows, types, and promises fulfilled in Christ. Trace the redemptive threads from Genesis through the prophets in this essay.",
     topic: "Reading Scripture",
     date: "2025-06-01",
@@ -119,7 +119,7 @@ const articlesMetadata = {
   },
   'article-the-respectable-sin-nobody-talks-about.html': {
     headline: "The Respectable Sin Nobody Talks About",
-    title: "The Respectable Sin Nobody Talks About — George | Jojjy",
+    title: "The Respectable Sin Nobody Talks About — George | George",
     desc: "We condemn outward vices while treating chronic worry as harmless. Explore why anxiety is a theological statement and how Romans 8 offers profound peace.",
     topic: "Quiet Holiness",
     date: "2025-05-25",
@@ -130,7 +130,7 @@ const articlesMetadata = {
   },
   'article-the-verse-that-is-slowly-killing-you.html': {
     headline: "The Verse That Is Slowly Killing You",
-    title: "The Verse That Is Slowly Killing You — George | Jojjy",
+    title: "The Verse That Is Slowly Killing You — George | George",
     desc: "Jeremiah 29:11 is printed on coffee mugs, yet rarely read in context. Unpack what God actually promised exiles in Babylon and why real hope is far deeper.",
     topic: "Reading Scripture",
     date: "2025-05-18",
@@ -141,7 +141,7 @@ const articlesMetadata = {
   },
   'article-you-were-not-made-for-sadness.html': {
     headline: "You Were Not Made for Sadness",
-    title: "You Were Not Made for Sadness — George | Jojjy",
+    title: "You Were Not Made for Sadness — George | George",
     desc: "Paul commanded joy from a Roman dungeon because Christian joy is anchored in a Person, not circumstances. A thoughtful meditation on joy amidst real grief.",
     topic: "Suffering & Joy",
     date: "2025-05-11",
@@ -152,7 +152,7 @@ const articlesMetadata = {
   },
   'article-waiting-is-not-wasting.html': {
     headline: "Waiting Is Not Wasting",
-    title: "Waiting Is Not Wasting — George | Jojjy",
+    title: "Waiting Is Not Wasting — George | George",
     desc: "From Abraham to David, God used prolonged waiting seasons to forge character. Discover why waiting is never wasted time when God is the one doing the work.",
     topic: "Suffering & Joy",
     date: "2025-05-04",
@@ -163,7 +163,7 @@ const articlesMetadata = {
   },
   'article-what-poverty-taught-me-about-riches.html': {
     headline: "What Poverty Taught Me About Riches",
-    title: "What Poverty Taught Me About Riches — George | Jojjy",
+    title: "What Poverty Taught Me About Riches — George | George",
     desc: "Experiencing material scarcity strips away illusions of security and reveals true wealth. Read an honest reflection on contentment, simplicity, and grace.",
     topic: "Discipleship",
     date: "2025-04-27",
@@ -174,7 +174,7 @@ const articlesMetadata = {
   },
   'article-whatever-you-do-as-unto-the-lord.html': {
     headline: "Whatever You Do, As Unto the Lord",
-    title: "Whatever You Do, As Unto the Lord — George | Jojjy",
+    title: "Whatever You Do, As Unto the Lord — George | George",
     desc: "Colossians 3:23 transforms mundane routines, emails, and dishes into sacred worship. Discover how working as unto the Lord redeems ordinary daily labor.",
     topic: "Work & Vocation",
     date: "2025-04-20",
@@ -185,7 +185,7 @@ const articlesMetadata = {
   },
   'article-why-friendship-feels-so-rare.html': {
     headline: "Why Friendship Feels So Rare",
-    title: "Why Friendship Feels So Rare — George | Jojjy",
+    title: "Why Friendship Feels So Rare — George | George",
     desc: "We live in the most digitally connected yet loneliest generation in history. An honest essay exploring why deep biblical fellowship requires intentionality.",
     topic: "Discipleship",
     date: "2025-04-13",
@@ -196,7 +196,7 @@ const articlesMetadata = {
   },
   'article-work-existed-before-sin.html': {
     headline: "Work Existed Before Sin",
-    title: "Work Existed Before Sin — George | Jojjy",
+    title: "Work Existed Before Sin — George | George",
     desc: "Work was instituted in the Garden of Eden before the Fall, not as a curse. Rediscover God's original design for meaningful daily labor, vocation, and rest.",
     topic: "Work & Vocation",
     date: "2025-04-06",
@@ -207,7 +207,7 @@ const articlesMetadata = {
   },
   'article-you-are-not-your-job-title.html': {
     headline: "You Are Not Your Job Title",
-    title: "You Are Not Your Job Title — George | Jojjy",
+    title: "You Are Not Your Job Title — George | George",
     desc: "When career titles collapse, what remains of your worth? A quiet meditation on untangling professional identity from who you truly are in the eyes of God.",
     topic: "Work & Vocation",
     date: "2025-03-30",
@@ -220,22 +220,22 @@ const articlesMetadata = {
 
 const rootPages = {
   'index.html': {
-    title: "Jojjy — Short Christian Essays on Faith, Life & Work by George",
-    desc: "Jojjy is a personal publication by George featuring short, honest Christian essays on life, faith, work, relationships, and ordinary experience.",
+    title: "George — Short Christian Essays on Faith, Life & Work by George",
+    desc: "George is a personal publication by George featuring short, honest Christian essays on life, faith, work, relationships, and ordinary experience.",
     path: "",
     priority: "1.0",
     changefreq: "daily"
   },
   'articles.html': {
-    title: "Articles — Jojjy",
-    desc: "Browse 18 contemplative Christian essays by George exploring work, Scripture, quiet holiness, discipleship, and suffering on Jojjy.",
+    title: "Articles — George",
+    desc: "Browse 18 contemplative Christian essays by George exploring work, Scripture, quiet holiness, discipleship, and suffering on George.",
     path: "articles.html",
     priority: "0.9",
     changefreq: "daily"
   },
   'about.html': {
-    title: "About George — Writer & Creator of Jojjy",
-    desc: "Meet George, writer and creator of Jojjy, sharing short, honest Christian reflections on faith, work, and following Jesus through the beautiful ordinary.",
+    title: "About George — Writer & Creator of George",
+    desc: "Meet George, writer and creator of George, sharing short, honest Christian reflections on faith, work, and following Jesus through the beautiful ordinary.",
     path: "about.html",
     priority: "0.7",
     changefreq: "monthly"
@@ -346,7 +346,7 @@ const today = new Date().toISOString().split('T')[0];
         "name": authorName,
         "url": authorUrl,
         "image": `${domain}/images/Me.png`,
-        "jobTitle": "Writer & Creator of Jojjy",
+        "jobTitle": "Writer & Creator of George",
         "description": "Writer sharing short, honest Christian reflections on ordinary faith, work, and following Jesus in the everyday.",
         "sameAs": [
           authorUrl
@@ -365,10 +365,10 @@ const today = new Date().toISOString().split('T')[0];
   });
 
   // Ensure image alt & dimensions on brand logo & avatar
-  indexHtml = indexHtml.replace(/alt="George\s*—\s*Christian Essays Publication"/g, 'alt="Jojjy — Christian Essays by George"');
-  indexHtml = indexHtml.replace(/alt="George"/g, 'alt="Jojjy — Christian Essays by George"');
-  indexHtml = indexHtml.replace(/aria-label="George home"/g, 'aria-label="Jojjy home"');
-  indexHtml = indexHtml.replace(/aria-label="George homepage"/g, 'aria-label="Jojjy home"');
+  indexHtml = indexHtml.replace(/alt="George\s*—\s*Christian Essays Publication"/g, 'alt="George — Christian Essays by George"');
+  indexHtml = indexHtml.replace(/alt="George"/g, 'alt="George — Christian Essays by George"');
+  indexHtml = indexHtml.replace(/aria-label="George home"/g, 'aria-label="George home"');
+  indexHtml = indexHtml.replace(/aria-label="George homepage"/g, 'aria-label="George home"');
 
   fs.writeFileSync('index.html', indexHtml, 'utf8');
   console.log('Updated index.html');
@@ -453,9 +453,9 @@ const today = new Date().toISOString().split('T')[0];
     jsonLd
   });
 
-  articlesHtml = articlesHtml.replace(/alt="George\s*—\s*Christian Essays Publication"/g, 'alt="Jojjy — Christian Essays by George"');
-  articlesHtml = articlesHtml.replace(/aria-label="George homepage"/g, 'aria-label="Jojjy home"');
-  articlesHtml = articlesHtml.replace(/aria-label="George home"/g, 'aria-label="Jojjy home"');
+  articlesHtml = articlesHtml.replace(/alt="George\s*—\s*Christian Essays Publication"/g, 'alt="George — Christian Essays by George"');
+  articlesHtml = articlesHtml.replace(/aria-label="George homepage"/g, 'aria-label="George home"');
+  articlesHtml = articlesHtml.replace(/aria-label="George home"/g, 'aria-label="George home"');
 
   fs.writeFileSync('articles.html', articlesHtml, 'utf8');
   console.log('Updated articles.html');
@@ -486,8 +486,8 @@ const today = new Date().toISOString().split('T')[0];
       "name": authorName,
       "url": canonicalUrl,
       "image": `${domain}/images/Me.png`,
-      "jobTitle": "Writer & Creator of Jojjy",
-      "description": "Writer sharing short, honest reflections on ordinary Christian faith, Scripture, and grace on Jojjy.",
+      "jobTitle": "Writer & Creator of George",
+      "description": "Writer sharing short, honest reflections on ordinary Christian faith, Scripture, and grace on George.",
       "worksFor": {
         "@type": "Organization",
         "@id": `${domain}/#publication`,
@@ -526,9 +526,9 @@ const today = new Date().toISOString().split('T')[0];
     jsonLd
   });
 
-  aboutHtml = aboutHtml.replace(/alt="George\s*—\s*Christian Essays Publication"/g, 'alt="Jojjy — Christian Essays by George"');
-  aboutHtml = aboutHtml.replace(/aria-label="George home"/g, 'aria-label="Jojjy home"');
-  aboutHtml = aboutHtml.replace(/aria-label="George homepage"/g, 'aria-label="Jojjy home"');
+  aboutHtml = aboutHtml.replace(/alt="George\s*—\s*Christian Essays Publication"/g, 'alt="George — Christian Essays by George"');
+  aboutHtml = aboutHtml.replace(/aria-label="George home"/g, 'aria-label="George home"');
+  aboutHtml = aboutHtml.replace(/aria-label="George homepage"/g, 'aria-label="George home"');
 
   fs.writeFileSync('about.html', aboutHtml, 'utf8');
   console.log('Updated about.html');
@@ -546,7 +546,7 @@ articleFiles.forEach(file => {
 
   const meta = articlesMetadata[file] || {
     headline: file.replace(/^article-|\.html$/g, '').replace(/-/g, ' '),
-    title: `${file.replace(/^article-|\.html$/g, '').replace(/-/g, ' ')} — George | Jojjy`,
+    title: `${file.replace(/^article-|\.html$/g, '').replace(/-/g, ' ')} — George | George`,
     desc: "Short, honest Christian reflections on faith, work, and following Jesus in ordinary life.",
     topic: "Faith",
     date: "2025-08-01",
@@ -640,9 +640,9 @@ articleFiles.forEach(file => {
   });
 
   // Fix brand logo alt and dimensions in articles
-  html = html.replace(/alt="George\s*—\s*Christian Essays Publication"/g, 'alt="Jojjy — Christian Essays by George"');
-  html = html.replace(/aria-label="George home"/g, 'aria-label="Jojjy home"');
-  html = html.replace(/aria-label="George homepage"/g, 'aria-label="Jojjy home"');
+  html = html.replace(/alt="George\s*—\s*Christian Essays Publication"/g, 'alt="George — Christian Essays by George"');
+  html = html.replace(/aria-label="George home"/g, 'aria-label="George home"');
+  html = html.replace(/aria-label="George homepage"/g, 'aria-label="George home"');
 
   // Semantic HTML in byline: Convert unsemantic date span into <time datetime="..."> or update existing
   html = html.replace(/<time\s+datetime="[^"]*">[\s\S]*?<\/time>/g, `<time datetime="${meta.date}">${meta.displayDate}</time>`);
@@ -655,8 +655,8 @@ articleFiles.forEach(file => {
     '<p class="font-semibold text-[#111827]"><a href="../about.html" rel="author" class="hover:underline text-inherit">George</a></p>');
 
   // Footer copyright line:
-  html = html.replace(/© 2025 George\. Written slowly in the countryside\./g,
-    '© 2026 Jojjy. Essays by George, written slowly in the countryside.');
+  html = html.replace(/Â© 2025 George\. Written slowly in the countryside\./g,
+    'Â© 2026 George. Essays by George, written slowly in the countryside.');
 
   // Fix dead footer anchor on articles if present
   html = html.replace(/href="#newsletter"/g, 'href="../index.html#newsletter"');
@@ -672,9 +672,9 @@ console.log(`Updated ${articleFiles.length} article pages in articles/`);
   let templateHtml = fs.readFileSync('article.html', 'utf8');
   templateHtml = templateHtml.replace(/href="#newsletter"/g, 'href="index.html#newsletter"');
   templateHtml = templateHtml.replace(/<title>[\s\S]*?<\/title>/i,
-    '<title>ARTICLE_TITLE — George | Jojjy</title>');
-  templateHtml = templateHtml.replace(/alt="George\s*—\s*Christian Essays Publication"/g, 'alt="Jojjy — Christian Essays by George"');
-  templateHtml = templateHtml.replace(/aria-label="George home"/g, 'aria-label="Jojjy home"');
+    '<title>ARTICLE_TITLE — George | George</title>');
+  templateHtml = templateHtml.replace(/alt="George\s*—\s*Christian Essays Publication"/g, 'alt="George — Christian Essays by George"');
+  templateHtml = templateHtml.replace(/aria-label="George home"/g, 'aria-label="George home"');
 
   fs.writeFileSync('article.html', templateHtml, 'utf8');
   console.log('Updated article.html template');
@@ -753,4 +753,41 @@ Sitemap: ${domain}/sitemap.xml
 fs.writeFileSync('robots.txt', robotsTxt, 'utf8');
 console.log('Generated robots.txt');
 
-console.log('SEO pass completed successfully across all pages with Jojjy identity!');
+// Keep the domain name intact while making George the consistent public-facing
+// publication and author identity. This final pass also covers shared navigation,
+// footer copy, and the unpopulated template/error page that are not rebuilt above.
+function normalizeGeorgeBranding(html) {
+  return html
+    // Repair legacy UTF-8 mojibake before writing public pages.
+    .replace(/\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac\u009d/g, '—')
+    .replace(/\u00e2\u20ac\u201d/g, '—')
+    .replace(/\s*\|\s*George/g, '')
+    .replace(/Writer & Creator of George/g, 'Writer')
+    .replace(/writer and creator of George/gi, 'writer')
+    .replace(/George is a personal publication by George featuring short, honest Christian essays on life, faith, work, relationships, and ordinary experience\./g, 'Short, honest Christian essays by George on faith, work, relationships, and ordinary life.')
+    .replace(/George — Short Christian Essays on Faith, Life & Work by George/g, 'George — Christian Essays on Faith, Life & Work')
+    .replace(/Browse 18 contemplative Christian essays by George exploring work, Scripture, quiet holiness, discipleship, and suffering on George\./g, 'Browse 18 Christian essays by George on work, Scripture, quiet holiness, discipleship, and suffering.')
+    .replace(/About George — Writer & Creator of George/g, 'About George — Christian Writer')
+    .replace(/Meet George, writer and creator of George, sharing/g, 'Meet George, a writer sharing')
+    .replace(/Writer sharing short, honest reflections on ordinary Christian faith, Scripture, and grace on George\./g, 'Writer sharing short, honest reflections on ordinary Christian faith, Scripture, and grace.')
+    .replace(/That is what George is\s*&mdash;\s*a personal publication/g, 'This is a personal publication')
+    .replace(/THE HEART OF GEORGE/g, 'ABOUT GEORGE')
+    .replace(/THE HEART OF JOJJY/g, 'ABOUT GEORGE');
+}
+
+function normalizePublicHtml(dir) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name === 'node_modules' || entry.name.startsWith('.')) continue;
+    const filePath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      normalizePublicHtml(filePath);
+    } else if (entry.isFile() && entry.name.endsWith('.html')) {
+      const html = fs.readFileSync(filePath, 'utf8');
+      fs.writeFileSync(filePath, normalizeGeorgeBranding(html), 'utf8');
+    }
+  }
+}
+
+normalizePublicHtml('.');
+console.log('Normalized public HTML to the George brand while preserving jojjy.org URLs.');
+console.log('SEO pass completed successfully across all pages with George identity!');
