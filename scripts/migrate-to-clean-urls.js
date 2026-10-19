@@ -22,7 +22,7 @@ const articlesMetadata = {
     date: "2025-08-03",
     displayDate: "August 3, 2025",
     image: "images/business.jpg",
-    words: 252,
+    words: 248,
     readTime: 1
   },
   'article-nobody-is-self-made.html': {
@@ -34,19 +34,19 @@ const articlesMetadata = {
     date: "2025-07-20",
     displayDate: "July 20, 2025",
     image: "images/writing-desk.png",
-    words: 306,
-    readTime: 2
+    words: 193,
+    readTime: 1
   },
   'article-churches-dont-drift-toward-truth.html': {
     slug: 'article-churches-dont-drift-toward-truth',
     headline: "Churches Don't Drift Toward Truth",
     title: "Churches Don't Drift Toward Truth — George",
     desc: "Theological drift is quiet, gradual, and always away from Christ. Explore how congregations lose their anchor and why guarding biblical truth demands resolve.",
-    topic: "Discipleship",
+    topic: "Quiet Holiness",
     date: "2025-07-13",
     displayDate: "July 13, 2025",
     image: "images/truth.jpg",
-    words: 337,
+    words: 332,
     readTime: 2
   },
   'article-faithfulness-can-feel-lonely.html': {
@@ -58,32 +58,20 @@ const articlesMetadata = {
     date: "2025-07-06",
     displayDate: "July 6, 2025",
     image: "images/prayer_01.jpg",
-    words: 379,
+    words: 375,
     readTime: 2
   },
   'article-god-doesnt-need-your-resume.html': {
     slug: 'article-god-doesnt-need-your-resume',
     headline: "God Doesn't Need Your Resume",
     title: "God Doesn't Need Your Resume — George",
-    desc: "Moses had a stutter, Gideon was hiding, and Peter denied Christ. A 5-minute essay on how God qualifies the called instead of demanding impressive credentials.",
-    topic: "Discipleship",
+    desc: "Moses had a stutter, Gideon was hiding, and Peter denied Christ. A reflection on how God qualifies the called instead of demanding impressive credentials.",
+    topic: "Reading Scripture",
     date: "2025-06-29",
     displayDate: "June 29, 2025",
     image: "images/open-bible.png",
-    words: 960,
+    words: 954,
     readTime: 5
-  },
-  'article-your-mind-is-under-attack-and-you-dont-even-see-it.html': {
-    slug: 'article-your-mind-is-under-attack-and-you-dont-even-see-it',
-    headline: "Your Mind Is Under Attack",
-    title: "Your Mind Is Under Attack — George",
-    desc: "The modern siege on faith is waged through constant digital distraction. Learn how the attention economy fragments the soul and how to guard your mind today.",
-    topic: "Quiet Holiness",
-    date: "2025-03-23",
-    displayDate: "March 23, 2025",
-    image: "images/newspapers.jpg",
-    words: 427,
-    readTime: 2
   },
   'article-terrified-of-silence.html': {
     slug: 'article-terrified-of-silence',
@@ -94,7 +82,7 @@ const articlesMetadata = {
     date: "2025-06-15",
     displayDate: "June 15, 2025",
     image: "images/hero-countryside.png",
-    words: 340,
+    words: 337,
     readTime: 2
   },
   'article-the-bible-was-never-about-you.html': {
@@ -106,7 +94,7 @@ const articlesMetadata = {
     date: "2025-06-08",
     displayDate: "June 8, 2025",
     image: "images/open-bible.png",
-    words: 774,
+    words: 738,
     readTime: 4
   },
   'article-the-jesus-you-missed-in-the-old-testament.html': {
@@ -118,7 +106,7 @@ const articlesMetadata = {
     date: "2025-06-01",
     displayDate: "June 1, 2025",
     image: "images/truth.jpg",
-    words: 878,
+    words: 869,
     readTime: 4
   },
   'article-the-respectable-sin-nobody-talks-about.html': {
@@ -130,7 +118,7 @@ const articlesMetadata = {
     date: "2025-05-25",
     displayDate: "May 25, 2025",
     image: "images/anxious.jpg",
-    words: 1386,
+    words: 1373,
     readTime: 7
   },
   'article-the-verse-that-is-slowly-killing-you.html': {
@@ -142,7 +130,7 @@ const articlesMetadata = {
     date: "2025-05-18",
     displayDate: "May 18, 2025",
     image: "images/open-bible.png",
-    words: 844,
+    words: 836,
     readTime: 4
   },
   'article-you-were-not-made-for-sadness.html': {
@@ -154,8 +142,8 @@ const articlesMetadata = {
     date: "2025-05-11",
     displayDate: "May 11, 2025",
     image: "images/happiness.jpg",
-    words: 412,
-    readTime: 2
+    words: 1014,
+    readTime: 5
   },
   'article-waiting-is-not-wasting.html': {
     slug: 'article-waiting-is-not-wasting',
@@ -166,8 +154,8 @@ const articlesMetadata = {
     date: "2025-05-04",
     displayDate: "May 4, 2025",
     image: "images/prayer.jpg",
-    words: 395,
-    readTime: 2
+    words: 276,
+    readTime: 1
   },
   'article-what-poverty-taught-me-about-riches.html': {
     slug: 'article-what-poverty-taught-me-about-riches',
@@ -178,32 +166,32 @@ const articlesMetadata = {
     date: "2025-04-27",
     displayDate: "April 27, 2025",
     image: "images/3.jpg",
-    words: 388,
+    words: 385,
     readTime: 2
   },
   'article-whatever-you-do-as-unto-the-lord.html': {
     slug: 'article-whatever-you-do-as-unto-the-lord',
     headline: "Whatever You Do, As Unto the Lord",
     title: "Whatever You Do, As Unto the Lord — George",
-    desc: "Colossians 3 transforms mundane tasks into acts of worship. Explore how everyday labor, spreadsheets, and quiet chores become holy offerings to God.",
+    desc: "Colossians 3 transforms mundane tasks into acts of worship. Explore how everyday labor, quiet chores, and unseen faithfulness become holy offerings to God.",
     topic: "Work & Vocation",
     date: "2025-04-20",
     displayDate: "April 20, 2025",
     image: "images/1.jpg",
-    words: 362,
-    readTime: 2
+    words: 264,
+    readTime: 1
   },
   'article-why-friendship-feels-so-rare.html': {
     slug: 'article-why-friendship-feels-so-rare',
     headline: "Why Friendship Feels So Rare",
     title: "Why Friendship Feels So Rare — George",
     desc: "Modern busyness has reduced deep covenant bonds to superficial digital interactions. Discover why biblical fellowship requires vulnerability and time.",
-    topic: "Discipleship",
+    topic: "Suffering & Joy",
     date: "2025-04-13",
     displayDate: "April 13, 2025",
     image: "images/marriage.jpg",
-    words: 450,
-    readTime: 2
+    words: 1157,
+    readTime: 6
   },
   'article-work-existed-before-sin.html': {
     slug: 'article-work-existed-before-sin',
@@ -214,7 +202,7 @@ const articlesMetadata = {
     date: "2025-04-06",
     displayDate: "April 6, 2025",
     image: "images/2.jpg",
-    words: 950,
+    words: 945,
     readTime: 5
   },
   'article-you-are-not-your-job-title.html': {
@@ -226,9 +214,21 @@ const articlesMetadata = {
     date: "2025-03-30",
     displayDate: "March 30, 2025",
     image: "images/business.jpg",
-    words: 301,
+    words: 285,
+    readTime: 1
+  },
+  'article-your-mind-is-under-attack-and-you-dont-even-see-it.html': {
+    slug: 'article-your-mind-is-under-attack-and-you-dont-even-see-it',
+    headline: "Your Mind Is Under Attack",
+    title: "Your Mind Is Under Attack — George",
+    desc: "The modern siege on faith is waged through constant digital distraction. Learn how the attention economy fragments the soul and how to guard your mind today.",
+    topic: "Quiet Holiness",
+    date: "2025-03-23",
+    displayDate: "March 23, 2025",
+    image: "images/newspapers.jpg",
+    words: 399,
     readTime: 2
-  }
+  },
 };
 
 // Clean URL normalizer for HTML content

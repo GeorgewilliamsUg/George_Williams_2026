@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>God Doesn't Need Your Resume — George</title>
+    <title>God Doesn’t Need Your Resume — George</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@14..36,400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css" />
 
     <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico" />
@@ -86,8 +86,8 @@
     "@type": "ImageObject",
     "url": "https://jojjy.org/images/open-bible.png"
   },
-  "articleSection": "Discipleship",
-  "wordCount": 960,
+  "articleSection": "Reading Scripture",
+  "wordCount": 954,
   "inLanguage": "en-US",
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -117,74 +117,8 @@
   </head>
 
   <body class="article-page-bg antialiased bg-white">
-        <!-- ============ MOBILE NAV DRAWER ============ -->
-    <div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
-      <div id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
-      <div id="mobile-nav-drawer">
-        <div class="mobile-nav-header">
-          <a href="/home/" class="brand-logo" aria-label="George home">
-            <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
-          </a>
-          <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">
-            <iconify-icon icon="solar:close-linear" width="18" stroke-width="1.5"></iconify-icon>
-          </button>
-        </div>
-
-        <p class="mobile-nav-section-label">Navigation</p>
-        <nav aria-label="Mobile navigation" class="mobile-nav-links">
-          <a href="/home/" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:home-2-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Home</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/articles/" class="mobile-nav-item is-active" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:document-text-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Articles</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/about/" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:user-circle-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>About</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/home/#collections" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:bookmark-opened-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Collections</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/home/#newsletter" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:letter-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Sunday Letter</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-        </nav>
-
-        <div class="mobile-nav-footer">
-          <div class="mobile-nav-card">
-            <span class="mobile-nav-card-badge">Weekly Digest</span>
-            <p class="mobile-nav-card-title">The Sunday Letter</p>
-            <p class="mobile-nav-card-desc">Short, honest essays on following Jesus through the beautiful ordinary.</p>
-            <a href="/home/#newsletter" onclick="closeMobileNav()" class="btn-accent mobile-nav-card-btn">
-              <span>Subscribe Free</span>
-              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Reading progress bar -->
-    <div class="fixed inset-x-0 top-0 z-[70] h-0.5 bg-[#e5e7eb]">
+        <!-- Reading progress bar -->
+    <div class="fixed inset-x-0 top-0 z-[70] h-0.5 bg-[var(--rule-subtle)]">
       <div id="reading-progress"></div>
     </div>
 
@@ -194,26 +128,25 @@
       <span>Top</span>
     </button>
 
-    <!-- ============ HEADER ============ -->
-    <header class="sticky top-0 z-50">
-      <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
-        <a href="/home/" class="brand-logo" aria-label="George home">
-          <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
-        </a>
-        <nav aria-label="Primary navigation" class="hidden items-center gap-8 text-sm font-medium text-[#4b5563] md:flex">
-          <a href="/home/" class="transition-colors hover:text-[#111827]">Home</a>
-          <a href="/articles/" class="transition-colors hover:text-[#111827]">Articles</a>
-          <a href="/about/" class="transition-colors hover:text-[#111827]">About</a>
-          <a href="/home/#collections" class="transition-colors hover:text-[#111827]">Collections</a>
-          <a href="/home/#newsletter" class="transition-colors hover:text-[#111827]">Newsletter</a>
-        </nav>
-        <div class="flex items-center gap-3">
-          <a href="/home/#newsletter" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-[#cef542] px-3.5 py-1.5 text-xs font-bold text-[#111827] shadow-[0_2px_8px_rgba(206,245,66,0.35)] hover:bg-[#bde435] transition-all">
-            <span>Subscribe</span>
-            <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="1.5"></iconify-icon>
+            <!-- ============ MASTHEAD & SITE HEADER ============ -->
+    <header class="site-header">
+      <div class="site-container">
+        <div class="header-inner">
+          <a href="/home/" class="brand-logo" aria-label="George home">
+            <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
           </a>
-          <button id="mobile-nav-trigger" class="flex items-center gap-2 rounded-lg border border-[#e5e7eb] bg-[#f9fafb] px-3 py-2 text-[#111827] transition hover:bg-[#f3f4f6] md:hidden" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav" onclick="openMobileNav()">
+
+          <nav id="site-nav" aria-label="Primary navigation" class="site-nav">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/articles/" class="nav-link is-active">Essays</a>
+            <a href="/home/#collections" class="nav-link">Collections</a>
+            <a href="/about/" class="nav-link">About</a>
+            <a href="/home/#newsletter" class="nav-link">Sunday Letter</a>
+          </nav>
+
+          <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="toggleMobileNav()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-nav">
             <iconify-icon icon="solar:hamburger-menu-linear" width="18" stroke-width="1.5"></iconify-icon>
+            <span>Menu</span>
           </button>
         </div>
       </div>
@@ -221,93 +154,45 @@
 
     <!-- ============ ARTICLE MAIN CONTENT (FOCUSED SINGLE-COLUMN) ============ -->
     <main id="main-content" class="px-5 py-10 sm:px-8 sm:py-16 lg:py-20 bg-white">
-      <article class="mx-auto max-w-[44rem]">
-        <!-- Breadcrumb -->
-        <nav class="mb-8 flex items-center gap-2 text-xs text-[#6b7280]" aria-label="Breadcrumb">
-          <a href="/home/" class="hover:text-[#111827] transition-colors">Home</a>
-          <iconify-icon icon="solar:alt-arrow-right-linear" width="12"></iconify-icon>
-          <a href="/articles/" class="hover:text-[#111827] transition-colors">Articles</a>
-          <iconify-icon icon="solar:alt-arrow-right-linear" width="12"></iconify-icon>
-          <span class="text-[#111827] font-medium truncate">God Doesn't Need Your Resume</span>
-        </nav>
+      <article class="article-editorial-grid">
+        <!-- Left Margin Rail (Desktop >= 960px) -->
+        <aside class="article-meta-rail" aria-label="Essay metadata">
+          <div class="meta-rail-inner">
+            <div class="meta-rail-group">
+              <span class="meta-rail-label">Issue</span>
+              <span class="meta-rail-value issue-num">№ 05</span>
+            </div>
+            <div class="meta-rail-group">
+              <span class="meta-rail-label">Category</span>
+              <span class="meta-rail-value">Scripture</span>
+            </div>
+            <div class="meta-rail-group">
+              <span class="meta-rail-label">Published</span>
+              <time datetime="2025-06-29" class="meta-rail-value">June 29, 2025</time>
+            </div>
+            <div class="meta-rail-group">
+              <span class="meta-rail-label">Read Time</span>
+              <span class="meta-rail-value">5 min read</span>
+            </div>
+          </div>
+        </aside>
 
-        <!-- Topic & Tags -->
-        <div class="flex flex-wrap items-center gap-2 mb-6">
-          <span class="tag-pill">Discipleship</span>
-          <span class="tag-pill">Faith</span>
-          <span class="tag-pill">Grace</span>
-          <span class="tag-pill">Scripture</span>
-          <span class="tag-pill">Work</span>
-          <span class="tag-pill">Suffering</span>
-        </div>
-
-        <!-- Article Headline -->
-        <h1 class="font-editorial text-4xl font-medium leading-[1.08] tracking-tight text-[#111827] sm:text-5xl lg:text-[3.25rem]">
-          God Doesn't Need Your Resume
+        <!-- Right Reading Column (60ch measure) -->
+        <div class="article-reading-column">
+          <h1 class="article-headline font-editorial text-4xl font-medium leading-[1.08] tracking-tight text-[var(--ink-primary)] sm:text-5xl lg:text-[3.25rem]">
+          God Doesn’t Need Your Resume
         </h1>
 
-        <!-- Metadata Bar -->
-        <div class="mt-8 flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-[#e5e7eb]">
-          <div class="flex flex-wrap items-center gap-4 text-xs text-[#6b7280]">
-            <div class="flex items-center gap-2.5">
-              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-[#cef542]/25 text-[#111827] border border-[#cef542]/40">
-                <iconify-icon icon="solar:user-linear" width="16" stroke-width="1.5"></iconify-icon>
-              </div>
-              <div>
-                <p class="font-semibold text-[#111827]"><a href="/about/" rel="author" class="hover:underline text-inherit">George</a></p>
-              </div>
-            </div>
-            <span class="text-[#d1d5db]">•</span>
-            <time datetime="2025-06-29">June 29, 2025</time>
-            <span class="text-[#d1d5db]">•</span>
-            <div class="flex items-center gap-1">
-              <iconify-icon icon="solar:clock-circle-linear" width="14" stroke-width="1.5"></iconify-icon>
-              <span>5 min read</span>
-            </div>
-            <span class="text-[#d1d5db]">•</span>
-            <span>960 words</span>
-          </div>
-
-          <!-- Share Button -->
-          <button id="copy-link-btn" class="share-btn" onclick="copyArticleLink()">
-            <iconify-icon icon="solar:link-linear" width="14" stroke-width="1.5"></iconify-icon>
-            <span id="copy-link-text">Copy link</span>
-          </button>
-        </div>
-        
-        <!-- Highlight Callout -->
-        <div class="mt-8 grid gap-5 sm:grid-cols-2">
-          
-          <div class="scripture-highlight flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-2 text-[#111827]">
-                <iconify-icon icon="solar:book-bookmark-linear" width="16" stroke-width="1.5"></iconify-icon>
-                <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-[#6b7280]">Scripture anchor</span>
-              </div>
-              <blockquote class="font-editorial text-lg leading-snug italic text-[#111827]">
-                "But God chose what is foolish in the world to shame the wise."
-              </blockquote>
-            </div>
-            <p class="mt-3 text-xs font-semibold font-mono uppercase tracking-wider text-[#111827] bg-[#cef542]/30 px-2.5 py-1 rounded-md inline-block">1 Corinthians 1:27</p>
-          </div>
-          
-          <div class="summary-card flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-2 text-[#111827]">
-                <iconify-icon icon="solar:document-text-linear" width="16" stroke-width="1.5"></iconify-icon>
-                <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-[#6b7280]">Summary</span>
-              </div>
-              <p class="text-xs leading-6 text-[#4b5563]">Moses had a stutter. Gideon was hiding. Peter swore. God chose them all without consulting their credentials. George examines the logic of grace, a logic that flatly refuses to run on the same economy as the world.</p>
-            </div>
-            
-          </div>
-        </div>
+        <blockquote class="epigraph">
+          <p>“But God chose what is foolish in the world to shame the wise.”</p>
+          <cite>1 Corinthians 1:27</cite>
+        </blockquote>
 
         <!-- Body Prose -->
-        <div class="article-prose mt-10">
-          <p>He called the unqualified. He still does.</p>
+        <div class="article-prose mt-6">
+          <p><span class="lead-in">He called the unqualified.</span> He still does.</p>
 <p>You were not chosen because of what you brought to the table.</p>
-<p>Moses had a stutter and a warrant. Gideon was hiding in a winepress. Jeremiah said he was too young. Peter swore with a fisherman's mouth and denied Christ three times before breakfast. Paul held coats while men stoned believers and called it righteous work.</p>
+<p>Moses had a stutter and a warrant. Gideon was hiding in a winepress. Jeremiah said he was too young. Peter swore with a fisherman’s mouth and denied Christ three times before breakfast. Paul held coats while men stoned believers and called it righteous work.</p>
 <p>These are not the footnotes of the story. These are the main characters.</p>
 <p>And God chose every single one of them.</p>
 <h2 id="the-logic-of-grace-is-not-your-logic">The Logic of Grace Is Not Your Logic</h2>
@@ -315,7 +200,7 @@
 <p>He does not.</p>
 <p>Paul lays it out with surgical precision in 1 Corinthians 1:27: God chose what is foolish in the world to shame the wise; God chose what is weak in the world to shame the strong. This is not a consolation prize for the unimpressive. It is a deliberate strategy. God selects the vessel that cannot possibly take credit for what flows through it, so that when something glorious happens, there is only one place to look.</p>
 <p>A.W. Tozer wrote in The Pursuit of God that God is looking for people through whom He can do the impossible. What have you done that is impossible? If the answer involves your own competence, look again.</p>
-<p>Gideon's Army and the Math That Makes No Sense</p>
+<p>Gideon’s Army and the Math That Makes No Sense</p>
 <p>Judges 7 is one of the strangest military briefings in history.</p>
 <p>Israel is outnumbered. They need every man they have. And God tells Gideon to send soldiers home until thirty-two thousand become ten thousand, and then ten thousand become three hundred. Three hundred men against an army the text describes as thick as locusts.</p>
 <p>Why? Verse 2 gives the reason without apology: lest Israel boast over me, saying, my own hand has saved me.</p>
@@ -323,15 +208,15 @@
 <p>John Piper has said it across decades of preaching in a hundred different ways, but it always lands in the same place: God does everything He does for His own glory, and our deepest joy is found not in spite of that but because of it. The Gideon story is not about Gideon. It is about a God who wins battles that cannot be won and then hands the unqualified man the sword that is already bloodless after the enemy routed itself in the dark.</p>
 <h2 id="moses-and-the-burning-bush-conversation">Moses and the Burning Bush Conversation</h2>
 <p>Exodus 3 and 4 contain one of the most honest exchanges in all of Scripture.</p>
-<p>God appears in fire and commissions Moses to confront the most powerful man on earth. And Moses, who has been living in obscurity for forty years after a spectacular failure in Egypt, responds with five consecutive objections. Who am I? What if they don't believe me? I am not eloquent. I am slow of speech. Send someone else.</p>
+<p>God appears in fire and commissions Moses to confront the most powerful man on earth. And Moses, who has been living in obscurity for forty years after a spectacular failure in Egypt, responds with five consecutive objections. Who am I? What if they don’t believe me? I am not eloquent. I am slow of speech. Send someone else.</p>
 <p>He is not performing humility. He means it. He genuinely cannot see how this ends well.</p>
-<p>God's response to every objection is not a rebuke of Moses' weakness. It is a revelation of His own sufficiency. I will be with you. I AM WHO I AM. I will be your mouth. The question God keeps redirecting is not can Moses do this. It is who God is.</p>
-<p>John MacArthur, in his commentary on Exodus, notes that God's patience with Moses here is not indulgence. It is instruction. Every objection Moses raises becomes an occasion for God to say: the issue is not your capacity. The issue is my presence.</p>
+<p>God’s response to every objection is not a rebuke of Moses’ weakness. It is a revelation of His own sufficiency. I will be with you. I AM WHO I AM. I will be your mouth. The question God keeps redirecting is not can Moses do this. It is who God is.</p>
+<p>John MacArthur, in his commentary on Exodus, notes that God’s patience with Moses here is not indulgence. It is instruction. Every objection Moses raises becomes an occasion for God to say: the issue is not your capacity. The issue is my presence.</p>
 <p>What This Means for You, George</p>
 <p>You are broke. You carry a vision for HopeAbound that is larger than your wallet and wider than your current reach. You are writing articles with a calling that outpaces your platform. You are building toward something you cannot yet see the scaffolding for.</p>
 <p>That is a Gideon situation. That is a Moses situation.</p>
 <p>The resources are thin by design. Not because God forgot or because the vision was wrong. But because when HopeAbound stands and the articles reach the people they are meant to reach and the community gets built, the arithmetic will not add up in any direction that credits you. And that is the point.</p>
-<p>A.W. Pink wrote in Gleanings in Exodus that God deliberately strips a man down before He builds him up, so that the building is unmistakably His work and not the man's renovation project.</p>
+<p>A.W. Pink wrote in Gleanings in Exodus that God deliberately strips a man down before He builds him up, so that the building is unmistakably His work and not the man’s renovation project.</p>
 <p>You are in the stripping season. It is not the end of the story. It is the preparation for it.</p>
 <h2 id="the-only-qualification-that-matters">The Only Qualification That Matters</h2>
 <p>There is one thing that every man and woman God ever used had in common. Not talent. Not education. Not connections. Not even a clean record.</p>
@@ -343,65 +228,67 @@
 <p>He already knows what He is going to do with you.</p>
         </div>
 
+        <!-- End of Essay Quiet Actions -->
+        <div class="mt-8 pt-4 flex items-center justify-between border-t border-[var(--rule-subtle)] text-xs text-[var(--ink-muted)]">
+          <button id="copy-link-btn" class="share-btn inline-flex items-center gap-1.5 hover:text-[var(--ink-primary)] transition-colors" onclick="copyArticleLink()">
+            <iconify-icon icon="solar:link-linear" width="14" stroke-width="1.5"></iconify-icon>
+            <span id="copy-link-text">Copy link</span>
+          </button>
+          <a href="/articles/" class="inline-flex items-center gap-1.5 font-medium hover:text-[var(--ink-primary)] transition-colors">
+            All essays <iconify-icon icon="solar:arrow-right-linear" width="13" stroke-width="1.5"></iconify-icon>
+          </a>
+        </div>
+
         <!-- Author Note -->
-        <div class="mt-14 p-6 sm:p-7 rounded-2xl border border-[#e5e7eb] bg-[#f9fafb] flex items-start gap-4 sm:gap-5">
-          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white border border-[#cef542] text-[#111827] ring-2 ring-[#cef542]/40">
-            <iconify-icon icon="solar:user-speak-linear" width="22" stroke-width="1.5"></iconify-icon>
+        <div class="author-note-box">
+          <div class="author-avatar-wrap">
+            <img src="/images/Me.png" alt="George" class="author-avatar-img" />
           </div>
           <div>
-            <h2 class="font-editorial text-xl font-medium text-[#111827]">Written by George</h2>
-            <p class="mt-2 text-sm leading-relaxed text-[#4b5563]">
+            <h2 class="author-note-title">Written by George</h2>
+            <p class="author-note-bio">
               Having served in many capacities over the years, George writes about following Jesus in the everyday places where most of us actually live.
             </p>
-            <a href="/about/" class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#111827] hover:text-[#000000] transition-colors">
-              Read George’s story <iconify-icon icon="solar:arrow-right-linear" width="13" stroke-width="1.5"></iconify-icon>
+            <a href="/about/" class="author-note-link">
+              Read George’s story →
             </a>
           </div>
         </div>
 
-        <!-- Inline Sunday Letter Subscription -->
-        <div class="mt-8 rounded-2xl border border-[#e5e7eb] bg-[#f9fafb] p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-          <p class="inline-flex items-center gap-1.5 rounded-full bg-[#cef542] px-2.5 py-0.5 font-mono text-[0.68rem] font-bold uppercase tracking-wider text-[#111827] shadow-sm mb-2"><span class="h-1.5 w-1.5 rounded-full bg-[#111827]"></span>The Sunday letter</p>
-          <h2 class="font-editorial mt-2 text-2xl font-medium text-[#111827]">One article. Every Sunday morning.</h2>
-          <p class="mt-2 text-sm leading-relaxed text-[#4b5563]">A quiet space for Scripture and reflection before the week begins. No noise. Just one thoughtful read.</p>
-          <form class="newsletter-form mt-5" aria-label="Newsletter signup">
+        <!-- Inline Sunday Letter Subscription (Task 4) -->
+        <div class="sunday-letter" style="margin-top: var(--space-8);">
+          <p style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); margin: 0 0 var(--space-2) 0;">
+            The Sunday Letter
+          </p>
+          <h2 style="font-family: var(--font-serif); font-size: var(--text-2xl); line-height: var(--leading-2xl); margin: 0 0 var(--space-2) 0; color: var(--ink-primary);">One quiet essay for your Sunday morning.</h2>
+          <p style="font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--ink-secondary); margin: 0 0 var(--space-4) 0;">A quiet space for Scripture and reflection before the week begins. No noise. Just one thoughtful read.</p>
+          <form class="newsletter-form" aria-label="Newsletter signup">
             <label for="article-email" class="sr-only">Email address</label>
-            <div class="flex flex-col gap-3 sm:flex-row">
-              <input id="article-email" type="email" required autocomplete="email" placeholder="your@email.com" class="min-h-11 w-full rounded-lg border border-[#d1d5db] bg-white px-4 text-sm text-[#111827] outline-none placeholder:text-[#9ca3af] focus:border-[#111827] focus:ring-2 focus:ring-[#111827]/10" />
-              <button type="submit" class="btn-accent magnetic shrink-0">Subscribe <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="2"></iconify-icon></button>
+            <div class="newsletter-form-row">
+              <input id="article-email" type="email" required autocomplete="email" placeholder="your@email.com" class="newsletter-input" />
+              <button type="submit" class="newsletter-btn">
+                <span>Subscribe</span>
+                <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="1.5"></iconify-icon>
+              </button>
             </div>
-            <p class="form-message mt-2.5 text-xs text-[#6b7280]" role="status" aria-live="polite">Calm inbox. Unsubscribe whenever you need.</p>
+            <p class="form-message" style="font-size: var(--text-xs); color: var(--ink-muted); margin-top: var(--space-2);" role="status" aria-live="polite">Calm inbox. Unsubscribe whenever you need.</p>
           </form>
         </div>
 
-        <!-- Tags & Share Footer -->
-        <div class="mt-12 pt-8 border-t border-[#e5e7eb] flex flex-wrap items-center justify-between gap-4">
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="text-xs text-[#6b7280] mr-1">Filed under:</span>
-            <span class="tag-pill">Discipleship</span>
-            <span class="tag-pill">Faith</span>
-          <span class="tag-pill">Grace</span>
-          <span class="tag-pill">Scripture</span>
-          <span class="tag-pill">Work</span>
-          <span class="tag-pill">Suffering</span>
-          </div>
-          <a href="/articles/" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111827] hover:text-[#000000] transition-colors">
-            All articles <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="1.5"></iconify-icon>
-          </a>
         </div>
       </article>
     </main>
 
-    <!-- ============ RECOMMENDATIONS ============ -->
-    <section class="bg-[#f9fafb] border-t border-[#e5e7eb]">
+        <!-- ============ RECOMMENDATIONS ============ -->
+    <section class="bg-[var(--bg-recessed)] border-t border-[var(--rule-subtle)]">
       <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
         <div class="mb-10 flex items-end justify-between">
           <div>
-            <p class="font-mono text-xs uppercase tracking-[0.15em] text-[#6b7280]">Continue reading</p>
-            <h2 class="font-editorial mt-2 text-3xl font-medium tracking-tight text-[#111827]">You might also find this worthwhile.</h2>
+            <p class="font-mono text-xs uppercase tracking-[0.15em] text-[var(--ink-muted)]">Continue reading</p>
+            <h2 class="font-editorial mt-2 text-3xl font-medium tracking-tight text-[var(--ink-primary)]">You might also find this worthwhile.</h2>
           </div>
-          <a href="/articles/" class="hidden items-center gap-2 text-sm font-semibold text-[#111827] hover:text-[#000000] sm:inline-flex transition-colors">
-            All articles <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="1.5"></iconify-icon>
+          <a href="/articles/" class="hidden items-center gap-2 text-sm font-semibold text-[var(--ink-primary)] hover:text-[var(--accent-primary)] sm:inline-flex transition-colors">
+            All essays <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="1.5"></iconify-icon>
           </a>
         </div>
 
@@ -409,23 +296,36 @@
           <a href="/articles/article-the-bible-was-never-about-you/" class="rec-card block p-6">
             <div class="mb-5 flex items-center justify-between">
               <span class="tag-pill">Scripture</span>
-              <span class="font-mono text-[0.65rem] text-[#6f5f52]">6 min</span>
+              <span class="font-mono text-[0.65rem] text-[var(--ink-muted)]">4 min read</span>
+            </div>
+            <h3 class="font-editorial text-xl font-medium text-[var(--ink-primary)]">The Bible Was Never About You</h3>
+            <p class="mt-2 text-xs leading-5 text-[var(--ink-secondary)]">We often read Scripture like a self-help manual rather than the story of redemption. Discover how shifting the focus back to Jesus transforms how you read.</p>
+          </a>
+          <a href="/articles/article-nobody-is-self-made/" class="rec-card block p-6">
+            <div class="mb-5 flex items-center justify-between">
+              <span class="tag-pill">Work</span>
+              <span class="font-mono text-[0.65rem] text-[var(--ink-muted)]">1 min read</span>
+            </div>
+            <h3 class="font-editorial text-xl font-medium text-[var(--ink-primary)]">Nobody Is Self-Made</h3>
+            <p class="mt-2 text-xs leading-5 text-[var(--ink-secondary)]">Hands can bleed with honest effort and still stand on borrowed ground. An honest Christian reflection on Deuteronomy, humility, and the quiet gift of grace.</p>
+          </a>
         </div>
       </div>
     </section>
 
     <!-- ============ FOOTER ============ -->
-    <footer class="bg-[#f9fafb] border-t border-[#e5e7eb]">
+    <footer class="bg-[var(--bg-recessed)] border-t border-[var(--rule-subtle)]">
       <div class="mx-auto max-w-7xl px-5 pb-8 pt-12 sm:px-8 lg:px-12">
-        <div class="flex flex-col gap-4 pt-7 text-xs text-[#6b7280] sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-col gap-4 pt-7 text-xs text-[var(--ink-muted)] sm:flex-row sm:items-center sm:justify-between">
           <a href="/home/" class="brand-logo" aria-label="George home">
             <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
           </a>
-          <p>© 2025 George. Essays by George, written slowly in the countryside.</p>
+          <p>© 2026 George. Essays by George, written slowly in the countryside.</p>
           <div class="flex gap-5">
-            <a href="/articles/" class="hover:text-[#111827]">Articles</a>
-            <a href="/about/" class="hover:text-[#111827]">About</a>
-            <a href="/home/#newsletter" class="hover:text-[#111827]">Newsletter</a>
+            <a href="/articles/" class="hover:text-[var(--ink-primary)]">Essays</a>
+            <a href="/home/#collections" class="hover:text-[var(--ink-primary)]">Collections</a>
+            <a href="/about/" class="hover:text-[var(--ink-primary)]">About</a>
+            <a href="/home/#newsletter" class="hover:text-[var(--ink-primary)]">Sunday Letter</a>
           </div>
         </div>
       </div>

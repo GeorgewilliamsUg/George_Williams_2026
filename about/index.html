@@ -7,9 +7,9 @@
 
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@14..36,400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css" />
 
     <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico" />
@@ -94,109 +94,37 @@
   </head>
   <body>
     <!-- Mobile Navigation Drawer -->
-    <div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
-      <div id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
-      <div id="mobile-nav-drawer">
-        <div class="mobile-nav-header">
-          <a href="/home/" class="brand-logo" aria-label="George home">
-            
-            <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
-          </a>
-          <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">
-            <iconify-icon icon="solar:close-linear" width="18" stroke-width="1.5"></iconify-icon>
-          </button>
-        </div>
-
-        <p class="mobile-nav-section-label">Navigation</p>
-        <nav aria-label="Mobile navigation" class="mobile-nav-links">
-          <a href="/home/" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:home-2-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Home</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/articles/" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:document-text-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Articles</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/about/" class="mobile-nav-item is-active" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:user-circle-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>About</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/home/#collections" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:bookmark-opened-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Collections</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/home/#newsletter" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:letter-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Sunday Letter</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-        </nav>
-
-        <div class="mobile-nav-footer">
-          <div class="mobile-nav-card">
-            <span class="mobile-nav-card-badge">Weekly Digest</span>
-            <p class="mobile-nav-card-title">The Sunday Letter</p>
-            <p class="mobile-nav-card-desc">Short, honest essays on following Jesus through the beautiful ordinary.</p>
-            <a href="/home/#newsletter" onclick="closeMobileNav()" class="btn-accent mobile-nav-card-btn">
-              <span>Subscribe Free</span>
-              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Reading Progress Bar -->
     <div style="position: fixed; inset-inline: 0; top: 0; z-index: 70; height: 2px;">
       <div id="reading-progress"></div>
     </div>
 
     <!-- Skip Link for Accessibility -->
-    <a href="#main-content" style="position: absolute; left: -9999px; top: var(--space-4); z-index: 100; background: var(--color-ink-primary); color: #fff; padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm); text-decoration: none;" onfocus="this.style.left='var(--space-4)'" onblur="this.style.left='-9999px'">Skip to main content</a>
+    <a href="#main-content" style="position: absolute; left: -9999px; top: var(--space-4); z-index: 100; background: var(--color-ink-primary); color: var(--bg-canvas); padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm); text-decoration: none;" onfocus="this.style.left='var(--space-4)'" onblur="this.style.left='-9999px'">Skip to main content</a>
 
-    <!-- Masthead & Site Header -->
-    <header class="site-header">
-      <div class="site-container">
-        <div class="header-inner">
-          <a href="/home/" class="brand-logo" aria-label="George home">
-            <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
-          </a>
+      <!-- Masthead & Site Header -->
+  <header class="site-header">
+    <div class="site-container">
+      <div class="header-inner">
+        <a href="/home/" class="brand-logo" aria-label="George home">
+          <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
+        </a>
 
-          <nav aria-label="Primary navigation" class="desktop-nav">
-            <a href="/home/" class="nav-link">Home</a>
-            <a href="/articles/" class="nav-link">Articles</a>
-            <a href="/about/" class="nav-link is-active">About</a>
-            <a href="/home/#collections" class="nav-link">Collections</a>
-            <a href="/home/#newsletter" class="nav-link">Newsletter</a>
-          </nav>
+        <nav id="site-nav" aria-label="Primary navigation" class="site-nav">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/articles/" class="nav-link">Essays</a>
+          <a href="/home/#collections" class="nav-link">Collections</a>
+          <a href="/about/" class="nav-link is-active">About</a>
+          <a href="/home/#newsletter" class="nav-link">Sunday Letter</a>
+        </nav>
 
-          <div class="header-actions">
-            <a href="/home/#newsletter" class="btn-accent desktop-btn">
-              <span>Sunday Letter</span>
-              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
-            </a>
-            <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="openMobileNav()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
-              <iconify-icon icon="solar:hamburger-menu-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Menu</span>
-            </button>
-          </div>
-        </div>
+        <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="toggleMobileNav()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-nav">
+          <iconify-icon icon="solar:hamburger-menu-linear" width="18" stroke-width="1.5"></iconify-icon>
+          <span>Menu</span>
+        </button>
       </div>
-    </header>
+    </div>
+  </header>
 
     <main id="main-content">
       <!-- About Hero Section -->
@@ -481,7 +409,7 @@
         </div>
 
         <div class="footer-bottom-row">
-          <p style="margin: 0;">© 2025 George. Essays by George, written slowly in the countryside.</p>
+          <p style="margin: 0;">© 2026 George. Essays by George, written slowly in the countryside.</p>
           <div style="display: flex; gap: var(--space-4);">
             <a href="/home/" style="color: var(--color-ink-muted); text-decoration: none;">Home</a>
             <a href="/articles/" style="color: var(--color-ink-muted); text-decoration: none;">Archive</a>

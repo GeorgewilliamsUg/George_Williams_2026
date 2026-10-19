@@ -9,9 +9,9 @@
 
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@14..36,400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css" />
 
     <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico" />
@@ -23,72 +23,6 @@
   </head>
 
   <body>
-    <!-- Mobile Navigation Drawer -->
-    <div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
-      <div id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
-      <div id="mobile-nav-drawer">
-        <div class="mobile-nav-header">
-          <a href="/home/" class="brand-logo" aria-label="George home">
-            <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
-          </a>
-          <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">
-            <iconify-icon icon="solar:close-linear" width="18" stroke-width="1.5"></iconify-icon>
-          </button>
-        </div>
-
-        <p class="mobile-nav-section-label">Navigation</p>
-        <nav aria-label="Mobile navigation" class="mobile-nav-links">
-          <a href="/home/" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:home-2-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Home</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/articles/" class="mobile-nav-item is-active" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:document-text-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Articles</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/about/" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:user-circle-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>About</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/home/#collections" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:bookmark-opened-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Collections</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/home/#newsletter" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:letter-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Sunday Letter</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-        </nav>
-
-        <div class="mobile-nav-footer">
-          <div class="mobile-nav-card">
-            <span class="mobile-nav-card-badge">Weekly Digest</span>
-            <p class="mobile-nav-card-title">The Sunday Letter</p>
-            <p class="mobile-nav-card-desc">Short, honest essays on following Jesus through the beautiful ordinary.</p>
-            <a href="/home/#newsletter" onclick="closeMobileNav()" class="btn-accent mobile-nav-card-btn">
-              <span>Subscribe Free</span>
-              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Reading progress bar -->
     <div style="position: fixed; inset-inline: 0; top: 0; z-index: 70; height: 2px;">
       <div id="reading-progress"></div>
@@ -108,80 +42,79 @@
             <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
           </a>
 
-          <nav aria-label="Primary navigation" class="desktop-nav">
-            <a href="/home/" class="nav-link">Home</a>
-            <a href="/articles/" class="nav-link is-active">Articles</a>
-            <a href="/about/" class="nav-link">About</a>
+          <nav id="site-nav" aria-label="Primary navigation" class="site-nav">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/articles/" class="nav-link is-active">Essays</a>
             <a href="/home/#collections" class="nav-link">Collections</a>
-            <a href="/home/#newsletter" class="nav-link">Newsletter</a>
+            <a href="/about/" class="nav-link">About</a>
+            <a href="/home/#newsletter" class="nav-link">Sunday Letter</a>
           </nav>
 
-          <div class="header-actions">
-            <a href="/home/#newsletter" class="btn-accent desktop-btn">
-              <span>Sunday Letter</span>
-              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
-            </a>
-            <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="openMobileNav()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
-              <iconify-icon icon="solar:hamburger-menu-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Menu</span>
-            </button>
-          </div>
+          <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="toggleMobileNav()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-nav">
+            <iconify-icon icon="solar:hamburger-menu-linear" width="18" stroke-width="1.5"></iconify-icon>
+            <span>Menu</span>
+          </button>
         </div>
       </div>
     </header>
 
     <!-- Article Content -->
     <main id="main-content" style="padding-top: var(--space-12); padding-bottom: var(--space-20);">
-      <article class="site-container" style="max-width: 720px;">
-        <!-- Breadcrumb -->
-        <nav style="display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); margin-bottom: var(--space-8); text-transform: uppercase; letter-spacing: 0.04em;" aria-label="Breadcrumb">
-          <a href="/home/" style="color: inherit; text-decoration: none;">Home</a>
-          <span>/</span>
-          <a href="/articles/" style="color: inherit; text-decoration: none;">Articles</a>
-          <span>/</span>
-          <span style="color: var(--color-ink-primary); font-weight: var(--weight-medium); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">ARTICLE_TITLE</span>
-        </nav>
+      <article class="article-editorial-grid">
+        <!-- Left Margin Rail (Desktop >= 960px) -->
+        <aside class="article-meta-rail" aria-label="Essay metadata">
+          <div class="meta-rail-inner">
+            <div class="meta-rail-group">
+              <span class="meta-rail-label">Issue</span>
+              <span class="meta-rail-value issue-num">ARTICLE_ISSUE</span>
+            </div>
+            <div class="meta-rail-group">
+              <span class="meta-rail-label">Category</span>
+              <span class="meta-rail-value">ARTICLE_CATEGORY</span>
+            </div>
+            <div class="meta-rail-group">
+              <span class="meta-rail-label">Published</span>
+              <time class="meta-rail-value">ARTICLE_DATE</time>
+            </div>
+            <div class="meta-rail-group">
+              <span class="meta-rail-label">Read Time</span>
+              <span class="meta-rail-value">ARTICLE_READTIME min read</span>
+            </div>
+          </div>
+        </aside>
 
-        <!-- Topic Tag -->
-        <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4);">
-          <span class="topic-tag">ARTICLE_TOPIC</span>
-          ARTICLE_EXTRA_TAGS
-        </div>
+        <!-- Right Reading Column (60ch measure) -->
+        <div class="article-reading-column">
+          <!-- Headline -->
+          <h1 class="article-headline font-editorial text-4xl font-medium leading-[1.08] tracking-tight text-ink-primary sm:text-5xl lg:text-[3.25rem]">
+            ARTICLE_TITLE
+          </h1>
 
-        <!-- Headline -->
-        <h1 style="font-size: clamp(2.25rem, 4vw + 0.5rem, 3.25rem); line-height: 1.1; margin-bottom: var(--space-6);">
-          ARTICLE_TITLE
-        </h1>
+          <!-- Epigraph -->
+          <blockquote class="epigraph">
+            <p>ARTICLE_SCRIPTURE_QUOTE</p>
+            <cite>ARTICLE_SCRIPTURE_REF</cite>
+          </blockquote>
 
-        <!-- Metadata & Actions Bar -->
-        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-border-subtle); margin-bottom: var(--space-8); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted);">
-          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3);">
-            <span style="color: var(--color-ink-primary); font-weight: var(--weight-semibold);">George</span>
-            <span class="meta-separator">·</span>
-            <time>ARTICLE_DATE</time>
-            <span class="meta-separator">·</span>
-            <span>ARTICLE_READTIME min read</span>
-            <span class="meta-separator">·</span>
-            <span>ARTICLE_WORDCOUNT words</span>
+          <!-- Body Prose -->
+          <div class="article-prose mt-6">
+            ARTICLE_BODY_HTML
           </div>
 
-          <button id="copy-link-btn" onclick="copyArticleLink()" class="btn-outline" style="font-size: var(--text-xs); padding: var(--space-1) var(--space-3);">
+        <!-- End of Essay Quiet Actions -->
+        <div class="mt-8 pt-4 flex items-center justify-between border-t border-rule-subtle text-xs text-ink-muted">
+          <button id="copy-link-btn" class="share-btn inline-flex items-center gap-1.5 hover:text-ink-primary transition-colors" onclick="copyArticleLink()">
             <iconify-icon icon="solar:link-linear" width="14" stroke-width="1.5"></iconify-icon>
             <span id="copy-link-text">Copy link</span>
           </button>
-        </div>
-
-        <!-- Scripture Callout Block -->
-        ARTICLE_CALLOUT_BLOCK
-
-        <!-- Body Prose -->
-        <div class="article-prose">
-          ARTICLE_BODY_HTML
+          <a href="/articles/" class="inline-flex items-center gap-1.5 font-medium hover:text-ink-primary transition-colors">
+            All essays <iconify-icon icon="solar:arrow-right-linear" width="13" stroke-width="1.5"></iconify-icon>
+          </a>
         </div>
 
         <!-- Author Note -->
         <div style="margin-top: var(--space-16); padding: var(--space-6); background-color: var(--color-surface-subtle); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); display: flex; gap: var(--space-4); align-items: flex-start;">
-          <div style="width: 48px; height: 48px; border-radius: var(--radius-full); overflow: hidden; border: 1px solid var(--color-border-medium); shrink: 0; box-shadow: var(--shadow-sm); background: var(--color-canvas);">
+          <div style="width: 48px; height: 48px; border-radius: var(--radius-full); overflow: hidden; border: 1px solid var(--color-border-medium); shrink: 0;  background: var(--color-canvas);">
             <img src="/images/Me.png" alt="George" class="author-avatar-img" />
           </div>
           <div>
@@ -200,7 +133,7 @@
           <p style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ink-muted); margin: 0 0 var(--space-2) 0;">
             The Sunday Letter
           </p>
-          <h2 style="font-size: var(--text-2xl); line-height: var(--leading-2xl); margin-bottom: var(--space-2);">One article. Every Sunday morning.</h2>
+          <h2 style="font-size: var(--text-2xl); line-height: var(--leading-2xl); margin-bottom: var(--space-2);">One quiet essay for your Sunday morning.</h2>
           <p style="font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--color-ink-secondary); margin: 0 0 var(--space-4) 0;">
             A quiet space for Scripture and reflection before the week begins. No noise. Just one thoughtful read.
           </p>
@@ -215,16 +148,6 @@
             <p class="form-message" style="font-size: var(--text-xs); color: var(--color-ink-muted); margin-top: var(--space-2);" role="status" aria-live="polite">Calm inbox. Unsubscribe whenever you need.</p>
           </form>
         </div>
-
-        <!-- Footer Tag Bar -->
-        <div style="margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid var(--color-border-subtle); display: flex; justify-content: space-between; align-items: center; font-size: var(--text-xs);">
-          <div style="display: flex; gap: var(--space-2); align-items: center;">
-            <span style="color: var(--color-ink-muted);">Topic:</span>
-            <span class="topic-tag">ARTICLE_TOPIC</span>
-          </div>
-          <a href="/articles/" style="color: var(--color-ink-primary); font-weight: var(--weight-medium); text-decoration: none;">
-            All articles →
-          </a>
         </div>
       </article>
     </main>
@@ -259,7 +182,7 @@
         </div>
 
         <div class="footer-bottom-row">
-          <p style="margin: 0;">© 2025 George. Written slowly in the countryside.</p>
+          <p style="margin: 0;">© 2026 George. Written slowly in the countryside.</p>
           <div style="display: flex; gap: var(--space-4);">
             <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Privacy</a>
             <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Accessibility</a>

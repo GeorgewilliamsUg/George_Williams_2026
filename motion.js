@@ -83,69 +83,6 @@
     });
   }
 
-  /* ----------------------------------------------------------------------------
-   * 3. SCROLL-DRIVEN MARQUEE ROWS
-   * ---------------------------------------------------------------------------- */
-  function initMarquee() {
-    const marqueeContainers = document.querySelectorAll('[data-marquee-container]');
-    if (!marqueeContainers.length || prefersReducedMotion) return;
-
-    const marquees = [];
-
-    marqueeContainers.forEach(container => {
-      const row1 = container.querySelector('[data-marquee-row="1"]');
-      const row2 = container.querySelector('[data-marquee-row="2"]');
-
-      [row1, row2].forEach(row => {
-        if (row && !row.dataset.cloned) {
-          const originalContent = row.innerHTML;
-          // Triple content for a seamless loop
-          row.innerHTML = originalContent + originalContent + originalContent;
-          row.dataset.cloned = 'true';
-        }
-      });
-
-      marquees.push({ container, row1, row2 });
-    });
-
-    let ticking = false;
-
-    function updateMarquees() {
-      const scrollY = window.scrollY;
-      const windowH = window.innerHeight;
-
-      marquees.forEach(({ container, row1, row2 }) => {
-        const rect = container.getBoundingClientRect();
-        const sectionTop = rect.top + scrollY;
-
-        // Calculate offset based on scroll position relative to container
-        const offset = (scrollY - sectionTop + windowH) * 0.3;
-
-        if (row1) {
-          row1.style.transform = `translate3d(${(offset - 200).toFixed(1)}px, 0, 0)`;
-        }
-        if (row2) {
-          row2.style.transform = `translate3d(${(-(offset - 200)).toFixed(1)}px, 0, 0)`;
-        }
-      });
-
-      ticking = false;
-    }
-
-    window.addEventListener(
-      'scroll',
-      () => {
-        if (!ticking) {
-          requestAnimationFrame(updateMarquees);
-          ticking = true;
-        }
-      },
-      { passive: true }
-    );
-
-    // Initial positioning
-    updateMarquees();
-  }
 
   /* ----------------------------------------------------------------------------
    * 4. SCROLL-PROGRESS TEXT REVEAL (Per-character fluid opacity)
@@ -393,7 +330,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     initEntrance();
     initReveal();
-    initMarquee();
     initScrollText();
     initMagnet();
     initStackCards();

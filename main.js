@@ -3,19 +3,26 @@
    Accessible Navigation | Instant Search & Filtering | Restrained Motion
    ============================================================ */
 
-/* ---------- Mobile Navigation Drawer ---------- */
-function openMobileNav() {
-  const nav = document.getElementById('mobile-nav');
+/* ---------- Streamlined Mobile Navigation ---------- */
+function toggleMobileNav() {
+  const nav = document.getElementById('site-nav') || document.getElementById('mobile-nav');
   const trigger = document.getElementById('mobile-nav-trigger');
   if (!nav) return;
-  nav.classList.add('open');
-  if (trigger) trigger.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
-  document.addEventListener('keydown', _escCloseMobileNav);
+  const isOpen = nav.classList.toggle('open');
+  if (trigger) trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  if (isOpen) {
+    document.addEventListener('keydown', _escCloseMobileNav);
+  } else {
+    document.removeEventListener('keydown', _escCloseMobileNav);
+  }
+}
+
+function openMobileNav() {
+  toggleMobileNav();
 }
 
 function closeMobileNav() {
-  const nav = document.getElementById('mobile-nav');
+  const nav = document.getElementById('site-nav') || document.getElementById('mobile-nav');
   const trigger = document.getElementById('mobile-nav-trigger');
   if (!nav) return;
   nav.classList.remove('open');
@@ -127,10 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
       let visibleCount = 0;
 
       articleCards.forEach((card) => {
-        const cardTopic = (card.dataset.topic || '').toLowerCase();
+        const cardTopics = (card.dataset.topic || '').toLowerCase().split(/\s+/);
         const textContent = (card.textContent || '').toLowerCase();
 
-        const matchesTopic = currentTopic === 'all' || cardTopic === currentTopic;
+        const matchesTopic = currentTopic === 'all' || cardTopics.includes(currentTopic);
         const matchesQuery = !currentQuery || textContent.includes(currentQuery);
 
         const isVisible = matchesTopic && matchesQuery;

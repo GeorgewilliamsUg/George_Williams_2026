@@ -10,9 +10,9 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@14..36,400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css" />
 
     <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico" />
@@ -86,8 +86,8 @@
     "@type": "ImageObject",
     "url": "https://jojjy.org/images/marriage.jpg"
   },
-  "articleSection": "Discipleship",
-  "wordCount": 1168,
+  "articleSection": "Suffering & Joy",
+  "wordCount": 1157,
   "inLanguage": "en-US",
   "breadcrumb": {
     "@type": "BreadcrumbList",
@@ -117,74 +117,8 @@
   </head>
 
   <body class="article-page-bg antialiased bg-white">
-        <!-- ============ MOBILE NAV DRAWER ============ -->
-    <div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
-      <div id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
-      <div id="mobile-nav-drawer">
-        <div class="mobile-nav-header">
-          <a href="/home/" class="brand-logo" aria-label="George home">
-            <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
-          </a>
-          <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">
-            <iconify-icon icon="solar:close-linear" width="18" stroke-width="1.5"></iconify-icon>
-          </button>
-        </div>
-
-        <p class="mobile-nav-section-label">Navigation</p>
-        <nav aria-label="Mobile navigation" class="mobile-nav-links">
-          <a href="/home/" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:home-2-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Home</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/articles/" class="mobile-nav-item is-active" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:document-text-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Articles</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/about/" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:user-circle-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>About</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/home/#collections" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:bookmark-opened-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Collections</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/home/#newsletter" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:letter-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Sunday Letter</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-        </nav>
-
-        <div class="mobile-nav-footer">
-          <div class="mobile-nav-card">
-            <span class="mobile-nav-card-badge">Weekly Digest</span>
-            <p class="mobile-nav-card-title">The Sunday Letter</p>
-            <p class="mobile-nav-card-desc">Short, honest essays on following Jesus through the beautiful ordinary.</p>
-            <a href="/home/#newsletter" onclick="closeMobileNav()" class="btn-accent mobile-nav-card-btn">
-              <span>Subscribe Free</span>
-              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Reading progress bar -->
-    <div class="fixed inset-x-0 top-0 z-[70] h-0.5 bg-[#e5e7eb]">
+        <!-- Reading progress bar -->
+    <div class="fixed inset-x-0 top-0 z-[70] h-0.5 bg-[var(--rule-subtle)]">
       <div id="reading-progress"></div>
     </div>
 
@@ -194,26 +128,25 @@
       <span>Top</span>
     </button>
 
-    <!-- ============ HEADER ============ -->
-    <header class="sticky top-0 z-50">
-      <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
-        <a href="/home/" class="brand-logo" aria-label="George home">
-          <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
-        </a>
-        <nav aria-label="Primary navigation" class="hidden items-center gap-8 text-sm font-medium text-[#4b5563] md:flex">
-          <a href="/home/" class="transition-colors hover:text-[#111827]">Home</a>
-          <a href="/articles/" class="transition-colors hover:text-[#111827]">Articles</a>
-          <a href="/about/" class="transition-colors hover:text-[#111827]">About</a>
-          <a href="/home/#collections" class="transition-colors hover:text-[#111827]">Collections</a>
-          <a href="/home/#newsletter" class="transition-colors hover:text-[#111827]">Newsletter</a>
-        </nav>
-        <div class="flex items-center gap-3">
-          <a href="/home/#newsletter" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-[#cef542] px-3.5 py-1.5 text-xs font-bold text-[#111827] shadow-[0_2px_8px_rgba(206,245,66,0.35)] hover:bg-[#bde435] transition-all">
-            <span>Subscribe</span>
-            <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="1.5"></iconify-icon>
+            <!-- ============ MASTHEAD & SITE HEADER ============ -->
+    <header class="site-header">
+      <div class="site-container">
+        <div class="header-inner">
+          <a href="/home/" class="brand-logo" aria-label="George home">
+            <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
           </a>
-          <button id="mobile-nav-trigger" class="flex items-center gap-2 rounded-lg border border-[#e5e7eb] bg-[#f9fafb] px-3 py-2 text-[#111827] transition hover:bg-[#f3f4f6] md:hidden" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav" onclick="openMobileNav()">
+
+          <nav id="site-nav" aria-label="Primary navigation" class="site-nav">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/articles/" class="nav-link is-active">Essays</a>
+            <a href="/home/#collections" class="nav-link">Collections</a>
+            <a href="/about/" class="nav-link">About</a>
+            <a href="/home/#newsletter" class="nav-link">Sunday Letter</a>
+          </nav>
+
+          <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="toggleMobileNav()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-nav">
             <iconify-icon icon="solar:hamburger-menu-linear" width="18" stroke-width="1.5"></iconify-icon>
+            <span>Menu</span>
           </button>
         </div>
       </div>
@@ -221,90 +154,43 @@
 
     <!-- ============ ARTICLE MAIN CONTENT (FOCUSED SINGLE-COLUMN) ============ -->
     <main id="main-content" class="px-5 py-10 sm:px-8 sm:py-16 lg:py-20 bg-white">
-      <article class="mx-auto max-w-[44rem]">
-        <!-- Breadcrumb -->
-        <nav class="mb-8 flex items-center gap-2 text-xs text-[#6b7280]" aria-label="Breadcrumb">
-          <a href="/home/" class="hover:text-[#111827] transition-colors">Home</a>
-          <iconify-icon icon="solar:alt-arrow-right-linear" width="12"></iconify-icon>
-          <a href="/articles/" class="hover:text-[#111827] transition-colors">Articles</a>
-          <iconify-icon icon="solar:alt-arrow-right-linear" width="12"></iconify-icon>
-          <span class="text-[#111827] font-medium truncate">Why Friendship Feels So Rare</span>
-        </nav>
+      <article class="article-editorial-grid">
+        <!-- Left Margin Rail (Desktop >= 960px) -->
+        <aside class="article-meta-rail" aria-label="Essay metadata">
+          <div class="meta-rail-inner">
+            <div class="meta-rail-group">
+              <span class="meta-rail-label">Issue</span>
+              <span class="meta-rail-value issue-num">№ 15</span>
+            </div>
+            <div class="meta-rail-group">
+              <span class="meta-rail-label">Category</span>
+              <span class="meta-rail-value">Friendship</span>
+            </div>
+            <div class="meta-rail-group">
+              <span class="meta-rail-label">Published</span>
+              <time datetime="2025-04-13" class="meta-rail-value">April 13, 2025</time>
+            </div>
+            <div class="meta-rail-group">
+              <span class="meta-rail-label">Read Time</span>
+              <span class="meta-rail-value">6 min read</span>
+            </div>
+          </div>
+        </aside>
 
-        <!-- Topic & Tags -->
-        <div class="flex flex-wrap items-center gap-2 mb-6">
-          <span class="tag-pill">Friendship</span>
-          <span class="tag-pill">Community</span>
-          <span class="tag-pill">Suffering</span>
-          <span class="tag-pill">Discipleship</span>
-          <span class="tag-pill">Holiness</span>
-        </div>
-
-        <!-- Article Headline -->
-        <h1 class="font-editorial text-4xl font-medium leading-[1.08] tracking-tight text-[#111827] sm:text-5xl lg:text-[3.25rem]">
+        <!-- Right Reading Column (60ch measure) -->
+        <div class="article-reading-column">
+          <h1 class="article-headline font-editorial text-4xl font-medium leading-[1.08] tracking-tight text-[var(--ink-primary)] sm:text-5xl lg:text-[3.25rem]">
           Why Friendship Feels So Rare
         </h1>
 
-        <!-- Metadata Bar -->
-        <div class="mt-8 flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-[#e5e7eb]">
-          <div class="flex flex-wrap items-center gap-4 text-xs text-[#6b7280]">
-            <div class="flex items-center gap-2.5">
-              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-[#cef542]/25 text-[#111827] border border-[#cef542]/40">
-                <iconify-icon icon="solar:user-linear" width="16" stroke-width="1.5"></iconify-icon>
-              </div>
-              <div>
-                <p class="font-semibold text-[#111827]"><a href="/about/" rel="author" class="hover:underline text-inherit">George</a></p>
-              </div>
-            </div>
-            <span class="text-[#d1d5db]">•</span>
-            <time datetime="2025-04-13">April 13, 2025</time>
-            <span class="text-[#d1d5db]">•</span>
-            <div class="flex items-center gap-1">
-              <iconify-icon icon="solar:clock-circle-linear" width="14" stroke-width="1.5"></iconify-icon>
-              <span>6 min read</span>
-            </div>
-            <span class="text-[#d1d5db]">•</span>
-            <span>1168 words</span>
-          </div>
-
-          <!-- Share Button -->
-          <button id="copy-link-btn" class="share-btn" onclick="copyArticleLink()">
-            <iconify-icon icon="solar:link-linear" width="14" stroke-width="1.5"></iconify-icon>
-            <span id="copy-link-text">Copy link</span>
-          </button>
-        </div>
-        
-        <!-- Highlight Callout -->
-        <div class="mt-8 grid gap-5 sm:grid-cols-2">
-          
-          <div class="scripture-highlight flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-2 text-[#111827]">
-                <iconify-icon icon="solar:book-bookmark-linear" width="16" stroke-width="1.5"></iconify-icon>
-                <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-[#6b7280]">Scripture anchor</span>
-              </div>
-              <blockquote class="font-editorial text-lg leading-snug italic text-[#111827]">
-                "Two are better than one, because they have a good reward for their toil."
-              </blockquote>
-            </div>
-            <p class="mt-3 text-xs font-semibold font-mono uppercase tracking-wider text-[#111827] bg-[#cef542]/30 px-2.5 py-1 rounded-md inline-block">Ecclesiastes 4:9</p>
-          </div>
-          
-          <div class="summary-card flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-2 mb-2 text-[#111827]">
-                <iconify-icon icon="solar:document-text-linear" width="16" stroke-width="1.5"></iconify-icon>
-                <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-[#6b7280]">Summary</span>
-              </div>
-              <p class="text-xs leading-6 text-[#4b5563]">You are more connected than any generation in history and lonelier than most. George diagnoses the friendship crisis of the age, exploring its technological roots, its ecclesiological symptoms, and points to the kind of covenant friendship Scripture holds out as possible and necessary.</p>
-            </div>
-            
-          </div>
-        </div>
+        <blockquote class="epigraph">
+          <p>“Two are better than one, because they have a good reward for their toil.”</p>
+          <cite>Ecclesiastes 4:9</cite>
+        </blockquote>
 
         <!-- Body Prose -->
-        <div class="article-prose mt-10">
-          <p>Two are better than one. So where did everyone go?</p>
+        <div class="article-prose mt-6">
+          <p><span class="lead-in">Two are better than</span> one. So where did everyone go?</p>
 <p>You are surrounded by people and you know it.</p>
 <p>Your phone has hundreds of contacts. Your social media has followers. You have colleagues who know your name and neighbours who wave and people who would describe you, if asked, as a friend. You are, by every measurable metric, connected.</p>
 <p>And yet.</p>
@@ -312,7 +198,7 @@
 <p>That loneliness has a name. It is not loneliness of place. It is loneliness of depth.</p>
 <p>And it is the loneliness of our age.</p>
 <p>I want to take you somewhere.</p>
-<p>First Samuel 18. Saul's court. Two young men meet after a battle that has just made one of them famous. David has killed the giant. The songs are already being written. And Jonathan, the king's son, the one who by every calculation of power and inheritance should have been threatened by this rising star, looks at David and something happens that the text describes with startling plainness.</p>
+<p>First Samuel 18. Saul’s court. Two young men meet after a battle that has just made one of them famous. David has killed the giant. The songs are already being written. And Jonathan, the king’s son, the one who by every calculation of power and inheritance should have been threatened by this rising star, looks at David and something happens that the text describes with startling plainness.</p>
 <p>The soul of Jonathan was knit to the soul of David, and Jonathan loved him as his own soul (1 Samuel 18:1).</p>
 <p>Knit. That is a slow word. A patient word. The word you use for something that takes time and intention and the careful interworking of threads until two things become one thing that holds together under pressure.</p>
 <p>This was not networking. This was not mutual benefit dressed in warm language. This was two souls that recognised something in each other and moved toward it without calculation.</p>
@@ -321,7 +207,7 @@
 <p>Here is what I think happened to friendship.</p>
 <p>We optimised it.</p>
 <p>We turned it into something useful. Networking. Community. Support systems. Accountability partnerships. We gave it functions and metrics and kept the parts that served us and quietly discarded the parts that cost us. And in doing so we kept the shell and lost the substance, the way you can keep the shape of a fire long after the heat is gone.</p>
-<p>Real friendship in the biblical sense is covenantal. Jonathan and David did not drift into closeness. They made a covenant (1 Samuel 18:3). They chose each other with the same intentionality that marriage demands, the same willingness to be known and to know, the same decision that this person's good matters to me as much as my own.</p>
+<p>Real friendship in the biblical sense is covenantal. Jonathan and David did not drift into closeness. They made a covenant (1 Samuel 18:3). They chose each other with the same intentionality that marriage demands, the same willingness to be known and to know, the same decision that this person’s good matters to me as much as my own.</p>
 <p>Proverbs 17:17 says a friend loves at all times, and a brother is born for a time of adversity. Not a fair-weather companion. Not someone who is present when presence is convenient. A friend who loves at all times, which necessarily includes the times when love is inconvenient, uncomfortable, and unrewarded.</p>
 <p>That is rare because it is costly. And we live in an age that has made the cost of commitment optional.</p>
 <p>C.S. Lewis, in The Four Loves, wrote that friendship arises the moment one person says to another, what, you too? I thought I was the only one. He described it as the least biological of loves, the most unnecessary in the sense that it is not required for survival, and therefore the most purely human. It is the love that says I see something in you that I want to walk beside, not because I need you to survive, but because the journey is truer with you in it.</p>
@@ -335,94 +221,110 @@
 <p>But David and Jonathan took that risk. And what they built held through betrayal and exile and madness and war. When Jonathan died, David tore his clothes and wept and wrote a lament and said your love to me was extraordinary, surpassing the love of women (2 Samuel 1:26). Not because romantic love is lesser but because what they had was the rarest thing. Two souls knit together and held.</p>
 <p>I do not think friendship is impossible in 2026.</p>
 <p>I think it is inconvenient. I think it requires choosing depth over breadth, choosing one person to actually know over fifty people to vaguely follow, choosing the slow uncomfortable work of being present over the frictionless comfort of being connected.</p>
-<p>I think it requires being the Jonathan in someone's life before you find the David in yours. It requires giving first. The robe, the armour, the sword. Everything that marks you as sufficient and self-contained. Handed over. Freely.</p>
+<p>I think it requires being the Jonathan in someone’s life before you find the David in yours. It requires giving first. The robe, the armour, the sword. Everything that marks you as sufficient and self-contained. Handed over. Freely.</p>
 <p>And I think it requires the conviction that Proverbs has always carried quietly at its centre: that the person who finds a faithful friend has found something more valuable than most people spend their lives accumulating.</p>
 <p>Not a contact. Not a follower. Not a connection.</p>
 <p>A soul knit to yours.</p>
         </div>
 
+        <!-- End of Essay Quiet Actions -->
+        <div class="mt-8 pt-4 flex items-center justify-between border-t border-[var(--rule-subtle)] text-xs text-[var(--ink-muted)]">
+          <button id="copy-link-btn" class="share-btn inline-flex items-center gap-1.5 hover:text-[var(--ink-primary)] transition-colors" onclick="copyArticleLink()">
+            <iconify-icon icon="solar:link-linear" width="14" stroke-width="1.5"></iconify-icon>
+            <span id="copy-link-text">Copy link</span>
+          </button>
+          <a href="/articles/" class="inline-flex items-center gap-1.5 font-medium hover:text-[var(--ink-primary)] transition-colors">
+            All essays <iconify-icon icon="solar:arrow-right-linear" width="13" stroke-width="1.5"></iconify-icon>
+          </a>
+        </div>
+
         <!-- Author Note -->
-        <div class="mt-14 p-6 sm:p-7 rounded-2xl border border-[#e5e7eb] bg-[#f9fafb] flex items-start gap-4 sm:gap-5">
-          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white border border-[#cef542] text-[#111827] ring-2 ring-[#cef542]/40">
-            <iconify-icon icon="solar:user-speak-linear" width="22" stroke-width="1.5"></iconify-icon>
+        <div class="author-note-box">
+          <div class="author-avatar-wrap">
+            <img src="/images/Me.png" alt="George" class="author-avatar-img" />
           </div>
           <div>
-            <h2 class="font-editorial text-xl font-medium text-[#111827]">Written by George</h2>
-            <p class="mt-2 text-sm leading-relaxed text-[#4b5563]">
+            <h2 class="author-note-title">Written by George</h2>
+            <p class="author-note-bio">
               Having served in many capacities over the years, George writes about following Jesus in the everyday places where most of us actually live.
             </p>
-            <a href="/about/" class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-[#111827] hover:text-[#000000] transition-colors">
-              Read George’s story <iconify-icon icon="solar:arrow-right-linear" width="13" stroke-width="1.5"></iconify-icon>
+            <a href="/about/" class="author-note-link">
+              Read George’s story →
             </a>
           </div>
         </div>
 
-        <!-- Inline Sunday Letter Subscription -->
-        <div class="mt-8 rounded-2xl border border-[#e5e7eb] bg-[#f9fafb] p-6 sm:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-          <p class="inline-flex items-center gap-1.5 rounded-full bg-[#cef542] px-2.5 py-0.5 font-mono text-[0.68rem] font-bold uppercase tracking-wider text-[#111827] shadow-sm mb-2"><span class="h-1.5 w-1.5 rounded-full bg-[#111827]"></span>The Sunday letter</p>
-          <h2 class="font-editorial mt-2 text-2xl font-medium text-[#111827]">One article. Every Sunday morning.</h2>
-          <p class="mt-2 text-sm leading-relaxed text-[#4b5563]">A quiet space for Scripture and reflection before the week begins. No noise. Just one thoughtful read.</p>
-          <form class="newsletter-form mt-5" aria-label="Newsletter signup">
+        <!-- Inline Sunday Letter Subscription (Task 4) -->
+        <div class="sunday-letter" style="margin-top: var(--space-8);">
+          <p style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); margin: 0 0 var(--space-2) 0;">
+            The Sunday Letter
+          </p>
+          <h2 style="font-family: var(--font-serif); font-size: var(--text-2xl); line-height: var(--leading-2xl); margin: 0 0 var(--space-2) 0; color: var(--ink-primary);">One quiet essay for your Sunday morning.</h2>
+          <p style="font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--ink-secondary); margin: 0 0 var(--space-4) 0;">A quiet space for Scripture and reflection before the week begins. No noise. Just one thoughtful read.</p>
+          <form class="newsletter-form" aria-label="Newsletter signup">
             <label for="article-email" class="sr-only">Email address</label>
-            <div class="flex flex-col gap-3 sm:flex-row">
-              <input id="article-email" type="email" required autocomplete="email" placeholder="your@email.com" class="min-h-11 w-full rounded-lg border border-[#d1d5db] bg-white px-4 text-sm text-[#111827] outline-none placeholder:text-[#9ca3af] focus:border-[#111827] focus:ring-2 focus:ring-[#111827]/10" />
-              <button type="submit" class="btn-accent magnetic shrink-0">Subscribe <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="2"></iconify-icon></button>
+            <div class="newsletter-form-row">
+              <input id="article-email" type="email" required autocomplete="email" placeholder="your@email.com" class="newsletter-input" />
+              <button type="submit" class="newsletter-btn">
+                <span>Subscribe</span>
+                <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="1.5"></iconify-icon>
+              </button>
             </div>
-            <p class="form-message mt-2.5 text-xs text-[#6b7280]" role="status" aria-live="polite">Calm inbox. Unsubscribe whenever you need.</p>
+            <p class="form-message" style="font-size: var(--text-xs); color: var(--ink-muted); margin-top: var(--space-2);" role="status" aria-live="polite">Calm inbox. Unsubscribe whenever you need.</p>
           </form>
         </div>
 
-        <!-- Tags & Share Footer -->
-        <div class="mt-12 pt-8 border-t border-[#e5e7eb] flex flex-wrap items-center justify-between gap-4">
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="text-xs text-[#6b7280] mr-1">Filed under:</span>
-            <span class="tag-pill">Friendship</span>
-            <span class="tag-pill">Community</span>
-          <span class="tag-pill">Suffering</span>
-          <span class="tag-pill">Discipleship</span>
-          <span class="tag-pill">Holiness</span>
-          </div>
-          <a href="/articles/" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111827] hover:text-[#000000] transition-colors">
-            All articles <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="1.5"></iconify-icon>
-          </a>
         </div>
       </article>
     </main>
 
-    <!-- ============ RECOMMENDATIONS ============ -->
-    <section class="bg-[#f9fafb] border-t border-[#e5e7eb]">
+        <!-- ============ RECOMMENDATIONS ============ -->
+    <section class="bg-[var(--bg-recessed)] border-t border-[var(--rule-subtle)]">
       <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
         <div class="mb-10 flex items-end justify-between">
           <div>
-            <p class="font-mono text-xs uppercase tracking-[0.15em] text-[#6b7280]">Continue reading</p>
-            <h2 class="font-editorial mt-2 text-3xl font-medium tracking-tight text-[#111827]">You might also find this worthwhile.</h2>
+            <p class="font-mono text-xs uppercase tracking-[0.15em] text-[var(--ink-muted)]">Continue reading</p>
+            <h2 class="font-editorial mt-2 text-3xl font-medium tracking-tight text-[var(--ink-primary)]">You might also find this worthwhile.</h2>
           </div>
-          <a href="/articles/" class="hidden items-center gap-2 text-sm font-semibold text-[#111827] hover:text-[#000000] sm:inline-flex transition-colors">
-            All articles <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="1.5"></iconify-icon>
+          <a href="/articles/" class="hidden items-center gap-2 text-sm font-semibold text-[var(--ink-primary)] hover:text-[var(--accent-primary)] sm:inline-flex transition-colors">
+            All essays <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="1.5"></iconify-icon>
           </a>
         </div>
 
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <a href="/articles/article-faithfulness-can-feel-lonely/" class="rec-card block p-6">
             <div class="mb-5 flex items-center justify-between">
-              <span class="tag-pill">Discipleship</span>
-              <span class="font-mono text-[0.65rem] text-[#6f5f52]">6 min</span>
+              <span class="tag-pill">Suffering</span>
+              <span class="font-mono text-[0.65rem] text-[var(--ink-muted)]">2 min read</span>
+            </div>
+            <h3 class="font-editorial text-xl font-medium text-[var(--ink-primary)]">Faithfulness Can Feel Lonely</h3>
+            <p class="mt-2 text-xs leading-5 text-[var(--ink-secondary)]">There is a quiet ache in staying true when culture walks away. Discover biblical encouragement for the isolation that often accompanies Christian integrity.</p>
+          </a>
+          <a href="/articles/article-terrified-of-silence/" class="rec-card block p-6">
+            <div class="mb-5 flex items-center justify-between">
+              <span class="tag-pill">Holiness</span>
+              <span class="font-mono text-[0.65rem] text-[var(--ink-muted)]">2 min read</span>
+            </div>
+            <h3 class="font-editorial text-xl font-medium text-[var(--ink-primary)]">Terrified of Silence</h3>
+            <p class="mt-2 text-xs leading-5 text-[var(--ink-secondary)]">We fill our days with ambient noise because stillness forces us to confront who we are. An honest reflection on recovering quiet solitude and intimacy with God.</p>
+          </a>
         </div>
       </div>
     </section>
 
     <!-- ============ FOOTER ============ -->
-    <footer class="bg-[#f9fafb] border-t border-[#e5e7eb]">
+    <footer class="bg-[var(--bg-recessed)] border-t border-[var(--rule-subtle)]">
       <div class="mx-auto max-w-7xl px-5 pb-8 pt-12 sm:px-8 lg:px-12">
-        <div class="flex flex-col gap-4 pt-7 text-xs text-[#6b7280] sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-col gap-4 pt-7 text-xs text-[var(--ink-muted)] sm:flex-row sm:items-center sm:justify-between">
           <a href="/home/" class="brand-logo" aria-label="George home">
             <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
           </a>
-          <p>© 2025 George. Essays by George, written slowly in the countryside.</p>
+          <p>© 2026 George. Essays by George, written slowly in the countryside.</p>
           <div class="flex gap-5">
-            <a href="/articles/" class="hover:text-[#111827]">Articles</a>
-            <a href="/about/" class="hover:text-[#111827]">About</a>
-            <a href="/home/#newsletter" class="hover:text-[#111827]">Newsletter</a>
+            <a href="/articles/" class="hover:text-[var(--ink-primary)]">Essays</a>
+            <a href="/home/#collections" class="hover:text-[var(--ink-primary)]">Collections</a>
+            <a href="/about/" class="hover:text-[var(--ink-primary)]">About</a>
+            <a href="/home/#newsletter" class="hover:text-[var(--ink-primary)]">Sunday Letter</a>
           </div>
         </div>
       </div>

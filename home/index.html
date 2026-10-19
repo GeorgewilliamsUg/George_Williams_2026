@@ -91,80 +91,15 @@
 
   <body>
     <!-- Mobile Navigation Drawer -->
-    <div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
-      <div id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
-      <div id="mobile-nav-drawer">
-        <div class="mobile-nav-header">
-          <a href="/home/" class="brand-logo" aria-label="George home">
-            <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
-          </a>
-          <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">
-            <iconify-icon icon="solar:close-linear" width="18" stroke-width="1.5"></iconify-icon>
-          </button>
-        </div>
-
-        <p class="mobile-nav-section-label">Navigation</p>
-        <nav aria-label="Mobile navigation" class="mobile-nav-links">
-          <a href="/home/" class="mobile-nav-item is-active" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:home-2-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Home</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/articles/" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:document-text-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Articles</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="/about/" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:user-circle-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>About</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="#collections" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:bookmark-opened-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Collections</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-          <a href="#newsletter" class="mobile-nav-item" onclick="closeMobileNav()">
-            <span class="mobile-nav-item-left">
-              <iconify-icon icon="solar:letter-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Sunday Letter</span>
-            </span>
-            <iconify-icon icon="solar:alt-arrow-right-linear" width="14" stroke-width="1.5" class="mobile-nav-arrow"></iconify-icon>
-          </a>
-        </nav>
-
-        <div class="mobile-nav-footer">
-          <div class="mobile-nav-card">
-            <span class="mobile-nav-card-badge">Weekly Digest</span>
-            <p class="mobile-nav-card-title">The Sunday Letter</p>
-            <p class="mobile-nav-card-desc">Short, honest essays on following Jesus through the beautiful ordinary.</p>
-            <a href="#newsletter" onclick="closeMobileNav()" class="btn-accent mobile-nav-card-btn">
-              <span>Subscribe Free</span>
-              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Reading Progress Bar -->
     <div style="position: fixed; inset-inline: 0; top: 0; z-index: 70; height: 2px;">
       <div id="reading-progress"></div>
     </div>
 
     <!-- Skip Link -->
-    <a href="#main-content" style="position: absolute; left: -9999px; top: var(--space-4); z-index: 100; background: var(--color-ink-primary); color: #fff; padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm); text-decoration: none;" onfocus="this.style.left='var(--space-4)'" onblur="this.style.left='-9999px'">Skip to main content</a>
+    <a href="#main-content" style="position: absolute; left: -9999px; top: var(--space-4); z-index: 100; background: var(--color-ink-primary); color: var(--bg-canvas); padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm); text-decoration: none;" onfocus="this.style.left='var(--space-4)'" onblur="this.style.left='-9999px'">Skip to main content</a>
 
-    <!-- Masthead & Header -->
+        <!-- Masthead & Header -->
     <header class="site-header">
       <div class="site-container">
         <div class="header-inner">
@@ -172,24 +107,18 @@
             <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
           </a>
 
-          <nav aria-label="Primary navigation" class="desktop-nav">
-            <a href="/home/" class="nav-link is-active">Home</a>
-            <a href="/articles/" class="nav-link">Articles</a>
+          <nav id="site-nav" aria-label="Primary navigation" class="site-nav">
+            <a href="/" class="nav-link is-active">Home</a>
+            <a href="/articles/" class="nav-link">Essays</a>
+            <a href="/home/#collections" class="nav-link">Collections</a>
             <a href="/about/" class="nav-link">About</a>
-            <a href="#collections" class="nav-link">Collections</a>
-            <a href="#newsletter" class="nav-link">Newsletter</a>
+            <a href="/home/#newsletter" class="nav-link">Sunday Letter</a>
           </nav>
 
-          <div class="header-actions">
-            <a href="#newsletter" class="btn-accent desktop-btn">
-              <span>Sunday Letter</span>
-              <iconify-icon icon="solar:arrow-right-linear" width="14" stroke-width="2"></iconify-icon>
-            </a>
-            <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="openMobileNav()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
-              <iconify-icon icon="solar:hamburger-menu-linear" width="18" stroke-width="1.5"></iconify-icon>
-              <span>Menu</span>
-            </button>
-          </div>
+          <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="toggleMobileNav()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-nav">
+            <iconify-icon icon="solar:hamburger-menu-linear" width="18" stroke-width="1.5"></iconify-icon>
+            <span>Menu</span>
+          </button>
         </div>
       </div>
     </header>
@@ -218,13 +147,11 @@
 
               <!-- Minimalist Editorial Link Row (Jonny Czar Signature Style) -->
               <nav class="hero-bw-links-row" aria-label="Hero navigation links">
-                <a href="/articles/" class="hero-bw-link">Essays Archive</a>
+                <a href="/articles/" class="hero-bw-link">Essays</a>
                 <span class="hero-bw-sep" aria-hidden="true">&mdash;</span>
                 <a href="/about/" class="hero-bw-link">About George</a>
                 <span class="hero-bw-sep" aria-hidden="true">&mdash;</span>
-                <a href="#newsletter" class="hero-bw-link">Sunday Letter</a>
-                <span class="hero-bw-sep" aria-hidden="true">&mdash;</span>
-                <span class="hero-bw-badge">18 Essays</span>
+                <a href="/home/#newsletter" class="hero-bw-link">Sunday Letter</a>
               </nav>
 
             </div>
@@ -271,7 +198,7 @@
             </div>
           </div>
 
-          <div class="latest-essays-grid">
+                    <div class="latest-essays-grid">
             <!-- Essay 01 -->
             <article class="archive-card" data-topic="work" style="padding: 0; overflow: hidden;">
               <div class="card-thumb-wrap">
@@ -280,26 +207,19 @@
               <div style="padding: var(--space-6); display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
                 <div>
                   <div class="card-header-meta">
-                    <span class="topic-tag">Work</span>
-                    <span class="card-index">№ 01</span>
+                    <span class="card-issue-category">№ 01 · Work</span>
                   </div>
                   <h3 class="card-title">
-                    <a href="/articles/article-busy-isnt-faithful/" style="color: inherit; text-decoration: none;">Busy Isn't Faithful</a>
+                    <a href="/articles/article-busy-isnt-faithful/">Busy Isn’t Faithful</a>
                   </h3>
-                  <div class="card-meta-line">
-                    <time datetime="2025-08-03">Aug 3, 2025</time>
-                    <span class="meta-separator">·</span>
-                    <span>1 min read</span>
-                  </div>
                   <p class="card-excerpt">
-                    Martha wasn't wrong to serve. Jesus named the anxiety underneath it. We were both just moving too fast to ask why.
+                    Martha was serving, but Jesus named the anxiety beneath her motion. Discover why frantic Christian busyness is not devotion and how to embrace true rest.
                   </p>
                 </div>
-                <div class="card-footer-action" style="margin-top: var(--space-6);">
-                  <a href="/articles/article-busy-isnt-faithful/" style="color: inherit; text-decoration: none; display: flex; align-items: center; justify-content: space-between; width: 100%;">
-                    <span>Read essay</span>
-                    <iconify-icon icon="solar:arrow-right-linear" class="card-arrow-icon" width="16" stroke-width="1.5"></iconify-icon>
-                  </a>
+                <div class="card-meta-line" style="margin-top: var(--space-4);">
+                  <time datetime="2025-08-03">Aug 3, 2025</time>
+                  <span class="meta-separator">·</span>
+                  <span>1 min read</span>
                 </div>
               </div>
             </article>
@@ -312,58 +232,44 @@
               <div style="padding: var(--space-6); display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
                 <div>
                   <div class="card-header-meta">
-                    <span class="topic-tag">Work</span>
-                    <span class="card-index">№ 02</span>
+                    <span class="card-issue-category">№ 02 · Work</span>
                   </div>
                   <h3 class="card-title">
-                    <a href="/articles/article-nobody-is-self-made/" style="color: inherit; text-decoration: none;">Nobody Is Self-Made</a>
+                    <a href="/articles/article-nobody-is-self-made/">Nobody Is Self-Made</a>
                   </h3>
-                  <div class="card-meta-line">
-                    <time datetime="2025-07-20">Jul 20, 2025</time>
-                    <span class="meta-separator">·</span>
-                    <span>2 min read</span>
-                  </div>
                   <p class="card-excerpt">
-                    Hands can bleed with real work and still stand on borrowed ground. Effort and grace were never rivals.
+                    Hands can bleed with honest effort and still stand on borrowed ground. An honest Christian reflection on Deuteronomy, humility, and the quiet gift of grace.
                   </p>
                 </div>
-                <div class="card-footer-action" style="margin-top: var(--space-6);">
-                  <a href="/articles/article-nobody-is-self-made/" style="color: inherit; text-decoration: none; display: flex; align-items: center; justify-content: space-between; width: 100%;">
-                    <span>Read essay</span>
-                    <iconify-icon icon="solar:arrow-right-linear" class="card-arrow-icon" width="16" stroke-width="1.5"></iconify-icon>
-                  </a>
+                <div class="card-meta-line" style="margin-top: var(--space-4);">
+                  <time datetime="2025-07-20">Jul 20, 2025</time>
+                  <span class="meta-separator">·</span>
+                  <span>1 min read</span>
                 </div>
               </div>
             </article>
 
             <!-- Essay 03 -->
-            <article class="archive-card" data-topic="discipleship" style="padding: 0; overflow: hidden;">
+            <article class="archive-card" data-topic="scripture" style="padding: 0; overflow: hidden;">
               <div class="card-thumb-wrap">
                 <img src="/images/open-bible.png" alt="God Doesn't Need Your Resume" class="card-thumb-img" loading="lazy" />
               </div>
               <div style="padding: var(--space-6); display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
                 <div>
                   <div class="card-header-meta">
-                    <span class="topic-tag">Discipleship</span>
-                    <span class="card-index">№ 03</span>
+                    <span class="card-issue-category">№ 05 · Scripture</span>
                   </div>
                   <h3 class="card-title">
-                    <a href="/articles/article-god-doesnt-need-your-resume/" style="color: inherit; text-decoration: none;">God Doesn't Need Your Resume</a>
+                    <a href="/articles/article-god-doesnt-need-your-resume/">God Doesn’t Need Your Resume</a>
                   </h3>
-                  <div class="card-meta-line">
-                    <time datetime="2025-06-29">Jun 29, 2025</time>
-                    <span class="meta-separator">·</span>
-                    <span>5 min read</span>
-                  </div>
                   <p class="card-excerpt">
-                    Moses had a stutter, Gideon was hiding, Peter denied Christ. He called the unqualified. He still does.
+                    Moses had a stutter, Gideon was hiding, and Peter denied Christ. A reflection on how God qualifies the called instead of demanding impressive credentials.
                   </p>
                 </div>
-                <div class="card-footer-action" style="margin-top: var(--space-6);">
-                  <a href="/articles/article-god-doesnt-need-your-resume/" style="color: inherit; text-decoration: none; display: flex; align-items: center; justify-content: space-between; width: 100%;">
-                    <span>Read essay</span>
-                    <iconify-icon icon="solar:arrow-right-linear" class="card-arrow-icon" width="16" stroke-width="1.5"></iconify-icon>
-                  </a>
+                <div class="card-meta-line" style="margin-top: var(--space-4);">
+                  <time datetime="2025-06-29">Jun 29, 2025</time>
+                  <span class="meta-separator">·</span>
+                  <span>5 min read</span>
                 </div>
               </div>
             </article>
@@ -371,24 +277,18 @@
         </div>
       </section>
 
-      <!-- Featured Longform Article -->
+            <!-- Featured Longform Article -->
       <section id="featured-article" class="section-space">
         <div class="site-container">
           <div class="featured-split-card">
             <div class="featured-split-content">
               <div>
                 <div class="card-header-meta">
-                  <span class="topic-tag">Featured Essay · Holiness</span>
-                  <span class="card-index">7 min read</span>
+                  <span class="card-issue-category">№ 09 · Holiness</span>
                 </div>
                 <h2 class="card-title" style="font-size: var(--text-3xl); line-height: var(--leading-3xl); margin: var(--space-3) 0 var(--space-4) 0;">
-                  The Respectable Sin Nobody Talks About
+                  <a href="/articles/article-the-respectable-sin-nobody-talks-about/" style="color: inherit; text-decoration: none;">The Respectable Sin Nobody Talks About</a>
                 </h2>
-                <div class="card-meta-line">
-                  <time datetime="2025-05-25">May 25, 2025</time>
-                  <span class="meta-separator">·</span>
-                  <span>Scripture: Romans 8:26 · Matthew 6:25</span>
-                </div>
                 <p class="card-excerpt" style="font-size: var(--text-base); line-height: var(--leading-base); margin-bottom: var(--space-6);">
                   Worry is not a personality trait. It is a theological statement that God is not actually in control of the thing keeping you awake at night. We have built a hierarchy of respectable and unrespectable sins—and worry has quietly been given a pass.
                 </p>
@@ -399,11 +299,10 @@
                   <cite style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted); font-style: normal; text-transform: uppercase; letter-spacing: 0.05em;">Romans 8:26</cite>
                 </div>
               </div>
-              <div class="card-footer-action" style="margin-top: var(--space-4);">
-                <a href="/articles/article-the-respectable-sin-nobody-talks-about/" class="btn-primary">
-                  Read full essay
-                  <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="2"></iconify-icon>
-                </a>
+              <div class="card-meta-line" style="margin-top: var(--space-4);">
+                <time datetime="2025-05-25">May 25, 2025</time>
+                <span class="meta-separator">·</span>
+                <span>7 min read</span>
               </div>
             </div>
 
@@ -473,7 +372,7 @@
                 <img src="/images/prayer.jpg" alt="Suffering & Joy" class="bento-item-header-img" loading="lazy" />
                 <span class="topic-tag">Suffering & Joy</span>
                 <h3>Suffering & Joy</h3>
-                <p>Waiting in the dark without pretending the dark isn't real.</p>
+                <p>Waiting in the dark without pretending the dark isn’t real.</p>
               </div>
               <div style="margin-top: var(--space-6); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-muted);">
                 4 essays
@@ -492,7 +391,7 @@
                 The Sunday Letter
               </p>
               <h2 style="font-size: var(--text-3xl); line-height: var(--leading-3xl); margin-bottom: var(--space-4);">
-                One article. Every Sunday morning.
+                One quiet essay for your Sunday morning.
               </h2>
               <p style="font-size: var(--text-base); line-height: var(--leading-base); color: var(--color-ink-secondary); margin: 0 0 var(--space-6) 0;">
                 A quiet space for Scripture and reflection before the week begins. No noise, no ads, just one honest essay in your inbox.
@@ -539,7 +438,7 @@
 
           <div>
             <p class="footer-nav-title">Explore</p>
-            <a href="/articles/" class="footer-link">All articles</a>
+            <a href="/articles/" class="footer-link">Essays</a>
             <a href="#collections" class="footer-link">Collections</a>
             <a href="/about/" class="footer-link">About George</a>
           </div>
@@ -553,7 +452,7 @@
         </div>
 
         <div class="footer-bottom-row">
-          <p style="margin: 0;">© 2025 George. Essays by George, written slowly in the countryside.</p>
+          <p style="margin: 0;">© 2026 George. Essays by George, written slowly in the countryside.</p>
           <div style="display: flex; gap: var(--space-4);">
             <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Privacy</a>
             <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Accessibility</a>
