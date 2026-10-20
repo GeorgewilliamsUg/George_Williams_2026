@@ -270,8 +270,23 @@ def main():
         "-o", "ServerAliveInterval=30"
     ]
 
-    if auth_method == "key" and resolved_key_path:
-        sftp_cmd.extend(["-i", resolved_key_path])
+    password = config.get("password") or os.environ.get("NAMECHEAP_SFTP_PASSWORD", "")
+    import shutil
+    use_sshpass = bool(auth_method == "password" and password and shutil.which("sshpass"))
+
+    if auth_method == "key":
+        if resolved_key_path:
+            sftp_cmd.extend(["-i", resolved_key_path])
+        else:
+            log_warning("No explicit privateKeyPath resolved. Falling back to default SSH identities.")
+    elif auth_method == "password":
+        if use_sshpass:
+            sftp_cmd = ["sshpass", "-p", password] + sftp_cmd
+        else:
+            # Batch mode (-b) in OpenSSH sftp internally defaults to BatchMode=yes,
+            # which suppresses interactive password prompts and causes "Permission denied".
+            # Supplying "-o BatchMode=no" explicitly ensures OpenSSH prompts the user in the terminal.
+            sftp_cmd.extend(["-o", "BatchMode=no"])
 
     sftp_cmd.extend([
         "-b", temp_batch_path,

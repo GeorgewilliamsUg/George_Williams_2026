@@ -84,6 +84,20 @@ if [ -d "$SCRIPT_DIR/.git" ] && command -v git >/dev/null 2>&1; then
         fi
     else
         write_success "Git working directory is clean. No new commits needed."
+        # Check if local commits exist that need to be pushed to GitHub
+        UNPUSHED=$(git log origin/main..HEAD --oneline 2>/dev/null || true)
+        if [ -n "$UNPUSHED" ]; then
+            echo -e "${YELLOW}Unpushed commits found:${RESET}"
+            git log origin/main..HEAD --oneline
+            echo ""
+            if [ -z "$DRY_RUN_FLAG" ]; then
+                write_step "Pushing unpushed commits to GitHub..."
+                git push origin main
+                write_success "Pushed to GitHub main successfully."
+            else
+                write_warning "[DRY RUN] Would push unpushed commits to main."
+            fi
+        fi
     fi
 else
     write_warning "Git repository (.git) not detected or git not in PATH. Skipping git commit & push."

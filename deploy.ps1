@@ -271,6 +271,9 @@ $SftpArgs.Add("-o"); $SftpArgs.Add("ServerAliveInterval=30")
 if ($AuthMethod -eq "key" -and $ResolvedKeyPath) {
     $SftpArgs.Add("-i"); $SftpArgs.Add($ResolvedKeyPath)
 }
+elseif ($AuthMethod -eq "password") {
+    $SftpArgs.Add("-o"); $SftpArgs.Add("BatchMode=no")
+}
 $SftpArgs.Add("-b"); $SftpArgs.Add($TempBatchFile)
 $SftpArgs.Add("$Username@$HostName")
 

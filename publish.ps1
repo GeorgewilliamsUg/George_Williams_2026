@@ -70,6 +70,20 @@ if ($GitInstalled -and $IsGitRepo) {
     }
     else {
         Write-PublishSuccess "Git working directory is clean. No new commits needed."
+        $Unpushed = @(git log origin/main..HEAD --oneline 2>$null)
+        if ($Unpushed.Count -gt 0) {
+            Write-Host "Unpushed commits found:" -ForegroundColor Yellow
+            git log origin/main..HEAD --oneline
+            Write-Host ""
+            if (-not $DryRun) {
+                Write-PublishStep "Pushing unpushed commits to GitHub..."
+                git push origin main
+                Write-PublishSuccess "Pushed to GitHub main successfully."
+            }
+            else {
+                Write-PublishWarning "[DRY RUN] Would push unpushed commits to main."
+            }
+        }
     }
 }
 else {
