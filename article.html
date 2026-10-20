@@ -23,6 +23,9 @@
   </head>
 
   <body>
+    <!-- Skip Link for Keyboard Accessibility -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <!-- Reading progress bar -->
     <div style="position: fixed; inset-inline: 0; top: 0; z-index: 70; height: 2px;">
       <div id="reading-progress"></div>
@@ -38,16 +41,16 @@
     <header class="site-header">
       <div class="site-container">
         <div class="header-inner">
-          <a href="/home/" class="brand-logo" aria-label="George home">
-            <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
+          <a href="/" class="brand-logo" aria-label="George home">
+            <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" decoding="async" loading="lazy" />
           </a>
 
           <nav id="site-nav" aria-label="Primary navigation" class="site-nav">
             <a href="/" class="nav-link">Home</a>
             <a href="/articles/" class="nav-link is-active">Essays</a>
-            <a href="/home/#collections" class="nav-link">Collections</a>
+            <a href="/collections/" class="nav-link">Collections</a>
             <a href="/about/" class="nav-link">About</a>
-            <a href="/home/#newsletter" class="nav-link">Sunday Letter</a>
+            <a href="/#newsletter" class="nav-link">Sunday Letter</a>
           </nav>
 
           <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="toggleMobileNav()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-nav">
@@ -115,7 +118,7 @@
         <!-- Author Note -->
         <div style="margin-top: var(--space-16); padding: var(--space-6); background-color: var(--color-surface-subtle); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); display: flex; gap: var(--space-4); align-items: flex-start;">
           <div style="width: 48px; height: 48px; border-radius: var(--radius-full); overflow: hidden; border: 1px solid var(--color-border-medium); shrink: 0;  background: var(--color-canvas);">
-            <img src="/images/Me.png" alt="George" class="author-avatar-img" />
+            <img src="/images/Me.png" alt="George" class="author-avatar-img" width="48" height="48" decoding="async" loading="lazy" />
           </div>
           <div>
             <h2 style="font-size: var(--text-lg); line-height: var(--leading-lg); margin-bottom: var(--space-1);">Written by George</h2>
@@ -157,8 +160,8 @@
       <div class="site-container">
         <div class="footer-grid">
           <div>
-            <a href="/home/" class="brand-logo" style="margin-bottom: var(--space-3);" aria-label="George home">
-              <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
+            <a href="/" class="brand-logo" style="margin-bottom: var(--space-3);" aria-label="George home">
+              <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" decoding="async" loading="lazy" />
             </a>
             <p style="font-size: var(--text-sm); color: var(--color-ink-secondary); margin: 0; line-height: var(--leading-sm); max-width: 320px;">
               Thoughts worth a minute.<br />
@@ -169,13 +172,13 @@
           <div>
             <p class="footer-nav-title">Explore</p>
             <a href="/articles/" class="footer-link">All articles</a>
-            <a href="/home/#collections" class="footer-link">Collections</a>
+            <a href="/collections/" class="footer-link">Collections</a>
             <a href="/about/" class="footer-link">About George</a>
           </div>
 
           <div>
             <p class="footer-nav-title">Elsewhere</p>
-            <a href="/home/#newsletter" class="footer-link">Sunday letter</a>
+            <a href="/#newsletter" class="footer-link">Sunday letter</a>
             <a href="mailto:hello@georgewrites.com" class="footer-link">Write a note</a>
             <a href="#" class="footer-link">Instagram</a>
           </div>
@@ -186,6 +189,7 @@
           <div style="display: flex; gap: var(--space-4);">
             <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Privacy</a>
             <a href="#" style="color: var(--color-ink-muted); text-decoration: none;">Accessibility</a>
+            <a href="/feed.xml" style="color: var(--color-ink-muted); text-decoration: none;">RSS</a>
           </div>
         </div>
       </div>

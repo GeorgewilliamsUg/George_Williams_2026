@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Core Publication Pages -->
   <url>
     <loc>https://jojjy.org/</loc>
-    <lastmod>2026-10-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://jojjy.org/home/</loc>
-    <lastmod>2026-10-12</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://jojjy.org/articles/</loc>
-    <lastmod>2026-10-12</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jojjy.org/about/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://jojjy.org/collections/</loc>
+    <lastmod>2025-08-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
-
-  <!-- Published Essays by George -->
+  <url>
+    <loc>https://jojjy.org/about/</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://jojjy.org/articles/article-busy-isnt-faithful/</loc>
     <lastmod>2025-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jojjy.org/articles/article-nobody-is-self-made/</loc>
+    <lastmod>2025-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -48,12 +51,6 @@
   <url>
     <loc>https://jojjy.org/articles/article-god-doesnt-need-your-resume/</loc>
     <lastmod>2025-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jojjy.org/articles/article-nobody-is-self-made/</loc>
-    <lastmod>2025-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -84,6 +81,12 @@
   <url>
     <loc>https://jojjy.org/articles/article-the-verse-that-is-slowly-killing-you/</loc>
     <lastmod>2025-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jojjy.org/articles/article-you-were-not-made-for-sadness/</loc>
+    <lastmod>2025-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -120,12 +123,6 @@
   <url>
     <loc>https://jojjy.org/articles/article-you-are-not-your-job-title/</loc>
     <lastmod>2025-03-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://jojjy.org/articles/article-you-were-not-made-for-sadness/</loc>
-    <lastmod>2025-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

@@ -116,10 +116,16 @@
   --shadow-hover: none;
 
   /* Animation Durations & Easings */
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
-  --duration-slow: 400ms;
-  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Primary editorial deceleration */
+  --ease-out-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Subtle ink/opacity fade curve */
+  --ease-ink: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Strict Duration Scale */
+  --duration-instant: 140ms;
+  --duration-fast: 240ms;
+  --duration-calm: 380ms;
+  --duration-page: 480ms;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -191,6 +197,31 @@ body {
   overflow-x: hidden;
   position: relative;
 }
+
+/* Accessible Skip Link */
+.skip-link {
+  position: absolute;
+  top: var(--space-4);
+  left: -9999px;
+  z-index: 10000;
+  background: var(--ink-primary);
+  color: var(--bg-canvas);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  left: var(--space-4);
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
 
 /* Tactile Paper Grain Overlay (Zero HTTP request SVG noise) */
 body::after {

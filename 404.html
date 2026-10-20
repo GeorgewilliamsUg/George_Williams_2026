@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page Not Found (404) — George</title>
-    <meta name="description" content="The requested page could not be found on George. Explore short, honest Christian reflections by George on faith, life, and work." />
+    <title>Page Not Found | George</title>
+    <meta name="description" content="The page you are looking for has been moved or does not exist. Return home or explore the archive of short Christian essays on faith, work, and ordinary life." />
     <meta name="robots" content="noindex, follow" />
 
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
@@ -23,32 +23,35 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/favicon-96x96.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png" />
     <link rel="manifest" href="/images/favicon/manifest.json" />
+      <link rel="alternate" type="application/rss+xml" title="George | Christian Essays" href="https://jojjy.org/feed.xml" />
   </head>
 
   <body>
+    <!-- Skip Link for Keyboard Accessibility -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <!-- Mobile Navigation Drawer -->
     <!-- Reading Progress Bar -->
     <div style="position: fixed; inset-inline: 0; top: 0; z-index: 70; height: 2px;">
       <div id="reading-progress"></div>
     </div>
 
-    <!-- Skip Link for Keyboard Accessibility -->
-    <a href="#main-content" style="position: absolute; left: -9999px; top: var(--space-4); z-index: 100; background: var(--color-ink-primary); color: var(--bg-canvas); padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm); text-decoration: none;" onfocus="this.style.left='var(--space-4)'" onblur="this.style.left='-9999px'">Skip to main content</a>
+    
 
       <!-- Masthead & Site Header -->
   <header class="site-header">
     <div class="site-container">
       <div class="header-inner">
-        <a href="/home/" class="brand-logo" aria-label="George home">
-          <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
+        <a href="/" class="brand-logo" aria-label="George home">
+          <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" decoding="async" loading="lazy" />
         </a>
 
         <nav id="site-nav" aria-label="Primary navigation" class="site-nav">
           <a href="/" class="nav-link">Home</a>
           <a href="/articles/" class="nav-link">Essays</a>
-          <a href="/home/#collections" class="nav-link">Collections</a>
+          <a href="/collections/" class="nav-link">Collections</a>
           <a href="/about/" class="nav-link">About</a>
-          <a href="/home/#newsletter" class="nav-link">Sunday Letter</a>
+          <a href="/#newsletter" class="nav-link">Sunday Letter</a>
         </nav>
 
         <button id="mobile-nav-trigger" class="mobile-nav-trigger" onclick="toggleMobileNav()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-nav">
@@ -79,7 +82,7 @@
                 <span>Browse all essays</span>
                 <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="2"></iconify-icon>
               </a>
-              <a href="/home/" class="btn-outline">
+              <a href="/" class="btn-outline">
                 <iconify-icon icon="solar:home-2-linear" width="16" stroke-width="1.5"></iconify-icon>
                 <span>Return home</span>
               </a>
@@ -101,7 +104,7 @@
             <!-- Curated Essay 01 -->
             <article class="archive-card has-thumb" data-topic="work">
               <div class="card-thumb-wrap">
-                <img src="/images/business.jpg" alt="Busy Isn't Faithful" class="card-thumb-img" loading="lazy" />
+                <img src="/images/business.jpg" alt="Busy Isn" class="card-thumb-img" width="1476" height="978" decoding="async" loading="lazy" />
               </div>
               <div class="card-content-wrap">
                 <div>
@@ -126,7 +129,7 @@
             <!-- Curated Essay 02 -->
             <article class="archive-card has-thumb" data-topic="holiness">
               <div class="card-thumb-wrap">
-                <img src="/images/hero-countryside.png" alt="Terrified of Silence" class="card-thumb-img" loading="lazy" />
+                <img src="/images/hero-countryside.png" alt="Terrified of Silence" class="card-thumb-img" width="1008" height="756" decoding="async" loading="lazy" />
               </div>
               <div class="card-content-wrap">
                 <div>
@@ -151,7 +154,7 @@
             <!-- Curated Essay 03 -->
             <article class="archive-card has-thumb" data-topic="work">
               <div class="card-thumb-wrap">
-                <img src="/images/writing-desk.png" alt="Nobody Is Self-Made" class="card-thumb-img" loading="lazy" />
+                <img src="/images/writing-desk.png" alt="Nobody Is Self-Made" class="card-thumb-img" width="1024" height="1024" decoding="async" loading="lazy" />
               </div>
               <div class="card-content-wrap">
                 <div>
@@ -182,8 +185,8 @@
       <div class="site-container">
         <div class="footer-grid">
           <div>
-            <a href="/home/" class="brand-logo" style="margin-bottom: var(--space-3);" aria-label="George home">
-              <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
+            <a href="/" class="brand-logo" style="margin-bottom: var(--space-3);" aria-label="George home">
+              <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" decoding="async" loading="lazy" />
             </a>
             <p style="font-size: var(--text-sm); color: var(--color-ink-secondary); margin: 0; line-height: var(--leading-sm); max-width: 320px;">
               Thoughts worth a minute.<br />
@@ -194,13 +197,13 @@
           <div>
             <p class="footer-nav-title">Explore</p>
             <a href="/articles/" class="footer-link">All articles</a>
-            <a href="/home/#collections" class="footer-link">Collections</a>
+            <a href="/collections/" class="footer-link">Collections</a>
             <a href="/about/" class="footer-link">About George</a>
           </div>
 
           <div>
             <p class="footer-nav-title">Elsewhere</p>
-            <a href="/home/#newsletter" class="footer-link">Sunday letter</a>
+            <a href="/#newsletter" class="footer-link">Sunday letter</a>
             <a href="mailto:hello@georgewrites.com" class="footer-link">Write a note</a>
             <a href="/about/" class="footer-link">Meet George</a>
           </div>
@@ -209,7 +212,7 @@
         <div class="footer-bottom-row">
           <p style="margin: 0;">© 2026 George. Essays by George, written slowly in the countryside.</p>
           <div style="display: flex; gap: var(--space-4);">
-            <a href="/home/" style="color: var(--color-ink-muted); text-decoration: none;">Home</a>
+            <a href="/" style="color: var(--color-ink-muted); text-decoration: none;">Home</a>
             <a href="/articles/" style="color: var(--color-ink-muted); text-decoration: none;">Archive</a>
             <a href="/about/" style="color: var(--color-ink-muted); text-decoration: none;">About</a>
           </div>

@@ -25,24 +25,31 @@ Options -Indexes
   RewriteBase /
 
   # Enforce canonical non-www over HTTPS in a single step
-  RewriteCond %{HTTP_HOST} ^www.(.+)$ [NC]
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
   # Redirect remaining HTTP non-www to HTTPS
   RewriteCond %{HTTPS} off
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+  RewriteRule ^(.*)$ https://jojjy.org%{REQUEST_URI} [R=301,L]
 
-  # 301 Redirect legacy /index.html to /home/
+  # 301 Redirect legacy /index.html and /home/ to root /
   RewriteCond %{THE_REQUEST} \s/index\.html[?\s] [NC]
-  RewriteRule ^index\.html$ /home/ [R=301,L]
+  RewriteRule ^index\.html$ / [R=301,L]
 
-  # 301 Redirect legacy /about.html to /about/
+  RewriteCond %{THE_REQUEST} \s/home(/index\.html)?/?[\s?] [NC]
+  RewriteRule ^home(/index\.html)?/?$ / [R=301,L]
+
+  # 301 Redirect legacy /about.html to clean /about/
   RewriteCond %{THE_REQUEST} \s/about\.html[?\s] [NC]
   RewriteRule ^about\.html$ /about/ [R=301,L]
 
-  # 301 Redirect legacy /articles.html to /articles/
+  # 301 Redirect legacy /articles.html to clean /articles/
   RewriteCond %{THE_REQUEST} \s/articles\.html[?\s] [NC]
   RewriteRule ^articles\.html$ /articles/ [R=301,L]
+
+  # 301 Redirect legacy /collections.html to clean /collections/
+  RewriteCond %{THE_REQUEST} \s/collections\.html[?\s] [NC]
+  RewriteRule ^collections\.html$ /collections/ [R=301,L]
 
   # 301 Redirect legacy /articles/article-*.html to clean directory /articles/article-*/
   RewriteCond %{THE_REQUEST} \s/articles/(article-[^/.]+)\.html[?\s] [NC]
@@ -129,14 +136,15 @@ RedirectMatch 404 ^/(src|scripts)(/.*)?$
   ExpiresActive On
   ExpiresDefault "access plus 1 month"
 
-  # HTML documents (short cache for quick updates)
+  # HTML documents (short cache for immediate editorial updates)
   ExpiresByType text/html "access plus 1 hour"
 
-  # Data feeds
+  # Data feeds & feeds
   ExpiresByType application/json "access plus 1 hour"
   ExpiresByType application/ld+json "access plus 1 hour"
   ExpiresByType text/xml "access plus 1 hour"
   ExpiresByType application/xml "access plus 1 hour"
+  ExpiresByType application/rss+xml "access plus 1 hour"
 
   # CSS and JavaScript
   ExpiresByType text/css "access plus 1 year"

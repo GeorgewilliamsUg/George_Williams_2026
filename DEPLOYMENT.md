@@ -87,37 +87,62 @@ You can authenticate using either **Password Auth** or **SSH Key Auth**:
 
 ## 5. Usage Commands
 
-All deployment tasks are executed via PowerShell from the project root:
-
-### First-Time Full Deployment
-Uploads all eligible files to the remote server and establishes the initial `.deploy-manifest.json` checksum cache:
-```powershell
-.\deploy.ps1 -All
-```
+Deployment can be run from **Linux / macOS** using `./deploy.sh` and `./publish.sh`, or from **Windows** using PowerShell `.\deploy.ps1` and `.\publish.ps1`:
 
 ### Daily Smart Incremental Deployment
 Scans local files, calculates SHA256 hashes, and uploads only modified or newly created files:
-```powershell
-.\deploy.ps1
-```
+* **Linux / macOS**:
+  ```bash
+  ./deploy.sh
+  ```
+* **Windows (PowerShell)**:
+  ```powershell
+  .\deploy.ps1
+  ```
+
+### Combined Git Push + SFTP Deployment
+Stages all git changes, commits with your message, pushes to `origin main`, and immediately runs delta deployment:
+* **Linux / macOS**:
+  ```bash
+  ./publish.sh -m "Update article content and styles"
+  ```
+* **Windows (PowerShell)**:
+  ```powershell
+  .\publish.ps1 -Message "Update article content and styles"
+  ```
 
 ### Dry Run (Simulation)
 Inspects local changes and prints which files would be uploaded or deleted without touching the remote server:
-```powershell
-.\deploy.ps1 -DryRun
-```
+* **Linux / macOS**:
+  ```bash
+  ./deploy.sh --dry-run
+  ```
+* **Windows (PowerShell)**:
+  ```powershell
+  .\deploy.ps1 -DryRun
+  ```
+
+### First-Time / Force Full Deployment
+Uploads all eligible files to the remote server and resets `.deploy-manifest.json`:
+* **Linux / macOS**:
+  ```bash
+  ./deploy.sh --all
+  ```
+* **Windows (PowerShell)**:
+  ```powershell
+  .\deploy.ps1 -All
+  ```
 
 ### Delete Stale Remote Files
 Removes remote files that were previously tracked in the manifest but have since been deleted locally:
-```powershell
-.\deploy.ps1 -Delete
-```
-
-### Combined Git Push + SFTP Deployment
-Stages all git changes, commits with your message, pushes to `origin main`, and immediately runs `deploy.ps1`:
-```powershell
-.\publish.ps1 -Message "Add new article on faith and work"
-```
+* **Linux / macOS**:
+  ```bash
+  ./deploy.sh --delete
+  ```
+* **Windows (PowerShell)**:
+  ```powershell
+  .\deploy.ps1 -Delete
+  ```
 
 ---
 

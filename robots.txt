@@ -5,14 +5,19 @@
 User-agent: *
 Allow: /
 Allow: /articles/
+Allow: /collections/
+Allow: /about/
 Allow: /images/
 Allow: /styles.css
 Allow: /main.js
+Allow: /motion.js
+Allow: /feed.xml
 
-# Disallow Unpopulated Template, Internal Utilities, Source Drafts & Config Files
+# Disallow Internal Utilities, Source Drafts & Config Files
 Disallow: /article.html
 Disallow: /src/
 Disallow: /scripts/
+Disallow: /.agents/
 Disallow: /*.json$
 Disallow: /*.ps1$
 Disallow: /*.md$

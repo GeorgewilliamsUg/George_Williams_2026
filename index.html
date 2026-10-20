@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>George — Christian Essays on Faith, Life & Work</title>
 
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -23,26 +22,26 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png" />
     <link rel="manifest" href="/images/favicon/manifest.json" />
 
-    
-    <meta name="description" content="Short, honest Christian essays by George on faith, work, relationships, and ordinary life." />
+  
+    <title>George | Short Christian Essays on Faith, Work & Ordinary Life</title>
+    <meta name="description" content="Short, honest Christian essays on faith, daily work, quiet holiness, and ordinary life. Contemplative, literary reflections written slowly in the countryside." />
     <meta name="author" content="George" />
-    <link rel="canonical" href="https://jojjy.org/home/" />
-
+    <link rel="canonical" href="https://jojjy.org/" />
+    <link rel="alternate" type="application/rss+xml" title="George | Christian Essays" href="https://jojjy.org/feed.xml" />
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="George" />
-    <meta property="og:title" content="George — Christian Essays on Faith, Life & Work" />
-        <meta property="og:url" content="https://jojjy.org/home/" />
-        <meta property="og:description" content="Short, honest Christian essays by George on faith, work, relationships, and ordinary life." />
+    <meta property="og:url" content="https://jojjy.org/" />
+    <meta property="og:title" content="George | Short Christian Essays on Faith, Work & Ordinary Life" />
+    <meta property="og:description" content="Short, honest Christian essays on faith, daily work, quiet holiness, and ordinary life. Contemplative, literary reflections written slowly in the countryside." />
     <meta property="og:image" content="https://jojjy.org/images/hero-countryside.png" />
-    <meta property="og:image:alt" content="George — Christian Essays on Faith, Life & Work" />
+    <meta property="og:image:alt" content="George | Short Christian Essays on Faith, Work & Ordinary Life" />
     <meta property="og:locale" content="en_US" />
-
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://jojjy.org/home/" />
-    <meta name="twitter:title" content="George — Christian Essays on Faith, Life & Work" />
-    <meta name="twitter:description" content="Short, honest Christian essays by George on faith, work, relationships, and ordinary life." />
+    <meta name="twitter:url" content="https://jojjy.org/" />
+    <meta name="twitter:title" content="George | Short Christian Essays on Faith, Work & Ordinary Life" />
+    <meta name="twitter:description" content="Short, honest Christian essays on faith, daily work, quiet holiness, and ordinary life. Contemplative, literary reflections written slowly in the countryside." />
     <meta name="twitter:image" content="https://jojjy.org/images/hero-countryside.png" />
 
     <!-- Structured Data (JSON-LD) -->
@@ -55,34 +54,20 @@
       "@id": "https://jojjy.org/#website",
       "url": "https://jojjy.org/",
       "name": "George",
-      "description": "Short, honest Christian essays by George on faith, work, relationships, and ordinary life.",
+      "alternateName": "Jojjy",
+      "description": "Short, honest Christian essays on faith, daily work, quiet holiness, and ordinary life. Contemplative, literary reflections written slowly in the countryside.",
       "inLanguage": "en-US",
-      "creator": {
-        "@type": "Person",
-        "@id": "https://jojjy.org/#author"
-      },
       "publisher": {
-        "@type": "Organization",
-        "@id": "https://jojjy.org/#publication",
-        "name": "George",
-        "url": "https://jojjy.org/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://jojjy.org/images/logo.png"
-        }
+        "@id": "https://jojjy.org/#george"
       }
     },
     {
       "@type": "Person",
-      "@id": "https://jojjy.org/#author",
+      "@id": "https://jojjy.org/#george",
       "name": "George",
       "url": "https://jojjy.org/about/",
-      "image": "https://jojjy.org/images/Me.png",
-      "jobTitle": "Writer",
-      "description": "Writer sharing short, honest Christian reflections on ordinary faith, work, and following Jesus in the everyday.",
-      "sameAs": [
-        "https://jojjy.org/about.html"
-      ]
+      "description": "Writer of contemplative, short Christian essays on faith, work, and the ordinary life.",
+      "jobTitle": "Author & Essayist"
     }
   ]
 }
@@ -90,27 +75,29 @@
   </head>
 
   <body>
+    <!-- Skip Link for Keyboard Accessibility -->
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <!-- Mobile Navigation Drawer -->
     <!-- Reading Progress Bar -->
     <div style="position: fixed; inset-inline: 0; top: 0; z-index: 70; height: 2px;">
       <div id="reading-progress"></div>
     </div>
 
-    <!-- Skip Link -->
-    <a href="#main-content" style="position: absolute; left: -9999px; top: var(--space-4); z-index: 100; background: var(--color-ink-primary); color: var(--bg-canvas); padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm); text-decoration: none;" onfocus="this.style.left='var(--space-4)'" onblur="this.style.left='-9999px'">Skip to main content</a>
+    
 
         <!-- Masthead & Header -->
     <header class="site-header">
       <div class="site-container">
         <div class="header-inner">
-          <a href="/home/" class="brand-logo" aria-label="George home">
-            <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
+          <a href="/" class="brand-logo" aria-label="George home">
+            <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" decoding="async" loading="lazy" />
           </a>
 
           <nav id="site-nav" aria-label="Primary navigation" class="site-nav">
             <a href="/" class="nav-link is-active">Home</a>
             <a href="/articles/" class="nav-link">Essays</a>
-            <a href="#collections" class="nav-link">Collections</a>
+            <a href="/collections/" class="nav-link">Collections</a>
             <a href="/about/" class="nav-link">About</a>
             <a href="#newsletter" class="nav-link">Sunday Letter</a>
           </nav>
@@ -160,14 +147,7 @@
             <div class="hero-bw-visual-wrap" id="hero-visual-wrap">
               <div class="hero-george-floating-container" id="hero-george-container">
                 <div class="hero-george-canvas">
-                  <img
-                    src="/images/george.png"
-                    alt="George"
-                    class="hero-george-img"
-                    id="hero-george-img"
-                    loading="eager"
-                    fetchpriority="high"
-                  />
+                  <img id="hero-george-img" src="/images/george.png" alt="George" class="hero-george-img" width="1211" height="1299" decoding="async" loading="eager" fetchpriority="high" />
                   <!-- Organic Grounding Ambient Shadow -->
                   <div class="hero-george-ground-shadow" aria-hidden="true"></div>
                 </div>
@@ -202,7 +182,7 @@
             <!-- Essay 01 -->
             <article class="archive-card" data-topic="work" style="padding: 0; overflow: hidden;">
               <div class="card-thumb-wrap">
-                <img src="/images/business.jpg" alt="Busy Isn't Faithful" class="card-thumb-img" loading="lazy" />
+                <img src="/images/business.jpg" alt="Busy Isn" class="card-thumb-img" width="1476" height="978" decoding="async" loading="lazy" />
               </div>
               <div style="padding: var(--space-6); display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
                 <div>
@@ -227,7 +207,7 @@
             <!-- Essay 02 -->
             <article class="archive-card" data-topic="work" style="padding: 0; overflow: hidden;">
               <div class="card-thumb-wrap">
-                <img src="/images/writing-desk.png" alt="Nobody Is Self-Made" class="card-thumb-img" loading="lazy" />
+                <img src="/images/writing-desk.png" alt="Nobody Is Self-Made" class="card-thumb-img" width="1024" height="1024" decoding="async" loading="lazy" />
               </div>
               <div style="padding: var(--space-6); display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
                 <div>
@@ -252,7 +232,7 @@
             <!-- Essay 03 -->
             <article class="archive-card" data-topic="scripture" style="padding: 0; overflow: hidden;">
               <div class="card-thumb-wrap">
-                <img src="/images/open-bible.png" alt="God Doesn't Need Your Resume" class="card-thumb-img" loading="lazy" />
+                <img src="/images/open-bible.png" alt="God Doesn" class="card-thumb-img" width="1024" height="1024" decoding="async" loading="lazy" />
               </div>
               <div style="padding: var(--space-6); display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
                 <div>
@@ -307,12 +287,7 @@
             </div>
 
             <div class="featured-split-img-wrap">
-              <img
-                src="/images/anxious.jpg"
-                alt="Quiet sea horizon reflecting on peace and worry"
-                class="featured-split-img"
-                loading="lazy"
-              />
+              <img src="/images/anxious.jpg" alt="Quiet sea horizon reflecting on peace and worry" class="featured-split-img" width="1074" height="806" decoding="async" loading="lazy" />
             </div>
           </div>
         </div>
@@ -333,7 +308,7 @@
           <div class="bento-grid">
             <a href="/articles/?topic=work" class="bento-item">
               <div>
-                <img src="/images/business.jpg" alt="Work & Vocation" class="bento-item-header-img" loading="lazy" />
+                <img src="/images/business.jpg" alt="Work & Vocation" class="bento-item-header-img" width="1476" height="978" decoding="async" loading="lazy" />
                 <span class="topic-tag">Work</span>
                 <h3>Work & Vocation</h3>
                 <p>Ordinary faithfulness at your desk, commute, and daily grind.</p>
@@ -345,7 +320,7 @@
 
             <a href="/articles/?topic=holiness" class="bento-item">
               <div>
-                <img src="/images/anxious.jpg" alt="Quiet Holiness" class="bento-item-header-img" loading="lazy" />
+                <img src="/images/anxious.jpg" alt="Quiet Holiness" class="bento-item-header-img" width="1074" height="806" decoding="async" loading="lazy" />
                 <span class="topic-tag">Holiness</span>
                 <h3>Quiet Holiness</h3>
                 <p>Guarding the mind, confronting hurry, and unlearning worry.</p>
@@ -357,7 +332,7 @@
 
             <a href="/articles/?topic=scripture" class="bento-item">
               <div>
-                <img src="/images/open-bible.png" alt="Reading Scripture" class="bento-item-header-img" loading="lazy" />
+                <img src="/images/open-bible.png" alt="Reading Scripture" class="bento-item-header-img" width="1024" height="1024" decoding="async" loading="lazy" />
                 <span class="topic-tag">Scripture</span>
                 <h3>Reading Scripture</h3>
                 <p>Approaching ancient words with patient, open posture.</p>
@@ -369,7 +344,7 @@
 
             <a href="/articles/?topic=suffering" class="bento-item">
               <div>
-                <img src="/images/prayer.jpg" alt="Suffering & Joy" class="bento-item-header-img" loading="lazy" />
+                <img src="/images/prayer.jpg" alt="Suffering & Joy" class="bento-item-header-img" width="640" height="578" decoding="async" loading="lazy" />
                 <span class="topic-tag">Suffering & Joy</span>
                 <h3>Suffering & Joy</h3>
                 <p>Waiting in the dark without pretending the dark isn’t real.</p>
@@ -427,8 +402,8 @@
       <div class="site-container">
         <div class="footer-grid">
           <div>
-            <a href="/home/" class="brand-logo" style="margin-bottom: var(--space-3);" aria-label="George home">
-              <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" />
+            <a href="/" class="brand-logo" style="margin-bottom: var(--space-3);" aria-label="George home">
+              <img src="/images/logo.png" alt="George — Christian Essays by George" class="brand-logo-img" width="120" height="32" decoding="async" loading="lazy" />
             </a>
             <p style="font-size: var(--text-sm); color: var(--color-ink-secondary); margin: 0; line-height: var(--leading-sm); max-width: 320px;">
               Thoughts worth a minute.<br />
@@ -439,7 +414,7 @@
           <div>
             <p class="footer-nav-title">Explore</p>
             <a href="/articles/" class="footer-link">Essays</a>
-            <a href="#collections" class="footer-link">Collections</a>
+            <a href="/collections/" class="footer-link">Collections</a>
             <a href="/about/" class="footer-link">About George</a>
           </div>
 
