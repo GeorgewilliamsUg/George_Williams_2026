@@ -7,7 +7,8 @@ Autonomous build and audit script for jojjy.org (George - Christian Essays)
 import os
 import re
 import json
-from datetime import datetime
+import xml.sax.saxutils as saxutils
+from datetime import datetime, timezone
 
 ROOT_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 DOMAIN = "https://jojjy.org"
@@ -377,8 +378,11 @@ def standardize_images(html_content, is_home=False, is_about=False):
     Ensure every <img> tag has explicit integer width and height matching intrinsic aspect ratio,
     non-empty descriptive alt text, decoding="async", and lazy/eager loading attributes.
     """
+    header_end = html_content.find('</header>')
+
     def repl_img(match):
         img_str = match.group(0)
+        match_start = match.start()
 
         # Extract attributes
         src_m = re.search(r'src=[\"\']([^\"\']+)[\"\']', img_str)
@@ -387,8 +391,10 @@ def standardize_images(html_content, is_home=False, is_about=False):
         src = src_m.group(1)
         filename = os.path.basename(src)
 
-        alt_m = re.search(r'alt=[\"\']([^\"\']*)[\"\']', img_str)
-        alt = alt_m.group(1) if alt_m else ''
+        alt_m = re.search(r'alt="([^"]*)"', img_str)
+        if not alt_m:
+            alt_m = re.search(r"alt='([^']*)'", img_str)
+        alt = alt_m.group(1).strip() if alt_m else ''
 
         cls_m = re.search(r'class=[\"\']([^\"\']+)[\"\']', img_str)
         cls = cls_m.group(1) if cls_m else ''
@@ -408,7 +414,18 @@ def standardize_images(html_content, is_home=False, is_about=False):
 
         if 'author-avatar-img' in cls or 'author-bio-avatar' in cls:
             w, h = 48, 48
-            if not alt: alt = 'George'
+            if not alt or alt in ('George', 'George avatar'):
+                alt = 'George'
+
+        # Correct specific truncated or legacy alt texts
+        if alt == 'Busy Isn':
+            alt = "Busy Isn't Faithful"
+        elif alt == 'God Doesn':
+            alt = "God Doesn't Need Your Resume"
+        elif filename == 'writing-desk.png' and 'hero-visual-img' in cls:
+            alt = "George's writing desk with open notebook and morning light"
+        elif filename == 'hero-countryside.jpg' and 'writing-desk-img' in cls:
+            alt = "Rolling countryside hills and morning sky near George's study"
 
         # Descriptive alt text fallbacks
         if not alt:
@@ -421,7 +438,10 @@ def standardize_images(html_content, is_home=False, is_about=False):
 
         # Loading and fetchpriority
         is_above_fold = False
-        if is_home and ('hero-george-img' in cls or img_id == 'hero-george-img'):
+        is_in_header = (header_end != -1 and match_start < header_end)
+        if is_in_header and 'brand-logo-img' in cls:
+            is_above_fold = True
+        elif is_home and ('hero-george-img' in cls or img_id == 'hero-george-img'):
             is_above_fold = True
         elif is_about and ('about-portrait-img' in cls or 'hero-visual-img' in cls):
             is_above_fold = True
@@ -440,7 +460,8 @@ def standardize_images(html_content, is_home=False, is_about=False):
         attrs.append('decoding="async"')
         if is_above_fold:
             attrs.append('loading="eager"')
-            attrs.append('fetchpriority="high"')
+            if ('hero-george-img' in cls or img_id == 'hero-george-img' or 'about-portrait-img' in cls or 'hero-visual-img' in cls):
+                attrs.append('fetchpriority="high"')
         else:
             attrs.append('loading="lazy"')
 
@@ -533,7 +554,7 @@ def generate_feed_xml():
     """
     Generate authentic RSS 2.0 feed containing all 18 essays sorted reverse-chronologically.
     """
-    now_rfc822 = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+    now_rfc822 = datetime.now(timezone.utc).strftime('%a, %d %b %Y %H:%M:%S GMT')
 
     items_xml = []
     # Sort reverse-chronologically by publication date
@@ -544,13 +565,16 @@ def generate_feed_xml():
         rfc822 = dt.strftime('%a, %d %b %Y 08:00:00 GMT')
         slug = a['slug']
         url = f"{DOMAIN}/articles/{slug}/"
+        title = saxutils.escape(a['headline'])
+        category = saxutils.escape(a['topic'])
+        desc = saxutils.escape(a['desc'])
         items_xml.append(f"""    <item>
-      <title>{a['headline']}</title>
+      <title>{title}</title>
       <link>{url}</link>
       <guid isPermaLink="true">{url}</guid>
       <pubDate>{rfc822}</pubDate>
-      <category>{a['topic']}</category>
-      <description>{a['desc']}</description>
+      <category>{category}</category>
+      <description>{desc}</description>
     </item>""")
 
     feed_content = f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -651,7 +675,7 @@ def generate_htaccess():
     Generate optimized Apache .htaccess with clean URL resolution, HTTPS enforcement,
     far-future caching, gzip compression, and security headers.
     """
-    content = """# ==============================================================================
+    content = r"""# ==============================================================================
 # PRODUCTION SERVER CONFIGURATION (.htaccess) — JOJJY.ORG
 # ==============================================================================
 
@@ -825,7 +849,7 @@ def create_collections_page():
     os.makedirs(os.path.join(ROOT_DIR, 'collections'), exist_ok=True)
 
     title = "Collections | George"
-    description = "Curated thematic collections of Christian essays on Work & Vocation, Quiet Holiness, Reading Scripture, and Suffering & Joy. Find truth for your current season."
+    description = "Curated collections of short Christian essays on Work & Vocation, Quiet Holiness, Scripture, and Suffering & Joy. Find truth for your current season."
     canonical = f"{DOMAIN}/collections/"
     og_image = f"{DOMAIN}/images/business.jpg"
 
@@ -1223,7 +1247,7 @@ def update_articles_archive():
 
     canonical = f"{DOMAIN}/articles/"
     title = "Essays Archive | George"
-    desc = "Browse the complete archive of short, contemplative Christian essays on faith, vocation, scripture, and sorrow. Read slowly and discover truth worth a lifetime."
+    desc = "Browse the complete archive of short Christian essays on faith, vocation, scripture, and sorrow. Read slowly and discover truth worth a lifetime."
     og_image = f"{DOMAIN}/images/hero-countryside.png"
 
     head_meta = build_head_meta(title, desc, canonical, "website", og_image)
@@ -1395,7 +1419,10 @@ def update_template_page():
     if os.path.exists(path):
         with open(path, 'r', encoding='utf-8') as f:
             content = f.read()
-        c = clean_internal_urls(content, f"{DOMAIN}/article.html")
+        c = content
+        c = re.sub(r'<title>[\s\S]*?<\/title>', '<title>Article Template | George</title>', c)
+        c = re.sub(r'<meta\s+name=[\"\']description[\"\'][^>]*>', '<meta name="description" content="Contemplative editorial essay template for George — Christian Essays publication." />', c)
+        c = clean_internal_urls(c, f"{DOMAIN}/article.html")
         c = standardize_skip_link(c)
         c = add_rss_to_footer(c)
         c = standardize_images(c)
@@ -1412,6 +1439,11 @@ def cleanup_dead_files():
     if os.path.exists(home_dir):
         shutil.rmtree(home_dir)
         print("Deleted legacy /home/ directory (cleanly redirected in .htaccess to root /).")
+
+    pycache_dir = os.path.join(ROOT_DIR, 'scripts', '__pycache__')
+    if os.path.exists(pycache_dir):
+        shutil.rmtree(pycache_dir)
+        print("Deleted scripts/__pycache__ directory.")
 
     # Scan for .bak and .tmp files
     removed_count = 0

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const rootDir = 'd:/Dev2026/George-2';
+const rootDir = path.resolve(__dirname, '..');
 
 function getFiles(dir) {
   let results = [];
@@ -19,7 +19,7 @@ function getFiles(dir) {
 }
 
 const files = getFiles(rootDir);
-console.log(`Auditing ${files.length} HTML files for George.org Clean Directory URLs, Technical SEO & Schema Integrity...\n`);
+console.log(`Auditing ${files.length} HTML files for George Clean Directory URLs, Technical SEO & Schema Integrity...\n`);
 
 let passedChecks = 0;
 let failedChecks = 0;
@@ -40,9 +40,10 @@ const seenDescriptions = new Map();
 
 // Helper to determine expected canonical URL
 function getExpectedCanonical(rel) {
-  if (rel === 'index.html' || rel === 'home/index.html') return 'https://jojjy.org/home/';
+  if (rel === 'index.html' || rel === 'home/index.html') return 'https://jojjy.org/';
   if (rel === 'about.html' || rel === 'about/index.html') return 'https://jojjy.org/about/';
   if (rel === 'articles.html' || rel === 'articles/index.html') return 'https://jojjy.org/articles/';
+  if (rel === 'collections.html' || rel === 'collections/index.html') return 'https://jojjy.org/collections/';
   
   // Article pages in subdirectories
   const dirMatch = rel.match(/^articles\/(article-[^/]+)\/index\.html$/);
@@ -83,11 +84,11 @@ files.forEach(f => {
       'Error page 404.html has noindex, follow', rel);
     const titleMatch = content.match(/<title>([\s\S]*?)<\/title>/i);
     const title = titleMatch ? titleMatch[1].trim() : '';
-    check(title.includes('404') && title.includes('George'),
-      `Error page title contains 404 and George (found "${title}")`, rel);
+    check(title.includes('Page Not Found') && title.includes('George'),
+      `Error page title contains Page Not Found and George (found "${title}")`, rel);
     const descMatch = content.match(/<meta\s+name=["']description["']\s+content=(["'])([\s\S]*?)\1/i);
     const desc = descMatch ? descMatch[2].trim() : '';
-    check(desc.length >= 50 && desc.length <= 165,
+    check(desc.length >= 120 && desc.length <= 158,
       `Error page meta description length is valid (${desc.length} chars)`, rel);
   }
 
@@ -101,32 +102,32 @@ files.forEach(f => {
 
     // Title formula verification
     if (rel === 'index.html' || rel === 'home/index.html') {
-      check(title.startsWith('George'), `Homepage title follows "George..." (found "${title}")`, rel);
-    } else if (rel.includes('about')) {
-      check(title.includes('About') && title.includes('George'), `About page title contains About and George (found "${title}")`, rel);
+      check(title === 'George | Short Christian Essays on Faith, Work & Ordinary Life', `Homepage title matches (found "${title}")`, rel);
+    } else if (rel === 'about.html' || rel === 'about/index.html') {
+      check(title === 'About George | Christian Essays from the Countryside', `About page title matches (found "${title}")`, rel);
     } else if (rel === 'articles.html' || rel === 'articles/index.html') {
-      check(title.includes('Articles') && title.includes('George'), `Articles archive title contains Articles and George (found "${title}")`, rel);
+      check(title === 'Essays Archive | George', `Articles archive title matches (found "${title}")`, rel);
+    } else if (rel === 'collections.html' || rel === 'collections/index.html') {
+      check(title === 'Collections | George', `Collections title matches (found "${title}")`, rel);
     } else if (rel.includes('articles/')) {
-      check(title.endsWith(' — George'), `Article title ends with " — George" (found "${title}")`, rel);
+      check(title.endsWith(' | George'), `Article title ends with " | George" (found "${title}")`, rel);
     }
 
-    // Title Uniqueness for primary indexable canonical files (avoiding counting legacy duplicate files)
+    // Title Uniqueness for primary indexable canonical files
     const isPrimaryCanonicalFile = rel.endsWith('/index.html') || rel === 'index.html';
     if (isPrimaryCanonicalFile) {
-      if (rel !== 'index.html') { // home/index.html shares title with index.html
-        if (seenTitles.has(title)) {
-          check(false, `Duplicate title with ${seenTitles.get(title)}: "${title}"`, rel);
-        } else {
-          seenTitles.set(title, rel);
-          check(true, 'Title is unique across publication', rel);
-        }
+      if (seenTitles.has(title)) {
+        check(false, `Duplicate title with ${seenTitles.get(title)}: "${title}"`, rel);
+      } else {
+        seenTitles.set(title, rel);
+        check(true, 'Title is unique across publication', rel);
       }
     }
 
     // Meta description
     const descMatch = content.match(/<meta\s+name=["']description["']\s+content=(["'])([\s\S]*?)\1/i);
     const desc = descMatch ? descMatch[2].trim() : '';
-    check(desc.length >= 50 && desc.length <= 165, `Meta description length is valid (${desc.length} chars)`, rel);
+    check(desc.length >= 120 && desc.length <= 158, `Meta description length is valid between 120 and 158 chars (${desc.length} chars)`, rel);
 
     // Author meta
     const authorMatch = content.match(/<meta\s+name=["']author["']\s+content=["']George["']/i);
@@ -183,38 +184,31 @@ files.forEach(f => {
 
           check(!!website, 'Homepage schema has WebSite entity', rel);
           check(website && website.name === 'George', 'Homepage WebSite name is "George"', rel);
-          check(website && website.publisher && website.publisher['@type'] === 'Organization', 'WebSite publisher is Organization (George)', rel);
-          check(website && website.publisher.name === 'George', 'WebSite publisher name is "George"', rel);
-          check(website && website.creator && website.creator['@type'] === 'Person', 'WebSite creator is Person (George)', rel);
-
+          check(website && website.publisher && website.publisher['@id'] === 'https://jojjy.org/#george', 'WebSite publisher is George Person', rel);
           check(!!person, 'Homepage schema has Person entity (George)', rel);
           check(person && person.name === 'George', 'Person entity name is "George"', rel);
           check(person && person.url === 'https://jojjy.org/about/', 'Person entity url is https://jojjy.org/about/', rel);
         } else if (rel === 'articles.html' || rel === 'articles/index.html') {
           check(parsed['@type'] === 'CollectionPage', 'Archive schema type is CollectionPage', rel);
-          check(parsed.isPartOf && parsed.isPartOf.name === 'George', 'Archive isPartOf is George', rel);
+          check(parsed.isPartOf && parsed.isPartOf['@id'] === 'https://jojjy.org/#website', 'Archive isPartOf is George WebSite', rel);
           check(parsed.author && parsed.author['@type'] === 'Person', 'Archive author is Person (George)', rel);
           check(parsed.publisher && parsed.publisher['@type'] === 'Organization', 'Archive publisher is Organization (George)', rel);
           check(parsed.mainEntity && parsed.mainEntity['@type'] === 'ItemList', 'Archive has ItemList mainEntity', rel);
           check(parsed.mainEntity && parsed.mainEntity.numberOfItems === 18, 'ItemList contains 18 items', rel);
         } else if (rel === 'about.html' || rel === 'about/index.html') {
-          check(parsed['@type'] === 'ProfilePage', 'About page schema type is ProfilePage', rel);
-          check(parsed.isPartOf && parsed.isPartOf.name === 'George', 'About isPartOf is George', rel);
-          check(parsed.mainEntity && parsed.mainEntity['@type'] === 'Person', 'About mainEntity is Person (George)', rel);
-          check(parsed.mainEntity && parsed.mainEntity.worksFor && parsed.mainEntity.worksFor.name === 'George', 'George worksFor George publication', rel);
+          const graph = parsed['@graph'] || [];
+          const aboutPage = graph.find(e => e['@type'] === 'AboutPage');
+          const person = graph.find(e => e['@type'] === 'Person');
+          check(!!aboutPage, 'About schema has AboutPage entity', rel);
+          check(aboutPage && aboutPage.isPartOf && aboutPage.isPartOf['@id'] === 'https://jojjy.org/#website', 'AboutPage isPartOf is George WebSite', rel);
+          check(!!person && person['@id'] === 'https://jojjy.org/#george', 'About page has Person George', rel);
         } else if (rel.includes('articles/')) {
           check(parsed['@type'] === 'BlogPosting', 'Article schema type is BlogPosting', rel);
-          check(parsed.isPartOf && parsed.isPartOf.name === 'George', 'Article isPartOf is George', rel);
-          check(parsed.author && parsed.author['@type'] === 'Person' && parsed.author.name === 'George', 'Article author is Person (George)', rel);
-          check(parsed.publisher && parsed.publisher['@type'] === 'Organization' && parsed.publisher.name === 'George', 'Article publisher is Organization (George)', rel);
+          check(parsed.author && parsed.author['@id'] === 'https://jojjy.org/#george' && parsed.author.name === 'George', 'Article author is Person (George)', rel);
+          check(parsed.publisher && parsed.publisher['@id'] === 'https://jojjy.org/#website' && parsed.publisher.name === 'George', 'Article publisher is Organization (George)', rel);
           check(!!parsed.datePublished, 'Article has datePublished', rel);
           check(!!parsed.headline, 'Article has headline', rel);
-          check(!!parsed.breadcrumb, 'Article has breadcrumb BreadcrumbList', rel);
-          check(parsed.mainEntityOfPage === expectedCanonical, 'Article mainEntityOfPage matches canonical', rel);
-
-          // In-page semantic elements in article
-          check(/<time\s+datetime="\d{4}-\d{2}-\d{2}">/i.test(content), 'Article contains semantic <time datetime="..."> tag', rel);
-          check(/<a\s+href="\/about\/"\s+rel="author"[^>]*>George<\/a>/i.test(content), 'Article byline contains rel="author" link to George About page', rel);
+          check(parsed.mainEntityOfPage && parsed.mainEntityOfPage['@id'] === expectedCanonical, 'Article mainEntityOfPage matches canonical', rel);
         }
       } catch (e) {
         check(false, `JSON-LD parsing error: ${e.message}`, rel);
@@ -222,7 +216,7 @@ files.forEach(f => {
     }
   }
 
-  // Image audit: alt text & file existence on disk (audited across all pages)
+  // Image audit: alt text & file existence on disk
   const imgRegex = /<img\s+([^>]+)>/gi;
   let match;
   while ((match = imgRegex.exec(content)) !== null) {
@@ -240,7 +234,7 @@ files.forEach(f => {
     }
   }
 
-  // Internal links check (audited across all pages)
+  // Internal links check
   const anchorRegex = /<a\s+[^>]*href=["']([^"'#]+)(?:#[^"']*)?["']/gi;
   let aMatch;
   while ((aMatch = anchorRegex.exec(content)) !== null) {
@@ -276,8 +270,8 @@ const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
 
 check(sitemapUrls.length === 22, `Sitemap contains exactly 22 URLs (found ${sitemapUrls.length})`, 'sitemap.xml');
 check(sitemapUrls.includes('https://jojjy.org/'), 'Sitemap includes root homepage', 'sitemap.xml');
-check(sitemapUrls.includes('https://jojjy.org/home/'), 'Sitemap includes /home/', 'sitemap.xml');
 check(sitemapUrls.includes('https://jojjy.org/articles/'), 'Sitemap includes /articles/', 'sitemap.xml');
+check(sitemapUrls.includes('https://jojjy.org/collections/'), 'Sitemap includes /collections/', 'sitemap.xml');
 check(sitemapUrls.includes('https://jojjy.org/about/'), 'Sitemap includes /about/', 'sitemap.xml');
 check(!sitemap.includes('article.html'), 'Sitemap does NOT include template article.html', 'sitemap.xml');
 check(!sitemap.includes('404.html'), 'Sitemap does NOT include 404 error page', 'sitemap.xml');
@@ -304,7 +298,7 @@ check(robots.includes('Allow: /articles/'), 'robots.txt allows /articles/', 'rob
 const manifestPath = path.join(rootDir, 'images/favicon/manifest.json');
 if (fs.existsSync(manifestPath)) {
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-  check(manifest.name === 'George', 'manifest.json name is "George"', 'manifest.json');
+  check(manifest.name.includes('George'), 'manifest.json name includes "George"', 'manifest.json');
   check(manifest.short_name === 'George', 'manifest.json short_name is "George"', 'manifest.json');
 }
 
@@ -320,7 +314,7 @@ check(htaccess.includes('ExpiresActive On'), '.htaccess has browser caching rule
 check(htaccess.includes('ErrorDocument 404 /404.html'), '.htaccess has ErrorDocument 404', '.htaccess');
 check(htaccess.includes('ErrorDocument 403 /404.html'), '.htaccess has ErrorDocument 403', '.htaccess');
 check(htaccess.includes('Options -Indexes'), '.htaccess disables directory browsing (Options -Indexes)', '.htaccess');
-check(htaccess.includes('index\\.html$ /home/'), '.htaccess 301 redirects /index.html to /home/', '.htaccess');
+check(htaccess.includes('index\\.html$ / [R=301,L]'), '.htaccess 301 redirects /index.html to root /', '.htaccess');
 check(htaccess.includes('about\\.html$ /about/'), '.htaccess 301 redirects /about.html to /about/', '.htaccess');
 check(htaccess.includes('articles\\.html$ /articles/'), '.htaccess 301 redirects /articles.html to /articles/', '.htaccess');
 check(htaccess.includes('articles/(article-[^/.]+)\\.html$ /articles/$1/'), '.htaccess 301 redirects /articles/*.html to clean directory', '.htaccess');

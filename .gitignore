@@ -58,3 +58,6 @@ desktop.ini
 node_modules/
 .venv/
 venv/
+__pycache__/
+*.py[cod]
+*$py.class
