@@ -11,7 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@14..36,400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
 
     <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico" />
@@ -25,6 +25,8 @@
     <title>Terrified of Silence | George</title>
     <meta name="description" content="We fill our days with noise because stillness forces us to confront who we are. An honest reflection on recovering quiet solitude and intimacy with God." />
     <meta name="author" content="George" />
+        <link rel="prev" href="https://jojjy.org/articles/article-god-doesnt-need-your-resume/" />
+    <link rel="next" href="https://jojjy.org/articles/article-the-bible-was-never-about-you/" />
     <link rel="canonical" href="https://jojjy.org/articles/article-terrified-of-silence/" />
     <link rel="alternate" type="application/rss+xml" title="George | Christian Essays" href="https://jojjy.org/feed.xml" />
     <!-- Open Graph / Facebook -->
@@ -153,13 +155,13 @@
 
         <!-- Right Reading Column (60ch measure) -->
         <div class="article-reading-column">
-          <h1 class="article-headline font-editorial text-4xl font-medium leading-[1.08] tracking-tight text-[var(--ink-primary)] sm:text-5xl lg:text-[3.25rem]">
+          <h1 class="article-headline font-editorial text-4xl font-medium leading-[1.08] tracking-tight text-[var(--ink-primary)] sm:text-5xl lg:text-[3.25rem]" style="view-transition-name: article-title-article-terrified-of-silence;">
           Terrified of Silence
         </h1>
 
         <blockquote class="epigraph">
           <p>“Be still, and know that I am God.”</p>
-          <cite>Psalm 46:10</cite>
+          <cite class="scripture-ref" tabindex="0" data-verse="“Be still, and know that I am God. I will be exalted among the nations, I will be exalted in the earth!” — Psalm 46:10">Psalm 46:10</cite>
         </blockquote>
 
         <!-- Body Prose -->
@@ -204,7 +206,7 @@
           </p>
           <h2 style="font-family: var(--font-serif); font-size: var(--text-2xl); line-height: var(--leading-2xl); margin: 0 0 var(--space-2) 0; color: var(--ink-primary);">One quiet essay for your Sunday morning.</h2>
           <p style="font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--ink-secondary); margin: 0 0 var(--space-4) 0;">A quiet space for Scripture and reflection before the week begins. No noise. Just one thoughtful read.</p>
-          <form class="newsletter-form" aria-label="Newsletter signup">
+          <form class="newsletter-form" aria-label="Sunday letter signup">
             <label for="article-email" class="sr-only">Email address</label>
             <div class="newsletter-form-row">
               <input id="article-email" type="email" required autocomplete="email" placeholder="your@email.com" class="newsletter-input" />
@@ -221,39 +223,22 @@
       </article>
     </main>
 
-        <!-- ============ RECOMMENDATIONS ============ -->
-    <section class="bg-[var(--bg-recessed)] border-t border-[var(--rule-subtle)]">
-      <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
-        <div class="mb-10 flex items-end justify-between">
-          <div>
-            <p class="font-mono text-xs uppercase tracking-[0.15em] text-[var(--ink-muted)]">Continue reading</p>
-            <h2 class="font-editorial mt-2 text-3xl font-medium tracking-tight text-[var(--ink-primary)]">You might also find this worthwhile.</h2>
-          </div>
-          <a href="/articles/" class="hidden items-center gap-2 text-sm font-semibold text-[var(--ink-primary)] hover:text-[var(--accent-primary)] sm:inline-flex transition-colors">
-            All essays <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="1.5"></iconify-icon>
+        <!-- ============ CONTINUOUS BOOK NAVIGATION ============ -->
+    <nav class="book-nav continue-reading" aria-label="Sequential Essay Navigation">
+      <div class="site-container">
+        <div class="book-nav-grid">
+          <a href="/articles/article-god-doesnt-need-your-resume/" class="book-nav-card book-nav-prev" rel="prev">
+            <span class="book-nav-direction">← № 05</span>
+            <span class="book-nav-title">God Doesn't Need Your Resume</span>
+          </a>
+          <a href="/articles/article-the-bible-was-never-about-you/" class="book-nav-card book-nav-next" rel="next">
+            <span class="book-nav-direction">№ 07 →</span>
+            <span class="book-nav-title">The Bible Was Never About You</span>
           </a>
         </div>
-
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <a href="/articles/article-the-respectable-sin-nobody-talks-about/" class="rec-card block p-6">
-            <div class="mb-5 flex items-center justify-between">
-              <span class="tag-pill">Holiness</span>
-              <span class="font-mono text-[0.65rem] text-[var(--ink-muted)]">7 min read</span>
-            </div>
-            <h3 class="font-editorial text-xl font-medium text-[var(--ink-primary)]">The Respectable Sin Nobody Talks About</h3>
-            <p class="mt-2 text-xs leading-5 text-[var(--ink-secondary)]">We condemn outward vices while treating chronic worry as harmless. Explore why anxiety is a theological statement and how Romans 8 offers profound peace.</p>
-          </a>
-          <a href="/articles/article-busy-isnt-faithful/" class="rec-card block p-6">
-            <div class="mb-5 flex items-center justify-between">
-              <span class="tag-pill">Work</span>
-              <span class="font-mono text-[0.65rem] text-[var(--ink-muted)]">1 min read</span>
-            </div>
-            <h3 class="font-editorial text-xl font-medium text-[var(--ink-primary)]">Busy Isn’t Faithful</h3>
-            <p class="mt-2 text-xs leading-5 text-[var(--ink-secondary)]">Martha was serving, but Jesus named the anxiety beneath her motion. Discover why frantic Christian busyness is not devotion and how to embrace true rest.</p>
-          </a>
-        </div>
+        <p class="book-nav-hint">Use ← and → keys to turn pages</p>
       </div>
-    </section>
+    </nav>
 
     <!-- ============ FOOTER ============ -->
     <footer class="bg-[var(--bg-recessed)] border-t border-[var(--rule-subtle)]">

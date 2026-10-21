@@ -100,18 +100,20 @@ document.addEventListener('DOMContentLoaded', () => {
     backToTopBtn.addEventListener('click', scrollToTop);
   }
 
-  /* ---- Universal Newsletter Form Submissions ---- */
-  document.querySelectorAll('form[aria-label="Newsletter signup"], form.newsletter-form').forEach((form) => {
+  /* ---- Universal Newsletter Form Submissions (Phase 7 Resilient Handling) ---- */
+  document.querySelectorAll('form[aria-label="Newsletter signup"], form[aria-label="Sunday letter signup"], form.newsletter-form, .sunday-letter form').forEach((form) => {
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       const emailInput = form.querySelector('input[type="email"]');
       const messageEl = form.querySelector('p[id^="form-msg"], p[id^="form-message"], .form-message');
 
-      if (emailInput && emailInput.validity.valid) {
+      if (emailInput && emailInput.value.trim() && emailInput.checkValidity()) {
         if (messageEl) {
-          messageEl.textContent = "You're on the list. The Sunday letter will arrive in your inbox.";
-          messageEl.style.color = 'var(--color-ink-primary)';
-          messageEl.style.fontWeight = '600';
+          messageEl.textContent = "Thank you. Check your inbox on Sunday morning.";
+          messageEl.style.fontFamily = "var(--font-serif)";
+          messageEl.style.fontStyle = "italic";
+          messageEl.style.color = "var(--accent-primary)";
+          messageEl.style.fontWeight = "500";
         }
         emailInput.value = '';
       }
@@ -157,22 +159,29 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Initialize topic filter from URL query parameter (?topic=work) or hash (#work)
-    try {
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlTopic = (urlParams.get('topic') || window.location.hash.replace('#', '') || '').toLowerCase();
-      if (urlTopic) {
-        const matchingChip = Array.from(filterChips).find((c) => (c.dataset.filter || '').toLowerCase() === urlTopic);
-        if (matchingChip) {
-          filterChips.forEach((c) => {
-            c.classList.remove('active');
-            c.setAttribute('aria-selected', 'false');
-          });
-          matchingChip.classList.add('active');
-          matchingChip.setAttribute('aria-selected', 'true');
-          currentTopic = matchingChip.dataset.filter;
+    const setTopicFromURL = () => {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlTopic = (urlParams.get('topic') || window.location.hash.replace('#', '') || '').toLowerCase();
+        if (urlTopic) {
+          const matchingChip = Array.from(filterChips).find((c) => (c.dataset.filter || '').toLowerCase() === urlTopic);
+          if (matchingChip) {
+            filterChips.forEach((c) => {
+              c.classList.remove('active');
+              c.setAttribute('aria-selected', 'false');
+            });
+            matchingChip.classList.add('active');
+            matchingChip.setAttribute('aria-selected', 'true');
+            currentTopic = matchingChip.dataset.filter;
+            applyFilters();
+          }
         }
-      }
-    } catch (_) {}
+      } catch (_) {}
+    };
+
+    setTopicFromURL();
+    window.addEventListener('hashchange', setTopicFromURL);
+    window.addEventListener('popstate', setTopicFromURL);
 
     // Initial filter pass
     applyFilters();
@@ -292,4 +301,39 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+  /* ---- Quiet Desktop Keyboard Navigation (Phase 7 Book Page Turning) ---- */
+  document.addEventListener('keydown', (e) => {
+    const tag = e.target && e.target.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || (e.target && e.target.isContentEditable)) return;
+    if (e.ctrlKey || e.altKey || e.metaKey || e.shiftKey) return;
+    const prevLink = document.querySelector('link[rel="prev"]') || document.querySelector('a[rel="prev"]');
+    const nextLink = document.querySelector('link[rel="next"]') || document.querySelector('a[rel="next"]');
+    if (e.key === 'ArrowLeft' && prevLink) {
+      const href = prevLink.getAttribute('href');
+      if (href) window.location.href = href;
+    } else if (e.key === 'ArrowRight' && nextLink) {
+      const href = nextLink.getAttribute('href');
+      if (href) window.location.href = href;
+    } else if (e.key === 'Escape' && (prevLink || nextLink || document.querySelector('.book-nav'))) {
+      window.location.href = '/articles/';
+    }
+  });
+
+  /* ---- Scripture Marginalia Viewport Edge Safety ---- */
+  document.querySelectorAll('.scripture-ref').forEach((el) => {
+    const adjustPosition = () => {
+      const rect = el.getBoundingClientRect();
+      if (rect.left < 20) {
+        el.style.setProperty('--popover-shift', `${20 - rect.left}px`);
+      } else if (rect.right > window.innerWidth - 20) {
+        el.style.setProperty('--popover-shift', `${(window.innerWidth - 20) - rect.right}px`);
+      } else {
+        el.style.removeProperty('--popover-shift');
+      }
+    };
+    el.addEventListener('mouseenter', adjustPosition, { passive: true });
+    el.addEventListener('focus', adjustPosition, { passive: true });
+  });
+
 });

@@ -11,7 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@14..36,400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
 
     <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico" />
@@ -25,6 +25,8 @@
     <title>You Are Not Your Job Title | George</title>
     <meta name="description" content="When career titles collapse, what remains of your worth? A quiet meditation on untangling professional identity from who you truly are in the eyes of God." />
     <meta name="author" content="George" />
+        <link rel="prev" href="https://jojjy.org/articles/article-work-existed-before-sin/" />
+    <link rel="next" href="https://jojjy.org/articles/article-your-mind-is-under-attack-and-you-dont-even-see-it/" />
     <link rel="canonical" href="https://jojjy.org/articles/article-you-are-not-your-job-title/" />
     <link rel="alternate" type="application/rss+xml" title="George | Christian Essays" href="https://jojjy.org/feed.xml" />
     <!-- Open Graph / Facebook -->
@@ -153,13 +155,13 @@
 
         <!-- Right Reading Column (60ch measure) -->
         <div class="article-reading-column">
-          <h1 class="article-headline font-editorial text-4xl font-medium leading-[1.08] tracking-tight text-[var(--ink-primary)] sm:text-5xl lg:text-[3.25rem]">
+          <h1 class="article-headline font-editorial text-4xl font-medium leading-[1.08] tracking-tight text-[var(--ink-primary)] sm:text-5xl lg:text-[3.25rem]" style="view-transition-name: article-title-article-you-are-not-your-job-title;">
           You Are Not Your Job Title
         </h1>
 
         <blockquote class="epigraph">
           <p>“See what kind of love the Father has given to us, that we should be called children of God.”</p>
-          <cite>1 John 3:1</cite>
+          <cite class="scripture-ref" tabindex="0" data-verse="“See what kind of love the Father has given to us, that we should be called children of God; and so we are.” — 1 John 3:1">1 John 3:1</cite>
         </blockquote>
 
         <!-- Body Prose -->
@@ -204,7 +206,7 @@
           </p>
           <h2 style="font-family: var(--font-serif); font-size: var(--text-2xl); line-height: var(--leading-2xl); margin: 0 0 var(--space-2) 0; color: var(--ink-primary);">One quiet essay for your Sunday morning.</h2>
           <p style="font-size: var(--text-sm); line-height: var(--leading-sm); color: var(--ink-secondary); margin: 0 0 var(--space-4) 0;">A quiet space for Scripture and reflection before the week begins. No noise. Just one thoughtful read.</p>
-          <form class="newsletter-form" aria-label="Newsletter signup">
+          <form class="newsletter-form" aria-label="Sunday letter signup">
             <label for="article-email" class="sr-only">Email address</label>
             <div class="newsletter-form-row">
               <input id="article-email" type="email" required autocomplete="email" placeholder="your@email.com" class="newsletter-input" />
@@ -221,39 +223,22 @@
       </article>
     </main>
 
-        <!-- ============ RECOMMENDATIONS ============ -->
-    <section class="bg-[var(--bg-recessed)] border-t border-[var(--rule-subtle)]">
-      <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
-        <div class="mb-10 flex items-end justify-between">
-          <div>
-            <p class="font-mono text-xs uppercase tracking-[0.15em] text-[var(--ink-muted)]">Continue reading</p>
-            <h2 class="font-editorial mt-2 text-3xl font-medium tracking-tight text-[var(--ink-primary)]">You might also find this worthwhile.</h2>
-          </div>
-          <a href="/articles/" class="hidden items-center gap-2 text-sm font-semibold text-[var(--ink-primary)] hover:text-[var(--accent-primary)] sm:inline-flex transition-colors">
-            All essays <iconify-icon icon="solar:arrow-right-linear" width="16" stroke-width="1.5"></iconify-icon>
+        <!-- ============ CONTINUOUS BOOK NAVIGATION ============ -->
+    <nav class="book-nav continue-reading" aria-label="Sequential Essay Navigation">
+      <div class="site-container">
+        <div class="book-nav-grid">
+          <a href="/articles/article-work-existed-before-sin/" class="book-nav-card book-nav-prev" rel="prev">
+            <span class="book-nav-direction">← № 16</span>
+            <span class="book-nav-title">Work Existed Before Sin</span>
+          </a>
+          <a href="/articles/article-your-mind-is-under-attack-and-you-dont-even-see-it/" class="book-nav-card book-nav-next" rel="next">
+            <span class="book-nav-direction">№ 18 →</span>
+            <span class="book-nav-title">Your Mind Is Under Attack</span>
           </a>
         </div>
-
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <a href="/articles/article-work-existed-before-sin/" class="rec-card block p-6">
-            <div class="mb-5 flex items-center justify-between">
-              <span class="tag-pill">Work</span>
-              <span class="font-mono text-[0.65rem] text-[var(--ink-muted)]">5 min read</span>
-            </div>
-            <h3 class="font-editorial text-xl font-medium text-[var(--ink-primary)]">Work Existed Before Sin</h3>
-            <p class="mt-2 text-xs leading-5 text-[var(--ink-secondary)]">Work was instituted in the Garden of Eden before the Fall, not as a curse. Rediscover God’s original design for meaningful daily labor, vocation, and rest.</p>
-          </a>
-          <a href="/articles/article-nobody-is-self-made/" class="rec-card block p-6">
-            <div class="mb-5 flex items-center justify-between">
-              <span class="tag-pill">Work</span>
-              <span class="font-mono text-[0.65rem] text-[var(--ink-muted)]">1 min read</span>
-            </div>
-            <h3 class="font-editorial text-xl font-medium text-[var(--ink-primary)]">Nobody Is Self-Made</h3>
-            <p class="mt-2 text-xs leading-5 text-[var(--ink-secondary)]">Hands can bleed with honest effort and still stand on borrowed ground. An honest Christian reflection on Deuteronomy, humility, and the quiet gift of grace.</p>
-          </a>
-        </div>
+        <p class="book-nav-hint">Use ← and → keys to turn pages</p>
       </div>
-    </section>
+    </nav>
 
     <!-- ============ FOOTER ============ -->
     <footer class="bg-[var(--bg-recessed)] border-t border-[var(--rule-subtle)]">

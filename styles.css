@@ -80,6 +80,12 @@
   --accent-warm: #8C4A27;     /* Terracotta clay for subtle editorial highlights */
   --selection-bg: rgba(44, 74, 62, 0.14);
 
+    /* Warm Editorial Complementary Theme Accents (Red Dirt Roads & Warm Amber) */
+  --color-earth-terracotta: #9a3412; /* Rich warm terracotta (WCAG AA 6.8:1 contrast on white) */
+  --color-earth-ochre: #b45309;      /* Warm golden amber */
+  --color-earth-hover: #c2410c;      /* Brighter terracotta on hover */
+  --color-forest-deep: #2d4f24;      /* Quiet sage/olive accent */
+
   /* Legacy aliases mapping to semantic paper tokens */
   --color-canvas: var(--bg-canvas);
   --color-surface-subtle: var(--bg-elevated);
@@ -279,7 +285,6 @@ a:hover {
 .hero-bw-btn-outline,
 .article-row-item,
 .bento-item,
-.rec-card,
 .share-btn {
   text-decoration: none;
 }
@@ -1592,31 +1597,11 @@ header.site-header.is-scrolled {
   padding: var(--space-6);
 }
 
-.summary-card {
-  background-color: var(--color-canvas);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
-  padding: var(--space-6);
-  box-shadow: none !important;
-}
 
-.rec-card {
-  background-color: var(--color-canvas);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-  text-decoration: none;
-  display: block;
-  transition: border-color var(--duration-normal) var(--ease-editorial),
-              box-shadow var(--duration-normal) var(--ease-editorial),
-              transform var(--duration-normal) var(--ease-editorial);
-}
 
-.rec-card:hover {
-  border-color: var(--color-border-medium);
-  box-shadow: none !important;
-  transform: translateY(-2px);
-}
+
+
+
 
 .share-btn {
   display: inline-flex;
@@ -1754,7 +1739,7 @@ header.site-header.is-scrolled {
 .author-bio-pill:hover {
   background-color: var(--color-surface-muted);
   border-color: var(--color-border-medium);
-  transform: translateY(-1px);
+  
 }
 
 .author-bio-avatar {
@@ -3228,9 +3213,6 @@ html.js [data-reveal].is-revealed {
   .scroll-text-char {
     opacity: 1 !important;
   }
-  [data-marquee-row] {
-    transform: none !important;
-  }
 }
 
 /* ==============================================================================
@@ -3974,14 +3956,6 @@ html.js [data-reveal].is-revealed {
    28. HERO TEXT MOTION, HOVER RESPONSIVENESS & THEME COLOR ACCENTS
    ============================================================================== */
 
-:root {
-  /* Warm Editorial Complementary Theme Accents (Red Dirt Roads & Warm Amber) */
-  --color-earth-terracotta: #9a3412; /* Rich warm terracotta (WCAG AA 6.8:1 contrast on white) */
-  --color-earth-ochre: #b45309;      /* Warm golden amber */
-  --color-earth-hover: #c2410c;      /* Brighter terracotta on hover */
-  --color-forest-deep: #2d4f24;      /* Quiet sage/olive accent */
-}
-
 /* Distinctive Highlighted Theme Words in Hero Headings */
 .hero-highlight-word {
   display: inline-block;
@@ -4016,15 +3990,15 @@ html.js [data-reveal].is-revealed {
 @media (hover: hover) and (pointer: fine) {
   .hero-highlight-word:hover {
     color: var(--color-earth-hover);
-    transform: translateY(-2px) scale(1.02);
-    text-shadow: 0 4px 16px rgba(154, 52, 18, 0.16);
+    transform: scale(1.02);
+    /* shadow removed */
     cursor: default;
   }
 
   .hero-highlight-word:hover::after {
     opacity: 0.88;
     background-color: var(--color-accent);
-    transform: scaleX(1.02) translateY(1px);
+    transform: scaleX(1.02);
   }
 
   /* Kinetic Word Lift across Hero Headings */
@@ -4035,7 +4009,7 @@ html.js [data-reveal].is-revealed {
   }
 
   .hero-word-hover:hover {
-    transform: translateY(-3px);
+    
     color: var(--color-earth-terracotta);
   }
 }
@@ -4043,10 +4017,10 @@ html.js [data-reveal].is-revealed {
 /* Subtle Kinetic Breathing Animation for Hero Accent Badge */
 @keyframes heroBadgePulse {
   0%, 100% {
-    transform: translateY(0);
+    opacity: 1;
   }
   50% {
-    transform: translateY(-2px);
+    opacity: 0.85;
   }
 }
 
@@ -4128,3 +4102,277 @@ html.js [data-reveal].is-revealed {
 .author-note-link:hover {
   color: var(--accent-primary);
 }
+
+/* ==============================================================================
+   PHASE 7: SIGNATURE LITERARY CRAFT, BOOK NAVIGATION & SCRIPTURE MARGINALIA
+   ============================================================================== */
+
+/* ------------------------------------------------------------------------------
+   1. CONTINUOUS BOOK NAVIGATION (SEQUENTIAL ESSAY THREADING)
+   ------------------------------------------------------------------------------ */
+.book-nav {
+  background-color: var(--bg-recessed);
+  border-top: 1px solid var(--rule-subtle);
+  border-bottom: 1px solid var(--rule-subtle);
+  padding: var(--space-10) 0;
+}
+
+.book-nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+.book-nav-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-6);
+  background-color: var(--bg-canvas);
+  border: 1px solid var(--rule-subtle);
+  border-radius: var(--radius-sm, 2px);
+  text-decoration: none;
+  transition: border-color var(--duration-fast) var(--ease-out-editorial),
+              background-color var(--duration-fast) var(--ease-out-editorial);
+  box-shadow: none !important;
+}
+
+.book-nav-card:hover {
+  border-color: var(--rule-strong);
+  background-color: var(--bg-elevated);
+}
+
+.book-nav-card:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.book-nav-prev {
+  text-align: left;
+  border-left: 2px solid var(--accent-primary);
+}
+
+.book-nav-next {
+  text-align: right;
+  border-right: 2px solid var(--accent-primary);
+}
+
+.book-nav-direction {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-2);
+}
+
+.book-nav-title {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg, 1.3);
+  color: var(--ink-primary);
+  font-weight: var(--weight-medium, 500);
+  transition: color var(--duration-fast) var(--ease-out-editorial);
+}
+
+.book-nav-card:hover .book-nav-title {
+  color: var(--accent-primary);
+}
+
+.book-nav-hint {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+  margin: var(--space-6) 0 0 0;
+}
+
+@media (max-width: 640px) {
+  .book-nav-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  .book-nav-next {
+    text-align: left;
+    border-right: 1px solid var(--rule-subtle);
+    border-left: 2px solid var(--accent-primary);
+  }
+}
+
+/* ------------------------------------------------------------------------------
+   2. SCRIPTURE MARGINALIA & INLINE VERSE CONTEXT
+   ------------------------------------------------------------------------------ */
+.scripture-ref {
+  position: relative;
+  font-style: normal;
+  border-bottom: 1px dotted var(--accent-primary);
+  cursor: help;
+  display: inline;
+  color: inherit;
+}
+
+.scripture-ref:focus {
+  outline: none;
+}
+
+.scripture-ref:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.scripture-ref::after {
+  content: attr(data-verse);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(calc(-50% + var(--popover-shift, 0px)));
+  width: max-content;
+  max-width: min(340px, 86vw);
+  background-color: var(--bg-recessed);
+  color: var(--ink-primary);
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+  letter-spacing: normal;
+  padding: var(--space-3) var(--space-4);
+  border-left: 2px solid var(--accent-primary);
+  border-top: 1px solid var(--rule-subtle);
+  border-right: 1px solid var(--rule-subtle);
+  border-bottom: 1px solid var(--rule-subtle);
+  border-radius: var(--radius-sm, 2px);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 180ms var(--ease-out-editorial),
+              visibility 180ms;
+  z-index: 80;
+  white-space: normal;
+  box-sizing: border-box;
+  box-shadow: none !important;
+}
+
+.scripture-ref:hover::after,
+.scripture-ref:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 640px) {
+  .scripture-ref::after {
+    left: 0;
+    transform: none;
+    max-width: calc(100vw - 32px);
+  }
+}
+
+/* ------------------------------------------------------------------------------
+   3. TYPESET BROADSHEET PRINT STYLESHEET (@media print)
+   ------------------------------------------------------------------------------ */
+@media print {
+  /* Hide non-editorial chrome, interactive controls and ambient overlays */
+  header,
+  nav,
+  .site-header,
+  .site-nav,
+  .mobile-nav-trigger,
+  #mobile-nav,
+  .skip-link,
+  .sunday-letter,
+  .newsletter-section,
+  .newsletter-box,
+  .newsletter-card,
+  .continue-reading,
+  .book-nav,
+  .share-btn,
+  #copy-link-btn,
+  #back-to-top,
+  #reading-progress,
+  button,
+  footer,
+  .site-footer {
+    display: none !important;
+  }
+
+  /* Purge SVG paper grain overlay */
+  body::after {
+    display: none !important;
+  }
+
+  /* Broadsheet typography & measure */
+  html, body {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000000 !important;
+    font-family: "Newsreader", Georgia, Cambria, "Times New Roman", serif !important;
+    font-size: 11pt !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  main,
+  article,
+  .article-editorial-grid,
+  .article-reading-column,
+  .site-container {
+    max-width: 65ch !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .article-meta-rail {
+    display: none !important;
+  }
+
+  .article-headline {
+    font-size: 24pt !important;
+    line-height: 1.15 !important;
+    color: #000000 !important;
+    margin-bottom: 0.4cm !important;
+  }
+
+  /* Canonical citation attribution beneath article header */
+  article header::after {
+    content: "Published by George at jojjy.org";
+    display: block;
+    font-size: 8.5pt;
+    margin-top: 0.5cm;
+    color: #000000 !important;
+    font-family: "JetBrains Mono", monospace !important;
+  }
+
+  .epigraph {
+    border-left: 1.5pt solid #000000 !important;
+    padding-left: 0.4cm !important;
+    margin: 0.6cm 0 !important;
+    color: #000000 !important;
+  }
+
+  .article-prose {
+    font-size: 11pt !important;
+    line-height: 1.6 !important;
+    color: #000000 !important;
+  }
+
+  .article-prose p {
+    margin-bottom: 0.4cm !important;
+  }
+
+  .author-note-box {
+    border-top: 0.5pt solid #000000 !important;
+    border-left: none !important;
+    background: transparent !important;
+    margin-top: 0.8cm !important;
+    padding: 0.4cm 0 0 0 !important;
+  }
+}
+

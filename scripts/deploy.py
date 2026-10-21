@@ -272,22 +272,25 @@ def main():
 
     password = config.get("password") or os.environ.get("NAMECHEAP_SFTP_PASSWORD", "")
     import shutil
-    use_sshpass = bool(auth_method == "password" and password and shutil.which("sshpass"))
+    use_sshpass = bool(password and shutil.which("sshpass"))
+    use_pexpect = False
+    if password and not use_sshpass:
+        try:
+            import pexpect
+            use_pexpect = True
+        except ImportError:
+            use_pexpect = False
 
     if auth_method == "key":
         if resolved_key_path:
             sftp_cmd.extend(["-i", resolved_key_path])
         else:
             log_warning("No explicit privateKeyPath resolved. Falling back to default SSH identities.")
-        # Ensure OpenSSH can prompt for key passphrase or fall back to password if key is not authorized in cPanel
         sftp_cmd.extend(["-o", "BatchMode=no"])
     elif auth_method == "password":
         if use_sshpass:
             sftp_cmd = ["sshpass", "-p", password] + sftp_cmd
         else:
-            # Batch mode (-b) in OpenSSH sftp internally defaults to BatchMode=yes,
-            # which suppresses interactive password prompts and causes "Permission denied".
-            # Supplying "-o BatchMode=no" explicitly ensures OpenSSH prompts the user in the terminal.
             sftp_cmd.extend(["-o", "BatchMode=no"])
 
     sftp_cmd.extend([
@@ -297,9 +300,30 @@ def main():
 
     log_step(f"Connecting to Namecheap SFTP ({host}:{port}) and syncing...")
     try:
-        # Run interactively so password or SSH key prompt displays on terminal
-        res = subprocess.run(sftp_cmd)
-        exit_code = res.returncode
+        if (auth_method == "password" or password) and use_pexpect and not use_sshpass:
+            log_info("Using automatic password authentication (non-interactive)...")
+            import pexpect
+            child = pexpect.spawn(sftp_cmd[0], sftp_cmd[1:], encoding="utf-8", timeout=300)
+            idx = child.expect([r"(?i)password:", r"Are you sure you want to continue connecting", pexpect.EOF, pexpect.TIMEOUT], timeout=30)
+            if idx == 1:
+                child.sendline("yes")
+                idx = child.expect([r"(?i)password:", pexpect.EOF, pexpect.TIMEOUT], timeout=30)
+            if idx == 0:
+                child.sendline(password)
+            while True:
+                try:
+                    line = child.readline()
+                    if not line:
+                        break
+                    sys.stdout.write(line)
+                    sys.stdout.flush()
+                except pexpect.EOF:
+                    break
+            child.close()
+            exit_code = child.exitstatus if child.exitstatus is not None else 0
+        else:
+            res = subprocess.run(sftp_cmd)
+            exit_code = res.returncode
     finally:
         try:
             os.remove(temp_batch_path)
