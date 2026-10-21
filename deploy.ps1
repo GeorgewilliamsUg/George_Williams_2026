@@ -132,7 +132,7 @@ $DefaultExcludes = @(
     "^\.skills\.json$", "^\.gitignore$", "^deploy\.ps1$", "^publish\.ps1$",
     "^article\.html$", "^deploy-config.*\.json$", "^\.deploy-manifest\.json$", "^\.deploy-state\.json$",
     "^DEPLOYMENT\.md$", "^src($|/|\\)", "^scripts($|/|\\)",
-    "\.docx$", "\.md$", "\.eps$",
+    "\.docx$", "\.md$", "\.eps$", "\.zip$", "\.tar\.gz$", "\.tgz$", "\.rar$", "\.gitkeep$",
     "^\.env.*$", "^\.venv($|/|\\)", "^venv($|/|\\)", "^node_modules($|/|\\)",
     "Thumbs\.db$", "\.DS_Store$", "\.tmp$", "\.bak$", "\.log$"
 )
