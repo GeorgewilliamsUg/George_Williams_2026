@@ -279,6 +279,8 @@ def main():
             sftp_cmd.extend(["-i", resolved_key_path])
         else:
             log_warning("No explicit privateKeyPath resolved. Falling back to default SSH identities.")
+        # Ensure OpenSSH can prompt for key passphrase or fall back to password if key is not authorized in cPanel
+        sftp_cmd.extend(["-o", "BatchMode=no"])
     elif auth_method == "password":
         if use_sshpass:
             sftp_cmd = ["sshpass", "-p", password] + sftp_cmd

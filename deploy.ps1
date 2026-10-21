@@ -270,6 +270,7 @@ $SftpArgs.Add("-o"); $SftpArgs.Add("StrictHostKeyChecking=accept-new")
 $SftpArgs.Add("-o"); $SftpArgs.Add("ServerAliveInterval=30")
 if ($AuthMethod -eq "key" -and $ResolvedKeyPath) {
     $SftpArgs.Add("-i"); $SftpArgs.Add($ResolvedKeyPath)
+    $SftpArgs.Add("-o"); $SftpArgs.Add("BatchMode=no")
 }
 elseif ($AuthMethod -eq "password") {
     $SftpArgs.Add("-o"); $SftpArgs.Add("BatchMode=no")
